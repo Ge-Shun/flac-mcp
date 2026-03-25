@@ -16,6 +16,7 @@ from pfc_mcp.tools import (
     capture_plot,
     check_task_status,
     execute_task,
+    inspect,
     interrupt_task,
     list_tasks,
     query_command,
@@ -47,6 +48,7 @@ check_task_status.register(mcp)
 list_tasks.register(mcp)
 interrupt_task.register(mcp)
 capture_plot.register(mcp)
+inspect.register(mcp)
 
 
 def main() -> None:

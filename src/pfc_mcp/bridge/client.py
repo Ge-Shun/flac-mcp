@@ -87,7 +87,7 @@ class PFCBridgeClient:
             async for raw_message in self._websocket:
                 payload = json.loads(raw_message)
                 msg_type = payload.get("type")
-                if msg_type not in {"result", "diagnostic_result"}:
+                if msg_type not in {"result", "diagnostic_result", "inspect_result"}:
                     continue
                 request_id = payload.get("request_id")
                 if not request_id:
@@ -198,6 +198,18 @@ class PFCBridgeClient:
             {"type": "interrupt_task", "task_id": task_id},
             operation_name="interrupt_task",
             timeout_s=5.0,
+        )
+
+    async def inspect_execute(self, code: str, timeout_ms: int = 10000) -> dict[str, Any]:
+        timeout_s = max(self.request_timeout_s, timeout_ms / 1000.0 + 5.0)
+        return await self._request_with_retry(
+            {
+                "type": "inspect_execute",
+                "code": code,
+                "timeout_ms": timeout_ms,
+            },
+            operation_name="inspect_execute",
+            timeout_s=timeout_s,
         )
 
     async def get_working_directory(self) -> str | None:
