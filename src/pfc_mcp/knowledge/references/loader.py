@@ -142,7 +142,9 @@ class ReferenceLoader:
         categories = refs_index.get("categories", {})
         if category not in categories:
             return False
-        directory = categories[category].get("directory", category)
+        category_meta = categories[category]
+        raw_directory = category_meta.get("directory") if isinstance(category_meta, dict) else None
+        directory = raw_directory if isinstance(raw_directory, str) and raw_directory else category
         return (PFC_REFERENCES_ROOT / directory / item_name / "index.json").exists()
 
     @staticmethod
