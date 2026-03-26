@@ -6,25 +6,24 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 
-**一个为 [ITASCA PFC](https://www.itascacg.com/software/pfc) 提供完整能力的 MCP 服务器：可浏览文档、运行仿真、抓取图像，并通过自然语言交互完成操作。**
+**一个为 [ITASCA PFC](https://www.itascacg.com/software/pfc) 提供完整能力的 MCP 服务器：可浏览文档、运行仿真、执行代码，并通过自然语言交互完成操作。**
 
-基于 [Model Context Protocol](https://modelcontextprotocol.io/) 构建，`pfc-mcp` 可以把任何兼容 MCP 的 AI 客户端（Claude Code、Codex CLI、Gemini CLI、OpenCode、toyoura-nagisa 等）变成 PFC 协作助手：查询命令、执行脚本、监控长时仿真、抓取可视化结果。
+基于 [Model Context Protocol](https://modelcontextprotocol.io/) 构建，`pfc-mcp` 可以把任何兼容 MCP 的 AI 客户端（Claude Code、Codex CLI、Gemini CLI、OpenCode、toyoura-nagisa 等）变成 PFC 协作助手：查询命令、交互式执行代码、运行和监控长时仿真、创建图表。
 
 ![pfc-mcp demo](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif)
 
-## 工具（10）
+## 工具（9）
 
 ### 文档类（5）- 无需 bridge
 
-- 浏览 PFC 命令树、Python SDK 参考、参考文档（接触模型、range 元素）
+- 浏览 PFC 命令树、Python SDK 参考、参考文档（接触模型、range 元素、plot 项目）
 - 基于关键词搜索命令和 Python API（BM25 排序）
 
-### 执行类（5）- 需要在运行中的 PFC 进程中启动 bridge
+### 执行类（4）- 需要在运行中的 PFC 进程中启动 bridge
 
-- 提交 Python 脚本并实时轮询状态/输出
-- 跨会话列出和管理任务
-- 中断运行中的仿真
-- 抓取 PFC 图像（支持相机、着色、切面等配置）
+- **pfc_execute_code** - 同步 REPL：运行 Python 代码片段、查询模型状态、创建图表、导出数据
+- **pfc_execute_task** - 提交长时脚本进行异步执行，支持完整生命周期管理
+- **pfc_check_task_status** / **pfc_interrupt_task** / **pfc_list_tasks** - 轮询输出、取消任务、浏览历史
 
 ## 快速开始
 
@@ -79,7 +78,7 @@ pfc_mcp_bridge.start()
 
 - **以文档为边界地图**：浏览与搜索工具帮助智能体明确 PFC 能力边界，减少“幻觉命令”
 - **实时状态的任务队列**：脚本按顺序排队执行，智能体可实时轮询输出和状态
-- **基于回调的控制**：可优雅中断长时间 `cycle()`，并在仿真进行中抓取图像
+- **基于回调的控制**：可优雅中断长时间 `cycle()`；通过 cycle 间隙回调在仿真进行中执行代码
 
 ## 运行时模型
 

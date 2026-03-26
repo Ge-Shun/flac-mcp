@@ -6,9 +6,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
 
-**MCP server that gives AI agents full access to [ITASCA PFC](https://www.itascacg.com/software/pfc) - browse documentation, run simulations, capture plots, all through natural conversation.**
+**MCP server that gives AI agents full access to [ITASCA PFC](https://www.itascacg.com/software/pfc) - browse documentation, run simulations, and execute code, all through natural conversation.**
 
-Built on the [Model Context Protocol](https://modelcontextprotocol.io/), pfc-mcp turns any MCP-compatible AI client (Claude Code, Codex CLI, Gemini CLI, OpenCode, toyoura-nagisa, etc.) into a PFC co-pilot that can look up commands, execute scripts, monitor long-running simulations, and capture visualizations.
+Built on the [Model Context Protocol](https://modelcontextprotocol.io/), pfc-mcp turns any MCP-compatible AI client (Claude Code, Codex CLI, Gemini CLI, OpenCode, toyoura-nagisa, etc.) into a PFC co-pilot that can look up commands, execute code interactively, run and monitor long-running simulations, and create plots.
 
 ![pfc-mcp demo](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif)
 
@@ -16,19 +16,18 @@ Built on the [Model Context Protocol](https://modelcontextprotocol.io/), pfc-mcp
   <img width="380" height="200" src="https://glama.ai/mcp/servers/yusong652/pfc-mcp/badge" alt="pfc-mcp MCP server" />
 </a>
 
-## Tools (10)
+## Tools (9)
 
 ### Documentation (5) - no bridge required
 
-- Browse PFC command tree, Python SDK reference, and reference docs (contact models, range elements)
+- Browse PFC command tree, Python SDK reference, and reference docs (contact models, range elements, plot items)
 - Search commands and Python APIs by keyword (BM25 ranked)
 
-### Execution (5) - requires bridge in a running PFC process
+### Execution (4) - requires bridge in a running PFC process
 
-- Submit Python scripts and poll status/output in real time
-- List and manage tasks across sessions
-- Interrupt running simulations
-- Capture PFC plot images with configurable camera, coloring, and cut planes
+- **pfc_execute_code** - synchronous REPL: run Python snippets, query model state, create plots, export data
+- **pfc_execute_task** - submit long-running scripts for async execution with full lifecycle management
+- **pfc_check_task_status** / **pfc_interrupt_task** / **pfc_list_tasks** - poll output, cancel tasks, browse history
 
 ## Quick Start
 
@@ -83,7 +82,7 @@ pfc_mcp_bridge.start()
 
 - **Documentation as a boundary map** - browse and search tools let agents discover what PFC can do, reducing hallucinated commands
 - **Task queue with live status** - scripts are queued and executed sequentially; agents can poll output and status in real time
-- **Callback-based control** - gracefully interrupt long-running `cycle()` calls, and capture plots mid-simulation without pausing it
+- **Callback-based control** - gracefully interrupt long-running `cycle()` calls; execute code mid-simulation via cycle-gap callbacks
 
 ## Runtime Model
 
