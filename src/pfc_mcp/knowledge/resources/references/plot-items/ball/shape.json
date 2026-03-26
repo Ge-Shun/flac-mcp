@@ -7,8 +7,8 @@
     {
       "keyword": "shape arrow",
       "description": "Render balls as arrows pointing in the direction of a vector attribute",
-      "syntax": "shape arrow scale automatic arrow-quality 8",
-      "notes": "Requires a vector color-by attribute (velocity, displacement, etc.)"
+      "syntax": "shape arrow arrow-quality 8",
+      "notes": "Requires a vector color-by attribute (velocity, displacement, etc.). Arrow scale is automatic by default."
     },
     {
       "keyword": "scale-by-magnitude",
@@ -20,7 +20,7 @@
 
   "examples": [
     {
-      "command": "plot item create ball active on shape arrow scale automatic arrow-quality 8 color-by vector-attribute \"velocity\" quantity mag color-options scaled ramp rainbow minimum automatic maximum automatic scale-by-magnitude off legend active on",
+      "command": "plot item create ball active on shape arrow arrow-quality 8 color-by vector-attribute \"velocity\" color-options scaled ramp rainbow minimum automatic maximum automatic scale-by-magnitude off legend active on",
       "description": "Velocity arrow field with uniform size, colored by magnitude"
     }
   ]

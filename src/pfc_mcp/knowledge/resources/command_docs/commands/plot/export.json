@@ -36,8 +36,8 @@
     },
     {
       "name": "datafile",
-      "syntax": "datafile <filename s>",
-      "description": "Export a data file that can recreate the plot when read with the program call command. Default extension is F3DAT."
+      "syntax": "datafile filename <s>",
+      "description": "Export a data file that can recreate the plot when read with the program call command. Default extension is F3DAT. Use this to reverse-engineer plot syntax for complex configurations."
     },
     {
       "name": "dxf",

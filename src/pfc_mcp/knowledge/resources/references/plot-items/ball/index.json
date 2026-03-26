@@ -56,7 +56,7 @@
     },
     {
       "use_case": "Balls colored by velocity magnitude",
-      "command": "plot item create ball active on color-by vector-attribute \"velocity\" quantity mag color-options scaled ramp rainbow minimum automatic maximum automatic legend active on",
+      "command": "plot item create ball active on color-by vector-attribute \"velocity\" color-options scaled ramp rainbow minimum automatic maximum automatic legend active on",
       "description": "Rainbow color scale from min to max velocity"
     },
     {

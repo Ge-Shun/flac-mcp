@@ -7,9 +7,9 @@
     {
       "keyword": "color-by vector-attribute",
       "description": "Color by a vector attribute (force)",
-      "syntax": "color-by vector-attribute \"<name>\" quantity <mag|x|y|z>",
+      "syntax": "color-by vector-attribute \"<name>\"",
       "examples": [
-        "color-by vector-attribute \"force\" quantity mag"
+        "color-by vector-attribute \"force\""
       ],
       "available_attributes": ["force"]
     },

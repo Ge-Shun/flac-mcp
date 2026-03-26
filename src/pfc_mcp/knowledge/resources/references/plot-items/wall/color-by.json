@@ -7,10 +7,10 @@
     {
       "keyword": "color-by vector-attribute",
       "description": "Color by a vector attribute",
-      "syntax": "color-by vector-attribute \"<name>\" quantity <mag|x|y|z>",
+      "syntax": "color-by vector-attribute \"<name>\"",
       "examples": [
-        "color-by vector-attribute \"velocity\" quantity mag",
-        "color-by vector-attribute \"force-contact\" quantity mag"
+        "color-by vector-attribute \"velocity\"",
+        "color-by vector-attribute \"force-contact\""
       ],
       "available_attributes": ["position", "velocity", "displacement", "force-contact"]
     },

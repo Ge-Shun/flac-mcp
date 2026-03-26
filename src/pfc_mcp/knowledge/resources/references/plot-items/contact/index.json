@@ -50,7 +50,7 @@
   "common_usage_patterns": [
     {
       "use_case": "Contact force network",
-      "command": "plot item create contact active on color-by vector-attribute \"force\" quantity mag color-options scaled ramp rainbow minimum automatic maximum automatic scale-by-force on legend active on",
+      "command": "plot item create contact active on color-by vector-attribute \"force\" color-options scaled ramp rainbow minimum automatic maximum automatic scale-by-force on legend active on",
       "description": "Force chains with thickness and color encoding magnitude"
     },
     {

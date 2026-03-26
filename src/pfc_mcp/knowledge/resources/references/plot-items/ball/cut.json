@@ -3,26 +3,15 @@
   "parent": "ball",
   "description": "Cut plane for clipping ball visualization. Shows only material on one side of a plane.",
 
-  "syntax": "cut active on type plane surface on front on back off origin (<x>,<y>,<z>) normal (<nx>,<ny>,<nz>)",
-
-  "parameters": [
-    {"name": "active", "values": "on|off", "description": "Enable/disable the cut plane"},
-    {"name": "type", "values": "plane", "description": "Cut type (plane is the standard type)"},
-    {"name": "surface", "values": "on|off", "description": "Show cut surface"},
-    {"name": "front", "values": "on|off", "description": "Show material in front of the plane"},
-    {"name": "back", "values": "on|off", "description": "Show material behind the plane"},
-    {"name": "origin", "values": "(<x>,<y>,<z>)", "description": "A point on the cutting plane"},
-    {"name": "normal", "values": "(<nx>,<ny>,<nz>)", "description": "Plane normal direction (points toward 'front')"}
+  "status": "unverified",
+  "notes": [
+    "Cut plane syntax via command is unreliable — inline parameters (origin, normal) may cause 'Unused extra parameter' errors.",
+    "Recommended approach: configure cut planes interactively in PFC GUI, then export with 'plot export datafile filename \"<path>\"' to capture the working syntax.",
+    "The datafile output will contain the exact cut parameters that can be reused."
   ],
 
-  "examples": [
-    {
-      "command": "cut active on type plane surface on front on back off origin (0,0,0) normal (0,0,1)",
-      "description": "Show only balls above z=0"
-    },
-    {
-      "command": "cut active on type plane surface on front on back off origin (0.5,0,0) normal (1,0,0)",
-      "description": "Show only balls with x > 0.5"
-    }
-  ]
+  "datafile_reference": {
+    "description": "Example cut section from a datafile export",
+    "format": "cut active on|off ..."
+  }
 }

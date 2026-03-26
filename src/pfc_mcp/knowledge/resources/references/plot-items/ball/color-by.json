@@ -7,18 +7,18 @@
     {
       "keyword": "color-by vector-attribute",
       "description": "Color by a vector attribute (velocity, displacement, force, etc.)",
-      "syntax": "color-by vector-attribute \"<name>\" quantity <mag|x|y|z>",
+      "syntax": "color-by vector-attribute \"<name>\"",
       "examples": [
-        "color-by vector-attribute \"velocity\" quantity mag",
-        "color-by vector-attribute \"displacement\" quantity z",
-        "color-by vector-attribute \"force-contact\" quantity mag"
+        "color-by vector-attribute \"velocity\"",
+        "color-by vector-attribute \"displacement\"",
+        "color-by vector-attribute \"force-contact\""
       ],
       "available_attributes": [
         "position", "velocity", "displacement", "spin",
         "force-contact", "force-applied", "force-unbalanced",
         "moment-contact", "moment-applied", "moment-unbalanced"
       ],
-      "notes": "Append 'color-options scaled ramp rainbow minimum automatic maximum automatic' for rainbow scale"
+      "notes": "Defaults to magnitude. Append 'color-options scaled ramp rainbow minimum automatic maximum automatic' for rainbow scale."
     },
     {
       "keyword": "color-by numeric-attribute",

@@ -55,7 +55,7 @@
     },
     {
       "use_case": "Walls colored by contact force",
-      "command": "plot item create wall active on color-by vector-attribute \"force-contact\" quantity mag color-options scaled ramp rainbow minimum automatic maximum automatic transparency 50 legend active on",
+      "command": "plot item create wall active on color-by vector-attribute \"force-contact\" color-options scaled ramp rainbow minimum automatic maximum automatic transparency 50 legend active on",
       "description": "Force distribution on walls with moderate transparency"
     }
   ]
