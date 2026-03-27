@@ -57,41 +57,24 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 }
 ```
 
-**2. 安装依赖：**
+**2. 在 PFC 中启动 bridge：**
 
-```python
-import sys
+先获取 bootstrap 脚本：
 
-if sys.version_info < (3, 10):
-    import pip
+`https://raw.githubusercontent.com/yusong652/pfc-mcp/main/pfc-mcp-bridge/bootstrap_bridge.py`
 
-    pip.main(["install", "--user", "-U", "pfc-mcp-bridge"])
-else:
-    from pip._internal.cli.main import main as pip_main
+然后在 PFC 中任选一种方式执行：
 
-    pip_main(["install", "--user", "-U", "pfc-mcp-bridge"])
-```
+- 把这个文件的内容复制到 PFC 的 IPython 控制台里运行
+- 或者先把这个文件下载到本地，再在 PFC GUI 里执行它
 
-在 PFC 6/7 中，这会走 `pip.main(...)`；在 PFC 9 中，则会走 `pip._internal.cli.main.main(...)`，适配内嵌的 Python 3.10 环境，并自动安装 `websockets==16.0`。
-
-### 启动 Bridge 并验证
-
-如果你已经有本地仓库 checkout，在 PFC 中最省事的方式是：
-
-```python
-%run C:/path/to/pfc-mcp/pfc-mcp-bridge/bootstrap_bridge.py
-```
-
-这个脚本适合作为日常启动入口：
+这个脚本就是推荐的日常启动入口：
 
 - 如果当前还没有安装 `pfc-mcp-bridge`，会先安装最新版本再启动
 - 如果已经安装，会先显示当前版本，并让用户选择是否在启动前升级到最新版
 - 随后在当前 PFC Python 环境里直接启动 bridge
 
-```python
-import pfc_mcp_bridge
-pfc_mcp_bridge.start()
-```
+### 启动 Bridge 并验证
 
 ![PFC GUI Python console](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/install.png)
 
@@ -117,7 +100,7 @@ pfc_mcp_bridge.start()
 | 现象 | 处理方式 |
 |---------|-----|
 | 找不到 `uvx` | [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，或将客户端 MCP 配置改为 `command: "uv"`、`args: ["tool", "run", "pfc-mcp"]` |
-| Bridge 启动失败 | 在 PFC Python/IPython 控制台中重新执行 `%run C:/path/to/pfc-mcp/pfc-mcp-bridge/bootstrap_bridge.py`，或使用上面的“按版本分支”的安装片段（PFC 6/7 用 `pip.main(...)`，PFC 9 用 `pip._internal.cli.main.main(...)`） |
+| Bridge 启动失败 | 重新获取 bootstrap 脚本后，在 PFC 中再次运行它：可以把内容重新粘贴到 IPython 控制台，或直接在 PFC GUI 中执行下载好的脚本文件 |
 | 任务不执行 / 无法连接 | 若执行工具返回 `ok=false`、`error.code=bridge_unavailable`、`error.details.reason=cannot connect to bridge service`，请在 PFC 中启动 bridge（`pfc_mcp_bridge.start()`），并确认 `PFC_MCP_BRIDGE_URL` 与 bridge 实际地址一致 |
 | Bridge 使用自定义端口 | 将 MCP 服务端环境变量设为 `PFC_MCP_BRIDGE_URL=ws://localhost:<bridge-port>`（例如 `ws://localhost:9002`） |
 | 连接失败 | 检查 bridge 是否运行、目标端口是否可用，查看 `.pfc-mcp-bridge/bridge.log` |

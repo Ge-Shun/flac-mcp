@@ -61,41 +61,24 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 }
 ```
 
-**2. Install dependency:**
+**2. Start the bridge from inside PFC:**
 
-```python
-import sys
+Get the bootstrap script here:
 
-if sys.version_info < (3, 10):
-    import pip
+`https://raw.githubusercontent.com/yusong652/pfc-mcp/main/pfc-mcp-bridge/bootstrap_bridge.py`
 
-    pip.main(["install", "--user", "-U", "pfc-mcp-bridge"])
-else:
-    from pip._internal.cli.main import main as pip_main
+Then use either of these two flows inside PFC:
 
-    pip_main(["install", "--user", "-U", "pfc-mcp-bridge"])
-```
+- Copy the file contents into the PFC IPython console and run them
+- Or download the file and execute it in PFC GUI
 
-In PFC 6/7 this uses `pip.main(...)`. In PFC 9 it uses `pip._internal.cli.main.main(...)`, which works with the embedded Python 3.10 environment and installs `websockets==16.0` automatically.
-
-### Start Bridge & Verify
-
-If you already have a local checkout, the easiest way inside PFC is:
-
-```python
-%run C:/path/to/pfc-mcp/pfc-mcp-bridge/bootstrap_bridge.py
-```
-
-This bootstrap script is a good everyday entrypoint:
+This bootstrap script is the recommended everyday entrypoint:
 
 - If `pfc-mcp-bridge` is not installed yet, it installs the latest version and starts it
 - If it is already installed, it shows the current version and lets you choose whether to upgrade before startup
 - It then starts the bridge in the current PFC Python environment
 
-```python
-import pfc_mcp_bridge
-pfc_mcp_bridge.start()
-```
+### Start Bridge & Verify
 
 ![PFC GUI Python console](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/install.png)
 
@@ -121,7 +104,7 @@ Documentation tools work standalone. Execution tools require a running bridge. C
 | Symptom | Fix |
 |---------|-----|
 | `uvx` not found | [Install uv](https://docs.astral.sh/uv/getting-started/installation/) or switch client MCP config to `command: "uv"` with `args: ["tool", "run", "pfc-mcp"]` |
-| Bridge won't start | In the PFC Python/IPython console, rerun `%run C:/path/to/pfc-mcp/pfc-mcp-bridge/bootstrap_bridge.py` or the version-aware install snippet above (`pip.main(...)` on PFC 6/7, `pip._internal.cli.main.main(...)` on PFC 9) |
+| Bridge won't start | Download the bootstrap script again and rerun it in PFC, either by pasting it into the IPython console or by executing the downloaded file in PFC GUI |
 | Tasks not processing / cannot connect | If execution tools return `ok=false`, `error.code=bridge_unavailable`, and `error.details.reason=cannot connect to bridge service`, start bridge in PFC (`pfc_mcp_bridge.start()`) and ensure `PFC_MCP_BRIDGE_URL` matches the active bridge URL |
 | Bridge on custom port | Set MCP server env `PFC_MCP_BRIDGE_URL=ws://localhost:<bridge-port>` (for example `ws://localhost:9002`) |
 | Connection failed | Check bridge is running, target port is available, see `.pfc-mcp-bridge/bridge.log` |
