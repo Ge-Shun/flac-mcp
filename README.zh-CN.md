@@ -76,6 +76,18 @@ else:
 
 ### 启动 Bridge 并验证
 
+如果你已经有本地仓库 checkout，在 PFC 中最省事的方式是：
+
+```python
+%run C:/path/to/pfc-mcp/pfc-mcp-bridge/bootstrap_bridge.py
+```
+
+这个脚本适合作为日常启动入口：
+
+- 如果当前还没有安装 `pfc-mcp-bridge`，会先安装最新版本再启动
+- 如果已经安装，会先显示当前版本，并让用户选择是否在启动前升级到最新版
+- 随后在当前 PFC Python 环境里直接启动 bridge
+
 ```python
 import pfc_mcp_bridge
 pfc_mcp_bridge.start()
@@ -105,7 +117,7 @@ pfc_mcp_bridge.start()
 | 现象 | 处理方式 |
 |---------|-----|
 | 找不到 `uvx` | [安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，或将客户端 MCP 配置改为 `command: "uv"`、`args: ["tool", "run", "pfc-mcp"]` |
-| Bridge 启动失败 | 在 PFC Python/IPython 控制台中重新执行上面的“按版本分支”的安装片段（PFC 6/7 用 `pip.main(...)`，PFC 9 用 `pip._internal.cli.main.main(...)`） |
+| Bridge 启动失败 | 在 PFC Python/IPython 控制台中重新执行 `%run C:/path/to/pfc-mcp/pfc-mcp-bridge/bootstrap_bridge.py`，或使用上面的“按版本分支”的安装片段（PFC 6/7 用 `pip.main(...)`，PFC 9 用 `pip._internal.cli.main.main(...)`） |
 | 任务不执行 / 无法连接 | 若执行工具返回 `ok=false`、`error.code=bridge_unavailable`、`error.details.reason=cannot connect to bridge service`，请在 PFC 中启动 bridge（`pfc_mcp_bridge.start()`），并确认 `PFC_MCP_BRIDGE_URL` 与 bridge 实际地址一致 |
 | Bridge 使用自定义端口 | 将 MCP 服务端环境变量设为 `PFC_MCP_BRIDGE_URL=ws://localhost:<bridge-port>`（例如 `ws://localhost:9002`） |
 | 连接失败 | 检查 bridge 是否运行、目标端口是否可用，查看 `.pfc-mcp-bridge/bridge.log` |
