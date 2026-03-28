@@ -22,6 +22,7 @@ import sys
 
 
 PACKAGE_NAME = "pfc-mcp-bridge"
+PORT = 9001  # Change this to run multiple bridges on different ports
 
 
 def _ensure_user_site_on_path():
@@ -133,9 +134,9 @@ def main():
 
     print("Using pfc-mcp-bridge:", getattr(pfc_mcp_bridge, "__version__", "unknown"))
     print("Installed websockets:", getattr(websockets, "__version__", "unknown"))
-    print("Starting bridge ...")
+    print("Starting bridge on port {} ...".format(PORT))
 
-    pfc_mcp_bridge.start()
+    pfc_mcp_bridge.start(port=PORT)
 
 
 if __name__ == "__main__":

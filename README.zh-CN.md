@@ -59,26 +59,14 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 
 **2. 在 PFC 中启动 bridge：**
 
-先获取 bootstrap 脚本：
-
-`https://raw.githubusercontent.com/yusong652/pfc-mcp/main/pfc-mcp-bridge/bootstrap_bridge.py`
-
-然后在 PFC 中任选一种方式执行：
+下载 [`addon.py`](addon.py)，然后在 PFC 中任选一种方式执行：
 
 - 把这个文件的内容复制到 PFC 的 IPython 控制台里运行
 - 或者先把这个文件下载到本地，再在 PFC GUI 里执行它
 
-这个脚本就是推荐的日常启动入口：
+### 验证
 
-- 如果当前还没有安装 `pfc-mcp-bridge`，会先安装最新版本再启动
-- 如果已经安装，会先显示当前版本，并让用户选择是否在启动前升级到最新版
-- 随后在当前 PFC Python 环境里直接启动 bridge
-
-### 启动 Bridge 并验证
-
-![PFC GUI Python console](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/install.png)
-
-**验证方法**：重连 MCP 客户端后，让智能体调用 `pfc_list_tasks`，确认 MCP 与 bridge 连接均正常。
+重连 MCP 客户端后，让智能体调用 `pfc_list_tasks`，确认 MCP 与 bridge 连接均正常。
 
 ## 设计亮点
 
@@ -107,34 +95,7 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 
 ## 开发
 
-```bash
-uv sync --group dev    # 安装开发依赖
-uv run pytest          # 运行测试
-uv run pfc-mcp         # 本地启动服务
-```
-
-### 从源码启动
-
-完整开发流程请参考 [开发者指南：从源码安装与运行](docs/development/source-install.zh-CN.md)。
-
-简版说明：
-
-- 用 `uv run --directory` 让 MCP 客户端指向本地 checkout
-- 用 `%run .../pfc-mcp-bridge/start_bridge.py` 从本地源码启动 bridge
-- 如果要把 `pfc-mcp-bridge` 从本地源码安装到 PFC 环境里，优先在终端中调用内嵌解释器
-
-MCP 配置示例：
-
-```json
-{
-  "mcpServers": {
-    "pfc": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/pfc-mcp", "pfc-mcp"]
-    }
-  }
-}
-```
+详见 [开发者指南：从源码安装与运行](docs/development/source-install.zh-CN.md)。
 
 ## 许可证
 

@@ -21,11 +21,10 @@
 uv sync --group dev
 ```
 
-常用本地命令：
+运行测试：
 
 ```bash
 uv run pytest tests
-uv run pfc-mcp
 ```
 
 ## 2. 让 MCP 客户端指向本地源码
@@ -37,11 +36,13 @@ uv run pfc-mcp
   "mcpServers": {
     "pfc-mcp": {
       "command": "uv",
-      "args": ["run", "--directory", "/path/to/pfc-mcp", "pfc-mcp"]
+      "args": ["run", "--directory", "/path/to/pfc-mcp", "pfc-mcp", "--bridge-url", "ws://localhost:9001"]
     }
   }
 }
 ```
+
+`--bridge-url` 参数是可选的（默认 `ws://localhost:9001`），用于连接不同端口上的 bridge。
 
 这是验证 MCP 侧改动最简单的方式，不需要先构建或发布包。
 

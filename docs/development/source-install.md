@@ -21,11 +21,10 @@ From the repository root:
 uv sync --group dev
 ```
 
-Useful local commands:
+Run tests:
 
 ```bash
 uv run pytest tests
-uv run pfc-mcp
 ```
 
 ## 2. Point Your MCP Client at the Local Checkout
@@ -37,11 +36,13 @@ If you want your MCP client to use local source instead of the published PyPI pa
   "mcpServers": {
     "pfc-mcp": {
       "command": "uv",
-      "args": ["run", "--directory", "/path/to/pfc-mcp", "pfc-mcp"]
+      "args": ["run", "--directory", "/path/to/pfc-mcp", "pfc-mcp", "--bridge-url", "ws://localhost:9001"]
     }
   }
 }
 ```
+
+The `--bridge-url` argument is optional (defaults to `ws://localhost:9001`). Use it to connect to a bridge on a different port.
 
 This is the simplest way to test MCP-side changes without building or publishing packages.
 

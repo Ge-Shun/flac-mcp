@@ -6,7 +6,7 @@ Use this guide when an agent needs to set up `pfc-mcp` execution end-to-end on a
 
 1. MCP client is configured to run `pfc-mcp`.
 2. `pfc-mcp-bridge` is installed in the correct PFC embedded Python environment.
-3. Bridge is started in PFC GUI (`pfc_mcp_bridge.start()`).
+3. Bridge is started in PFC GUI (via `addon.py` or `pfc_mcp_bridge.start()`).
 4. MCP execution tools are verified with `pfc_list_tasks`.
 
 ## Agent Execution Rules
@@ -136,35 +136,17 @@ First resolve `pfc_python` from the installed PFC version:
 
 Check current package:
 
-```bash
-"{pfc_python}" -m pip show pfc-mcp-bridge
-```
-
-PowerShell form (recommended on Windows shells):
-
 ```powershell
 & "{pfc_python}" -m pip show pfc-mcp-bridge
 ```
 
-Install/upgrade to required version:
-
-```bash
-"{pfc_python}" -m pip install --user --upgrade pfc-mcp-bridge
-```
-
-PowerShell form (recommended on Windows shells):
+Install/upgrade:
 
 ```powershell
 & "{pfc_python}" -m pip install --user --upgrade pfc-mcp-bridge
 ```
 
 Verify import and version:
-
-```bash
-"{pfc_python}" -c "import pfc_mcp_bridge; print(pfc_mcp_bridge.__version__)"
-```
-
-PowerShell form (recommended on Windows shells):
 
 ```powershell
 & "{pfc_python}" -c "import pfc_mcp_bridge; print(pfc_mcp_bridge.__version__)"
@@ -174,25 +156,11 @@ Ignore pip upgrade warnings in this environment. Older embedded interpreters com
 
 If websocket dependency errors appear, install the version that matches the embedded Python:
 
-```bash
-"{pfc_python}" -m pip install --user websockets==9.1
-```
-
-Use the command above for PFC 6.0/7.0. For PFC 9.0, use:
-
-```bash
-"{pfc_python}" -m pip install --user websockets==16.0
-```
-
-PowerShell form (recommended on Windows shells):
-
 ```powershell
+# PFC 6.0/7.0
 & "{pfc_python}" -m pip install --user websockets==9.1
-```
 
-PowerShell form for PFC 9.0:
-
-```powershell
+# PFC 9.0
 & "{pfc_python}" -m pip install --user websockets==16.0
 ```
 
@@ -214,18 +182,32 @@ powershell -NoProfile -Command "$procs=Get-CimInstance Win32_Process | Where-Obj
 
 If both `pfc2d*_gui.exe` and `pfc3d*_gui.exe` are available and user did not specify, prefer 3D (`pfc3d`) by default.
 
+Download `addon.py` to a local path the user can easily find (e.g. Desktop or working directory):
+
+```bash
+curl -o addon.py https://raw.githubusercontent.com/yusong652/pfc-mcp/main/addon.py
+```
+
+PowerShell form (recommended on Windows shells):
+
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yusong652/pfc-mcp/main/addon.py" -OutFile "addon.py"
+```
+
+Tell the user where the file was saved.
+
 [USER ACTION REQUIRED]
 
-Complete these in order:
+Use one of these two options to start the bridge, then restart the client session before Step 5.
 
-1) In PFC GUI Python console:
+**Option A (recommended):** Open the downloaded `addon.py` in PFC GUI and execute it, or copy its contents into the PFC IPython console and run them. The script handles install, upgrade, and startup automatically.
+
+**Option B (manual):** In PFC GUI Python console:
 
 ```python
 import pfc_mcp_bridge
 pfc_mcp_bridge.start()
 ```
-
-2) Restart client session now (close and reopen) before Step 5 verification.
 
 Expected output includes:
 

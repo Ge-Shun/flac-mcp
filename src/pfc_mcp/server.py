@@ -3,6 +3,7 @@
 import argparse
 import asyncio
 import logging
+import os
 from typing import Any
 
 from fastmcp import FastMCP
@@ -74,12 +75,20 @@ def main() -> None:
         help="Port to bind when using http/sse transport (default: 8000)",
     )
     parser.add_argument(
+        "--bridge-url",
+        default=None,
+        help="Bridge WebSocket URL (default: ws://localhost:9001, or PFC_MCP_BRIDGE_URL env)",
+    )
+    parser.add_argument(
         "--log-level",
         choices=["debug", "info", "warning", "error"],
         default="warning",
         help="Log level for pfc-mcp (default: warning)",
     )
     args = parser.parse_args()
+
+    if args.bridge_url:
+        os.environ["PFC_MCP_BRIDGE_URL"] = args.bridge_url
 
     # Configure logging
     level = getattr(logging, args.log_level.upper())

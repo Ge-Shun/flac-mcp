@@ -63,26 +63,14 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 
 **2. Start the bridge from inside PFC:**
 
-Get the bootstrap script here:
-
-`https://raw.githubusercontent.com/yusong652/pfc-mcp/main/pfc-mcp-bridge/bootstrap_bridge.py`
-
-Then use either of these two flows inside PFC:
+Download [`addon.py`](addon.py), then use either of these two flows inside PFC:
 
 - Copy the file contents into the PFC IPython console and run them
 - Or download the file and execute it in PFC GUI
 
-This bootstrap script is the recommended everyday entrypoint:
+### Verify
 
-- If `pfc-mcp-bridge` is not installed yet, it installs the latest version and starts it
-- If it is already installed, it shows the current version and lets you choose whether to upgrade before startup
-- It then starts the bridge in the current PFC Python environment
-
-### Start Bridge & Verify
-
-![PFC GUI Python console](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/install.png)
-
-**Verify** - reconnect your MCP client and ask the agent to call `pfc_list_tasks` to verify the full MCP + bridge connection.
+Reconnect your MCP client and ask the agent to call `pfc_list_tasks` to verify the full MCP + bridge connection.
 
 ## Design Highlights
 
@@ -111,34 +99,7 @@ Documentation tools work standalone. Execution tools require a running bridge. C
 
 ## Development
 
-```bash
-uv sync --group dev    # Install with dev dependencies
-uv run pytest          # Run tests
-uv run pfc-mcp         # Run server locally
-```
-
-### Running from Source
-
-For a complete developer workflow, see [Developer Guide: Install and Run from Source](docs/development/source-install.md).
-
-Quick version:
-
-- Point your MCP client at a local checkout with `uv run --directory`
-- Start the bridge from local source with `%run .../pfc-mcp-bridge/start_bridge.py`
-- Use the embedded PFC interpreter from a terminal if you need to install `pfc-mcp-bridge` from local source
-
-Example MCP config:
-
-```json
-{
-  "mcpServers": {
-    "pfc": {
-      "command": "uv",
-      "args": ["run", "--directory", "/path/to/pfc-mcp", "pfc-mcp"]
-    }
-  }
-}
-```
+See [Developer Guide: Install and Run from Source](docs/development/source-install.md).
 
 ## License
 
