@@ -42,6 +42,11 @@ def register(mcp: FastMCP) -> None:
         long loops). They block the PFC main thread until completion
         or timeout, and cannot be cancelled. Use pfc_execute_task for
         anything that may run longer than a few seconds.
+
+        WARNING: This code shares the Python namespace with any running
+        task. Avoid overwriting variables the task depends on (e.g. the
+        callback function or simulation objects). Use unique names for
+        throwaway variables to prevent conflicts.
         """
         try:
             client = await get_bridge_client()
