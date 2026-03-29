@@ -14,7 +14,7 @@
 
 **pfc-mcp** connects AI agents to [ITASCA PFC](https://www.itascacg.com/software/pfc) through the [Model Context Protocol](https://modelcontextprotocol.io/) — browse documentation, run simulations, and execute code, all through natural conversation.
 
-`pfc3d>model solve ;llm solves.`
+`pfc3d>model solve ;LLM solves.`
 
 ![pfc-mcp demo](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif)
 
@@ -70,8 +70,8 @@ Restart your AI agent (Claude Code, Codex CLI, Gemini CLI, etc.) and ask it to c
 
 ## Features
 
-- **Hierarchical documentation browsing** - agents navigate the PFC command tree to discover capabilities and boundaries, reducing hallucinated commands
 - **Multi-version PFC support** - command docs for PFC 6.0, 7.0, and 9.0 via the `version` parameter
+- **Hierarchical documentation browsing** - agents navigate the PFC command tree to discover capabilities and boundaries, reducing hallucinated commands
 - **Enhanced plot documentation** - plot items reference docs supplementing the official documentation
 - **Interactive REPL** - rapid iteration before committing to full scripts; agents can quickly test and refine code
 - **Task lifecycle management** - submit long-running simulations, monitor progress, interrupt running tasks, and browse task history

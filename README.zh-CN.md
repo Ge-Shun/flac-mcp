@@ -14,7 +14,7 @@
 
 **pfc-mcp** 通过 [Model Context Protocol](https://modelcontextprotocol.io/) 将 AI 智能体连接到 [ITASCA PFC](https://www.itascacg.com/software/pfc) — 浏览文档、运行仿真、执行代码，一切通过自然语言对话完成。
 
-`pfc3d>model solve ;llm solves.`
+`pfc3d>model solve ;LLM solves.`
 
 ![pfc-mcp demo](https://raw.githubusercontent.com/yusong652/pfc-mcp/assets/pfc-mcp.gif)
 
@@ -70,8 +70,8 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 
 ## 功能亮点
 
-- **层级式文档浏览** — 智能体沿着 PFC 命令树自主发现能力与边界，减少幻觉命令
 - **多版本 PFC 支持** — 通过 `version` 参数查阅 PFC 6.0、7.0、9.0 的命令文档
+- **层级式文档浏览** — 智能体沿着 PFC 命令树自主发现能力与边界，减少幻觉命令
 - **增强的 plot 文档** — 在官方文档基础上补充了 plot items 参考文档
 - **交互式 REPL** — 正式编写脚本前快速试错，智能体可以快速迭代验证
 - **任务全生命周期管理** — 提交长时仿真、监控进度、中止运行中的任务、浏览历史任务
