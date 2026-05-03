@@ -77,7 +77,7 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 - **增强的 plot 文档** — 在官方文档基础上补充了 plot items 参考文档
 - **交互式 REPL** — 正式编写脚本前快速试错，智能体可以快速迭代验证
 - **任务全生命周期管理** — 提交长时仿真、监控进度、中止运行中的任务、浏览历史任务
-- **多客户端兼容** — 支持 Claude Code、Codex CLI、Gemini CLI、OpenCode、toyoura-nagisa 等 MCP 客户端
+- **多客户端兼容** — 支持 Claude Code、Codex CLI、Gemini CLI、GitHub Copilot CLI、OpenCode、toyoura-nagisa 等 MCP 客户端
 
 ## 故障排查
 

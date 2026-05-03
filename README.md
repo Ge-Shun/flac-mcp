@@ -77,7 +77,7 @@ Restart your AI agent (Claude Code, Codex CLI, Gemini CLI, etc.) and ask it to c
 - **Enhanced plot documentation** - plot items reference docs supplementing the official documentation
 - **Interactive REPL** - rapid iteration before committing to full scripts; agents can quickly test and refine code
 - **Task lifecycle management** - submit long-running simulations, monitor progress, interrupt running tasks, and browse task history
-- **Multi-client compatible** - works with Claude Code, Codex CLI, Gemini CLI, OpenCode, toyoura-nagisa, and other MCP clients
+- **Multi-client compatible** - works with Claude Code, Codex CLI, Gemini CLI, GitHub Copilot CLI, OpenCode, toyoura-nagisa, and other MCP clients
 
 ## Troubleshooting
 

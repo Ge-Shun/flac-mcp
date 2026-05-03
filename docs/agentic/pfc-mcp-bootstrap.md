@@ -30,6 +30,7 @@ Use the client-specific Step 1 profile:
 - Claude Code: https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bootstrap-claude.md
 - Codex: https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bootstrap-codex.md
 - Gemini CLI: https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bootstrap-gemini.md
+- GitHub Copilot CLI: https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bootstrap-copilot.md
 - toyoura-nagisa: https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bootstrap-toyoura-nagisa.md
 
 If raw URL fetch is unavailable, use repository-relative paths:
@@ -38,6 +39,7 @@ If raw URL fetch is unavailable, use repository-relative paths:
 - `docs/agentic/pfc-mcp-bootstrap-claude.md`
 - `docs/agentic/pfc-mcp-bootstrap-codex.md`
 - `docs/agentic/pfc-mcp-bootstrap-gemini.md`
+- `docs/agentic/pfc-mcp-bootstrap-copilot.md`
 - `docs/agentic/pfc-mcp-bootstrap-toyoura-nagisa.md`
 
 Apply this MCP launch contract in your client's native config format:
