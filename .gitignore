@@ -23,3 +23,6 @@ build/
 .pfc-mcp-bridge/
 .tmp/
 .pytest_tmp/
+
+# macOS
+.DS_Store
