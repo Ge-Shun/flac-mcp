@@ -81,7 +81,7 @@ Restart your AI agent (Claude Code, Codex CLI, Gemini CLI, etc.) and ask it to c
 
 ## Troubleshooting
 
-See [Troubleshooting Guide](docs/troubleshooting.md).
+See [Troubleshooting](docs/agentic/pfc-mcp-bootstrap.md#troubleshooting) in the bootstrap guide.
 
 ## Development
 

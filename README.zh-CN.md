@@ -81,7 +81,7 @@ https://raw.githubusercontent.com/yusong652/pfc-mcp/main/docs/agentic/pfc-mcp-bo
 
 ## 故障排查
 
-详见[故障排查指南](docs/troubleshooting.zh-CN.md)。
+详见 bootstrap 指南中的[故障排查章节](docs/agentic/pfc-mcp-bootstrap.md#troubleshooting)。
 
 ## 开发
 
