@@ -1,0 +1,90 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "move-to"
+  ],
+  "description": "Move nodes. Position components ( \\(x\\) , \\(y\\) , or \\(z\\) ) of nodes in the < range >, if supplied, are moved to the value f ; all nodes are moved if no range is supplied. If final position of the node is in within some tolerance of another node, they are be merged.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry move-to",
+      "syntax": "geometry move-to keyword <f>[tolerance <ft>] [range]",
+      "keywords": [
+        {
+          "name": "x",
+          "syntax": "x",
+          "description": "Set the \\(x\\) -component of the point(s)."
+        },
+        {
+          "name": "y",
+          "syntax": "y",
+          "description": "Set the \\(y\\) -component of the point(s)."
+        },
+        {
+          "name": "z",
+          "syntax": "z",
+          "description": "Set the \\(z\\) -component of the point(s)."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry move-to",
+      "syntax": "geometry move-to keyword ... [range]",
+      "keywords": [
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        },
+        {
+          "name": "x",
+          "syntax": "x <f>[tolerance <ft>]",
+          "description": "Set the \\(x\\) -component of the point(s)."
+        },
+        {
+          "name": "y",
+          "syntax": "y <f>[tolerance <ft>]",
+          "description": "Set the \\(y\\) -component of the point(s)."
+        },
+        {
+          "name": "z",
+          "syntax": "z <f>[tolerance <ft>]",
+          "description": "Set the \\(z\\) -component of the point(s)."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry move-to",
+      "syntax": "geometry move-to keyword ... [range]",
+      "keywords": [
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        },
+        {
+          "name": "x",
+          "syntax": "x <f>[tolerance <ft>]",
+          "description": "Set the \\(x\\) -component of the point(s)."
+        },
+        {
+          "name": "y",
+          "syntax": "y <f>[tolerance <ft>]",
+          "description": "Set the \\(y\\) -component of the point(s)."
+        },
+        {
+          "name": "z",
+          "syntax": "z <f>[tolerance <ft>]",
+          "description": "Set the \\(z\\) -component of the point(s)."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

@@ -14,6 +14,40 @@ The release will fail to publish if no matching entry is found.
 Description of the release.
 -->
 
+## [0.3.14] - 2026-05-15
+
+Second wave of command documentation expansion: 123 new commands across
+8 new scopes, bringing totals to 21 categories / 362 commands (was 13 / 239).
+
+- `geometry` (34): nodes, edges, polygons, import/export, refinement, tessellation
+- `fracture` (32): DFN — create, generate, intersections, templates, joint-set
+- `table`    (11): numerical x/y tables for boundary conditions and history data
+- `group`     (4): named-group lifecycle (create / list / rename / slot)
+- `trace`     (7): per-object trace recording (lifecycle / export / interval)
+- `project`   (6): GUI project containers (new / save / restore / execute)
+- `data`     (26): user data containers — label/scalar/vector/tensor sub-namespaces
+- `domain`    (3): domain extent, boundary conditions, periodic-cell strain-rate
+
+All entries populated for PFC 6.0/7.0/9.0 (7 commands marked unavailable in
+6.0 as new in later versions; e.g. `fracture intersections` machinery).
+
+Note: the "dfn" doc module is exposed under the scope name `fracture` to
+match the actual command verb users type. Dotted HTML stems (e.g.
+`cmd_geometry.edge.create.html`, `cmd_data.scalar.create.html`) are mapped
+to dash-separated JSON keys (`edge-create`, `scalar-create`) following the
+rblock convention. `parse_pfc{600,700,900}.py` `build_html_map` learned the
+same dot→dash rule.
+
+`range` was considered but not added — the HTML files under
+`range_manual/range_commands/` are syntax reference (rangelogical,
+rangenaming, rangephrase), not commands.
+
+Fixes `pfc_browse_commands` to accept the natural space-separated form
+of compound sub-commands (e.g. `geometry edge create`, `data scalar
+create`, `fracture intersections compute`, `contact cmat add`).
+Previously the lookup only matched the stored dash form (`edge-create`,
+`cmat-add`), forcing users to type a non-PFC-syntax variant.
+
 ## [0.3.13] - 2026-05-15
 
 Expands PFC command documentation coverage from 177 to 239 entries

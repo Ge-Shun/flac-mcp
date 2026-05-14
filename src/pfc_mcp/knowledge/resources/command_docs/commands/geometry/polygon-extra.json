@@ -1,0 +1,32 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "polygon-extra"
+  ],
+  "description": "Set polygon extra variables. The extra variable a can be of any type and is associated with the index i as if stored in an array. If the set keyword is not given, then the current set is used.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry polygon extra",
+      "syntax": "geometry polygon extra <i>a[range]",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry polygon extra",
+      "syntax": "geometry polygon extra <i><a>[set <s>] [range]",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry polygon extra",
+      "syntax": "geometry polygon extra <i><a>[set <s>] [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

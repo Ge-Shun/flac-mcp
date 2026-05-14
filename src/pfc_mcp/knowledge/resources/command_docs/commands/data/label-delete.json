@@ -1,0 +1,32 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "label-delete"
+  ],
+  "description": "Delete all labels within the specified range . Optionally a single label can be deleted with the name keyword.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "data label delete",
+      "syntax": "data label delete [name <s>] [range]",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "data label delete",
+      "syntax": "data label delete [name <s>] [range]",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "data label delete",
+      "syntax": "data label delete [name <s>] [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

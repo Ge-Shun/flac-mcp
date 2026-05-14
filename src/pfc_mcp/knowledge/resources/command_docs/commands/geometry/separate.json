@@ -1,0 +1,100 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "separate"
+  ],
+  "description": "Separate polygons into sets. Individual sets are created out of each group of polygons that fit the desired separation criteria. For instance, a geometry set containing two polygons are split into two separate geometry sets. The geometry set names will be s with an integer count appended (e.g., if s = fred , then one set will be named fred1 and the other will be fred2 ). If the set keyword is not given, then the current set is used.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry separate",
+      "syntax": "geometry separate [name <s>] keyword [range]",
+      "keywords": [
+        {
+          "name": "by-closed-volume",
+          "syntax": "by-closed-volume",
+          "description": "Attempts to separate polygons into collections that form closed watertight volumes."
+        },
+        {
+          "name": "by-connected",
+          "syntax": "by-connected",
+          "description": "Separates polygons into collections that are connected across edges."
+        },
+        {
+          "name": "by-group",
+          "syntax": "by-group",
+          "description": "Separates polygons into collections sharing the same group name. Note that polygons may end up in multiple sets if they share group names in multiple slots."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry separate",
+      "syntax": "geometry separate keyword ... [range]",
+      "keywords": [
+        {
+          "name": "by-closed-volume",
+          "syntax": "by-closed-volume",
+          "description": "Attempts to separate polygons into collections that form closed watertight volumes."
+        },
+        {
+          "name": "by-connected",
+          "syntax": "by-connected",
+          "description": "Separates polygons into collections that are connected across edges."
+        },
+        {
+          "name": "by-group",
+          "syntax": "by-group",
+          "description": "Separates polygons into collections sharing the same group name. Note that polygons may end up in multiple sets if they share group names in multiple slots."
+        },
+        {
+          "name": "name",
+          "syntax": "name <s>",
+          "description": "Name of output geometry sets. If not given they will start with the name of the geometry set that is separated."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set to separate."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry separate",
+      "syntax": "geometry separate keyword ... [range]",
+      "keywords": [
+        {
+          "name": "by-closed-volume",
+          "syntax": "by-closed-volume",
+          "description": "Attempts to separate polygons into collections that form closed watertight volumes."
+        },
+        {
+          "name": "by-connected",
+          "syntax": "by-connected",
+          "description": "Separates polygons into collections that are connected across edges."
+        },
+        {
+          "name": "by-group",
+          "syntax": "by-group",
+          "description": "Separates polygons into collections sharing the same group name. Note that polygons may end up in multiple sets if they share group names in multiple slots."
+        },
+        {
+          "name": "name",
+          "syntax": "name <s>",
+          "description": "Name of output geometry sets. If not given they will start with the name of the geometry set that is separated."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set to separate."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

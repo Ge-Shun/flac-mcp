@@ -152,7 +152,14 @@ def _browse_category(category: str, version: str) -> dict[str, Any]:
 
 def _browse_command(category: str, command_name: str, version: str) -> dict[str, Any]:
     """Level 2: Return full documentation for a specific command."""
+    # JSON filenames use dash as sub-command separator (e.g. edge-create,
+    # cmat-add, scalar-create) while PFC syntax separates them with spaces.
+    # Accept either form on input.
     cmd_doc = CommandLoader.load_command_doc(category, command_name, version)
+    if not cmd_doc and " " in command_name:
+        cmd_doc = CommandLoader.load_command_doc(
+            category, command_name.replace(" ", "-"), version
+        )
 
     if not cmd_doc:
         index = CommandLoader.load_index()

@@ -81,6 +81,46 @@ CATEGORY_CONFIG = {
         "file_prefix": "cmd_wall_",
         "dt_id_prefix": "kwd:",
     },
+    "geometry": {
+        "html_dir": PFC600_DOC / "common/geometry/doc/manual/commands",
+        "file_prefix": "cmd_geometry.",
+        "dt_id_prefix": "kwd:",
+    },
+    "fracture": {
+        "html_dir": PFC600_DOC / "common/dfn/doc/dfn_manual/dfn_commands",
+        "file_prefix": "cmd_fracture_",
+        "dt_id_prefix": "kwd:",
+    },
+    "table": {
+        "html_dir": PFC600_DOC / "common/kernel/doc/manual/table_manual/table_commands",
+        "file_prefix": "cmd_table.",
+        "dt_id_prefix": "kwd:",
+    },
+    "group": {
+        "html_dir": PFC600_DOC / "common/module/doc/manual/group_manual/group_commands",
+        "file_prefix": "cmd_group.",
+        "dt_id_prefix": "kwd:",
+    },
+    "trace": {
+        "html_dir": PFC600_DOC / "common/kernel/doc/manual/trace_manual/trace_commands",
+        "file_prefix": "cmd_trace.",
+        "dt_id_prefix": "kwd:",
+    },
+    "project": {
+        "html_dir": PFC600_DOC / "common/kernel/doc/manual/project/commands",
+        "file_prefix": "cmd_project.",
+        "dt_id_prefix": "kwd:",
+    },
+    "data": {
+        "html_dir": PFC600_DOC / "common/kernel/doc/manual/data/commands",
+        "file_prefix": "cmd_data.",
+        "dt_id_prefix": "kwd:",
+    },
+    "domain": {
+        "html_dir": PFC600_DOC / "common/kernel/doc/manual/domain_manual/command_reference/cmd_domain",
+        "file_prefix": "cmd_domain.",
+        "dt_id_prefix": "kwd:",
+    },
 }
 
 # ---------------------------------------------------------------------------
@@ -473,9 +513,9 @@ def build_html_map(category: str, config: dict) -> dict:
         name = html_file.stem  # e.g. "cmd_ball.create"
         for prefix in prefixes:
             if name.startswith(prefix):
-                sub = name[len(prefix) :]  # e.g. "create"
-                # Handle clump/wall underscore naming: "cmd_clump_create" -> "create"
-                # Already stripped by prefix removal above
+                # Dotted HTML stems (e.g. cmd_geometry.edge.create) map to
+                # dash-separated JSON keys (edge-create); flat stems pass through.
+                sub = name[len(prefix) :].replace(".", "-")
                 mapping[sub] = html_file
                 break
 

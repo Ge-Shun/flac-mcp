@@ -1,0 +1,32 @@
+{
+  "category": "group",
+  "search_keywords": [
+    "list"
+  ],
+  "description": "Display the global list of group names and slot names that have been created.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "group.list",
+      "syntax": "group list",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "group.list",
+      "syntax": "group list",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "group.list",
+      "syntax": "group list",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

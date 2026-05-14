@@ -1,0 +1,110 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "list"
+  ],
+  "description": "List geometry information. If a geometry set is not specified via the set keyword and no other keywords are specified then information about all geometry sets is listed. Otherwise, if no set is specified then information about the current geometry set is listed.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry list",
+      "syntax": "geometry list keyword [range]",
+      "keywords": [
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "List of all information."
+        },
+        {
+          "name": "nodes",
+          "syntax": "nodes",
+          "description": "List of node information."
+        },
+        {
+          "name": "edges",
+          "syntax": "edges",
+          "description": "List of edge information."
+        },
+        {
+          "name": "polygons",
+          "syntax": "polygons",
+          "description": "List of polygon information."
+        },
+        {
+          "name": "blocks",
+          "syntax": "blocks",
+          "description": "List of block information."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry list",
+      "syntax": "geometry list keyword ... [range]",
+      "keywords": [
+        {
+          "name": "polygons",
+          "syntax": "polygons",
+          "description": "List of edge information for the specified or current geometry set. List the extra variable at index i . List group information. An optional slot can be specified. List groups and extras for the edges. List polygon information of the associated edges."
+        },
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "List of all information about the specified or current geometry set."
+        },
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "List of node information for the specified or current geometry set. List edge information of the nodes. List the extra variable at index i . List group information. An optional slot can be specified. List groups and extras for the nodes."
+        },
+        {
+          "name": "nodes",
+          "syntax": "nodes",
+          "description": "List of polygon information for the specified or current geometry set. List edge information of the associated nodes. List the extra variable at index i . List group information. An optional slot can be specified. List groups and extras for the nodes. List groups and extras for the nodes."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "List point, edge, and polygon count for the geometry set s ."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry list",
+      "syntax": "geometry list keyword ... [range]",
+      "keywords": [
+        {
+          "name": "polygons",
+          "syntax": "polygons",
+          "description": "List of edge information for the specified or current geometry set. List the extra variable at index i . List group information. An optional slot can be specified. List groups and extras for the edges. List polygon information of the associated edges."
+        },
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "List of all information about the specified or current geometry set."
+        },
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "List of node information for the specified or current geometry set. List edge information of the nodes. List the extra variable at index i . List group information. An optional slot can be specified. List groups and extras for the nodes."
+        },
+        {
+          "name": "nodes",
+          "syntax": "nodes",
+          "description": "List of polygon information for the specified or current geometry set. List edge information of the associated nodes. List the extra variable at index i . List group information. An optional slot can be specified. List groups and extras for the nodes. List groups and extras for the nodes."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "List point, edge, and polygon count for the geometry set s ."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "export"
+  ],
+  "description": "Export geometry data. Polygons, as well as required nodes and edges, are output to the file with name s . If the nodes or edges keyword is specified, objects of that type are included in the search even if they are not connected to polygons. The default file type is the Itasca geometry format, and the range applies to polygons. If the set keyword is not given, then the current set is used.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry export",
+      "syntax": "geometry export <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "binary",
+          "syntax": "binary",
+          "description": "Indicate that the binary version of the file format should be used for export. This is not valid with DXF export."
+        },
+        {
+          "name": "edges",
+          "syntax": "edges",
+          "description": "Indicate that free edges (i.e., not connected to any polygon) should be exported as well."
+        },
+        {
+          "name": "stl",
+          "syntax": "stl",
+          "description": "Specifiy the file format to use for export. The default will be selected based on the file name extension. AutoCAD DXF format with file extension “.dxf.” Itasca geometry format with file extentsion “.geom.” This is the default format, and is described in Geometry File Format . STL format with file extension “.stl.” This applies only to polygons, and cannot be used with the nodes or edges keyword."
+        },
+        {
+          "name": "nodes",
+          "syntax": "nodes",
+          "description": "Indicate that free nodes (i.e., not connected to any polygon) should be exported as well."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry export",
+      "syntax": "geometry export <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "binary",
+          "syntax": "binary",
+          "description": "Indicate that the binary version of the file format should be used for export. This is not valid with DXF export."
+        },
+        {
+          "name": "edges",
+          "syntax": "edges",
+          "description": "Indicate that free edges (i.e., not connected to any polygon) should be exported as well."
+        },
+        {
+          "name": "stl",
+          "syntax": "stl",
+          "description": "Specifiy the file format to use for export. The default will be selected based on the file name extension. AutoCAD DXF format with file extension “.dxf.” Itasca geometry format with file extentsion “.geom.” This is the default format, and is described in Geometry Text File Format . STL format with file extension “.stl.” This applies only to polygons, and cannot be used with the nodes or edges keyword."
+        },
+        {
+          "name": "nodes",
+          "syntax": "nodes",
+          "description": "Indicate that free nodes (i.e., not connected to any polygon) should be exported as well."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry export",
+      "syntax": "geometry export <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "binary",
+          "syntax": "binary",
+          "description": "Indicate that the binary version of the file format should be used for export. This is not valid with DXF export."
+        },
+        {
+          "name": "edges",
+          "syntax": "edges",
+          "description": "Indicate that free edges (i.e., not connected to any polygon) should be exported as well."
+        },
+        {
+          "name": "stl",
+          "syntax": "stl",
+          "description": "Specifiy the file format to use for export. The default will be selected based on the file name extension. AutoCAD DXF format with file extension “.dxf.” Itasca geometry format with file extentsion “.geom.” This is the default format, and is described in Geometry Text File Format . STL format with file extension “.stl.” This applies only to polygons, and cannot be used with the nodes or edges keyword."
+        },
+        {
+          "name": "nodes",
+          "syntax": "nodes",
+          "description": "Indicate that free nodes (i.e., not connected to any polygon) should be exported as well."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

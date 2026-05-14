@@ -1,0 +1,75 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "edge-group"
+  ],
+  "description": "Assign the group s to the edges of the geometric set that fall within the range. Use of the group logic is described in Groups . This command may take the form geometry edge group \"slotname = groupname\" — quotation marks required, spaces at equals sign ignored — where slotname is the slot assignment and groupname is the group name. If the set keyword is not given, then the current set is used.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry edge group",
+      "syntax": "geometry edge group <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all edges. If no slot was specified, then the group will be removed from all slots it is found in."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Set group slot slot to s . By default, slot Default is used."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry edge group",
+      "syntax": "geometry edge group <s>[keyword ...] [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all edges. If no slot was specified, then the group will be removed from all slots it is found in."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Set group slot slot to s . By default, slot Default is used."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry edge group",
+      "syntax": "geometry edge group <s>[keyword ...] [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all edges. If no slot was specified, then the group will be removed from all slots it is found in."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Set group slot slot to s . By default, slot Default is used."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

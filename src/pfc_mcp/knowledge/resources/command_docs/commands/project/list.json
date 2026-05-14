@@ -1,0 +1,32 @@
+{
+  "category": "project",
+  "search_keywords": [
+    "list"
+  ],
+  "description": "List project information. This information includes: the project file name and location, the log status, and echo status.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "project list",
+      "syntax": "project list information",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "project list",
+      "syntax": "project list information",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "project list",
+      "syntax": "project list information",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "category": "domain",
+  "search_keywords": [
+    "strain-rate"
+  ],
+  "description": "Specify the domain strain rate.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "available": false
+    },
+    "7.0": {
+      "command": "domain.strain-rate",
+      "syntax": "domain strain-rate <v>",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "domain.strain-rate",
+      "syntax": "domain strain-rate <v>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

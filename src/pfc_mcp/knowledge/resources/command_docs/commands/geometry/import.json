@@ -1,0 +1,115 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "import"
+  ],
+  "description": "Import geometric data. s is the file name.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry import",
+      "syntax": "geometry import <s>[keyword] [position|offset <v>]",
+      "keywords": [
+        {
+          "name": "stl",
+          "syntax": "stl",
+          "description": "The importer will attempt to infer the proper format from the contents of the file, but the format keyword can be used to force it to interpret the file as a given format. The following formats are available: DXF file (.dxf). This is a partial implementation of the format as of AutoCAD version 12. Layer names are assigned to group slot 1. Itasca geometry file format geometry file (.geom). Binary or text version is determined automatically (described in Geometry File Format . STL file (.stl). Solid names are assigned to group slot 1. Binary or text version is determined automatically."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Specify group names to imported geometry objects. Use of the group logic is described in Group . Assign s to the next available slot. Set group slot slot to s . By default, slot Default is used."
+        },
+        {
+          "name": "merge",
+          "syntax": "merge <b>",
+          "description": "By default, the STL format will search for and merge nodes and edges that are in the same location in space, within a default tolerance. Using this keyword will stop this process, speeding up the import but increasing the amount of data imported."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "By default, the imported geometry is assigned to a set with a name that is identical to the imported file name without extension. This can be overridden with the set keyword."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "geometry import",
+      "syntax": "geometry import <s>[keyword ...]",
+      "keywords": [
+        {
+          "name": "stl",
+          "syntax": "stl",
+          "description": "The importer will attempt to infer the proper format from the contents of the file, but the format keyword can be used to force it to interpret the file as a given format. The following formats are available: DXF file (.dxf). This is a partial implementation of the format as of AutoCAD version 12. Layer names are assigned to group slot 1. Itasca geometry file format geometry file (.geom). Binary or text version is determined automatically (described in Geometry Text File Format and Geometry Binary File Format . STL file (.stl). Solid names are assigned to group slot 1. Binary or text version is determined automatically."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Specify group names to imported geometry objects. Use of the group logic is described in Groups . Assign s to the next available slot. Set group slot slot to s . By default, slot Default is used."
+        },
+        {
+          "name": "merge",
+          "syntax": "merge <b>",
+          "description": "By default, the STL format will search for and merge nodes and edges that are in the same location in space, within a default tolerance. Using this keyword will stop this process, speeding up the import but increasing the amount of data imported."
+        },
+        {
+          "name": "offset",
+          "syntax": "offset <v>",
+          "description": "The imported nodes are translated by v ."
+        },
+        {
+          "name": "position",
+          "syntax": "position <v>",
+          "description": "The imported nodes have position v ."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "By default, the imported geometry is assigned to a set with a name that is identical to the imported file name without extension. This can be overridden with the set keyword."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry import",
+      "syntax": "geometry import <s>[keyword ...]",
+      "keywords": [
+        {
+          "name": "stl",
+          "syntax": "stl",
+          "description": "The importer will attempt to infer the proper format from the contents of the file, but the format keyword can be used to force it to interpret the file as a given format. The following formats are available: DXF file (.dxf). This is a partial implementation of the format as of AutoCAD version 12. Layer names are assigned to group slot 1. Itasca geometry file format geometry file (.geom). Binary or text version is determined automatically (described in Geometry Text File Format and Geometry Binary File Format . STL file (.stl). Solid names are assigned to group slot 1. Binary or text version is determined automatically."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Specify group names to imported geometry objects. Use of the group logic is described in Groups . Assign s to the next available slot. Set group slot slot to s . By default, slot Default is used."
+        },
+        {
+          "name": "merge",
+          "syntax": "merge <b>",
+          "description": "By default, the STL format will search for and merge nodes and edges that are in the same location in space, within a default tolerance. Using this keyword will stop this process, speeding up the import but increasing the amount of data imported."
+        },
+        {
+          "name": "offset",
+          "syntax": "offset <v>",
+          "description": "The imported nodes are translated by v ."
+        },
+        {
+          "name": "position",
+          "syntax": "position <v>",
+          "description": "The imported nodes have position v ."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "By default, the imported geometry is assigned to a set with a name that is identical to the imported file name without extension. This can be overridden with the set keyword."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

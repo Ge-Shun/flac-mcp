@@ -1,0 +1,32 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "vector-results"
+  ],
+  "description": "Include vector data in results files. The default value is off .",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "data vector results",
+      "syntax": "data vector results active <b>",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "data vector results",
+      "syntax": "data vector results active <b>",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "data vector results",
+      "syntax": "data vector results active <b>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

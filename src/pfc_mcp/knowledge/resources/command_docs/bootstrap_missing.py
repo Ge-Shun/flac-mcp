@@ -130,6 +130,81 @@ SCOPE_CONFIG: dict[str, dict[str, Any]] = {
         "file_prefix": "cmd_fish.",
         "stems": None,
     },
+    # ---- Batch 2 ----
+    "geometry": {
+        "html_dirs": {
+            "6.0": PFC600_DOC / "common/geometry/doc/manual/commands",
+            "7.0": PFC700_DOC / "common/geometry/doc/manual/commands",
+            "9.0": PFC900_DOC / "common/geometry/doc/manual/commands",
+        },
+        "file_prefix": "cmd_geometry.",
+        "stems": None,
+    },
+    # The "dfn" docs module documents commands prefixed `fracture` — keep the
+    # scope name aligned with the actual command verb users type.
+    "fracture": {
+        "html_dirs": {
+            "6.0": PFC600_DOC / "common/dfn/doc/dfn_manual/dfn_commands",
+            "7.0": PFC700_DOC / "common/dfn/doc/dfn_manual/dfn_commands",
+            "9.0": PFC900_DOC / "common/dfn/doc/dfn_manual/dfn_commands",
+        },
+        "file_prefix": "cmd_fracture_",
+        "stems": None,
+    },
+    "table": {
+        "html_dirs": {
+            "6.0": PFC600_DOC / "common/kernel/doc/manual/table_manual/table_commands",
+            "7.0": PFC700_DOC / "common/kernel/doc/manual/table_manual/table_commands",
+            "9.0": PFC900_DOC / "common/kernel/doc/manual/table_manual/table_commands",
+        },
+        "file_prefix": "cmd_table.",
+        "stems": None,
+    },
+    "group": {
+        "html_dirs": {
+            "6.0": PFC600_DOC / "common/module/doc/manual/group_manual/group_commands",
+            "7.0": PFC700_DOC / "common/module/doc/manual/group_manual/group_commands",
+            "9.0": PFC900_DOC / "common/module/doc/manual/group_manual/group_commands",
+        },
+        "file_prefix": "cmd_group.",
+        "stems": None,
+    },
+    "trace": {
+        "html_dirs": {
+            "6.0": PFC600_DOC / "common/kernel/doc/manual/trace_manual/trace_commands",
+            "7.0": PFC700_DOC / "common/kernel/doc/manual/trace_manual/trace_commands",
+            "9.0": PFC900_DOC / "common/kernel/doc/manual/trace_manual/trace_commands",
+        },
+        "file_prefix": "cmd_trace.",
+        "stems": None,
+    },
+    "project": {
+        "html_dirs": {
+            "6.0": _kernel_dir(PFC600_DOC, "project"),
+            "7.0": _kernel_dir(PFC700_DOC, "project"),
+            "9.0": _kernel_dir(PFC900_DOC, "project"),
+        },
+        "file_prefix": "cmd_project.",
+        "stems": None,
+    },
+    "data": {
+        "html_dirs": {
+            "6.0": _kernel_dir(PFC600_DOC, "data"),
+            "7.0": _kernel_dir(PFC700_DOC, "data"),
+            "9.0": _kernel_dir(PFC900_DOC, "data"),
+        },
+        "file_prefix": "cmd_data.",
+        "stems": None,
+    },
+    "domain": {
+        "html_dirs": {
+            "6.0": PFC600_DOC / "common/kernel/doc/manual/domain_manual/command_reference/cmd_domain",
+            "7.0": PFC700_DOC / "common/kernel/doc/manual/domain_manual/command_reference/cmd_domain",
+            "9.0": PFC900_DOC / "common/kernel/doc/manual/domain_manual/command_reference/cmd_domain",
+        },
+        "file_prefix": "cmd_domain.",
+        "stems": None,
+    },
 }
 
 
@@ -163,15 +238,23 @@ def build_version_entry(html_path: Path | None) -> dict[str, Any]:
     }
 
 
-def discover_stems(html_dir: Path, file_prefix: str) -> list[str]:
+def discover_stems(html_dir: Path, file_prefix: str) -> list[tuple[str, str]]:
+    """Return [(json_key, raw_html_stem), ...] sorted by json_key.
+
+    Dotted HTML stems (e.g. cmd_geometry.edge.create.html) are mapped to
+    dash-separated JSON keys (edge-create), matching the rblock convention.
+    The raw stem (with dots) is kept to reconstruct the HTML filename.
+    """
     if not html_dir.exists():
         return []
-    stems: list[str] = []
+    pairs: list[tuple[str, str]] = []
     for html_file in html_dir.glob("*.html"):
         name = html_file.stem
         if name.startswith(file_prefix):
-            stems.append(name[len(file_prefix) :])
-    return sorted(stems)
+            raw = name[len(file_prefix) :]
+            json_key = raw.replace(".", "-")
+            pairs.append((json_key, raw))
+    return sorted(pairs)
 
 
 def make_skeleton(scope: str, stem: str, html_paths: dict[str, Path]) -> dict[str, Any]:
@@ -212,9 +295,10 @@ def process_scope(scope: str, config: dict[str, Any]) -> tuple[int, int]:
     # Reference dir = 7.0 (newest with full coverage relative to 6.0)
     ref_dir = html_dirs["7.0"]
     if declared_stems is None:
-        stems = discover_stems(ref_dir, file_prefix)
+        pairs = discover_stems(ref_dir, file_prefix)
     else:
-        stems = declared_stems
+        # Manual list: stems are already JSON keys (no dots).
+        pairs = [(s, s) for s in declared_stems]
 
     scope_dir = COMMANDS_DIR / scope
     scope_dir.mkdir(parents=True, exist_ok=True)
@@ -222,8 +306,8 @@ def process_scope(scope: str, config: dict[str, Any]) -> tuple[int, int]:
     created = 0
     skipped = 0
 
-    for stem in stems:
-        target = scope_dir / f"{stem}.json"
+    for json_key, raw_stem in pairs:
+        target = scope_dir / f"{json_key}.json"
         if target.exists():
             print(f"  [SKIP] exists: {target.name}")
             skipped += 1
@@ -231,9 +315,9 @@ def process_scope(scope: str, config: dict[str, Any]) -> tuple[int, int]:
 
         html_paths: dict[str, Path] = {}
         for version, html_dir in html_dirs.items():
-            html_paths[version] = html_dir / f"{file_prefix}{stem}.html"
+            html_paths[version] = html_dir / f"{file_prefix}{raw_stem}.html"
 
-        doc = make_skeleton(scope, stem, html_paths)
+        doc = make_skeleton(scope, json_key, html_paths)
         target.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
         kw_count = len(doc["versions"].get("7.0", {}).get("keywords", []) or [])

@@ -1,0 +1,29 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "fill"
+  ],
+  "description": "Fill the closed geometry set with nodes. The spacing between the nodes is f . The nodes are placed on a regular grid by default. if fs is non-zero, this is the standard deviation about the regular grid position is used. This can be useful when using the geometry tesselllate command.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "available": false
+    },
+    "7.0": {
+      "command": "geometry fill",
+      "syntax": "geometry fill <f>[<fs>]",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "geometry fill",
+      "syntax": "geometry fill <f>[<fs>]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

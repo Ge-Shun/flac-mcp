@@ -1,0 +1,50 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "scalar-import"
+  ],
+  "description": "Import scalars from file s . The extension scalar is added automatically if one is not given.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "data scalar import",
+      "syntax": "data scalar import <s>[keyword]",
+      "keywords": [
+        {
+          "name": "group",
+          "syntax": "group <s>[slot <s>]",
+          "description": "Assign the group name s to the slot Default . The optional slot keyword can be used to specify the slot."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "data scalar import",
+      "syntax": "data scalar import <s>[keyword]",
+      "keywords": [
+        {
+          "name": "group",
+          "syntax": "group <s>[slot <s>]",
+          "description": "Assign the group name s to the slot Default . The optional slot keyword can be used to specify the slot."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "data scalar import",
+      "syntax": "data scalar import <s>[keyword]",
+      "keywords": [
+        {
+          "name": "group",
+          "syntax": "group <s>[slot <s>]",
+          "description": "Assign the group name s to the slot Default . The optional slot keyword can be used to specify the slot."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

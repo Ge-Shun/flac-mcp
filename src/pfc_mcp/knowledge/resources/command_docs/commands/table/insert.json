@@ -1,0 +1,32 @@
+{
+  "category": "table",
+  "search_keywords": [
+    "insert"
+  ],
+  "description": "Insert an entry into table s , sorted by its x-value.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "table insert",
+      "syntax": "table <s>insert <v2>...",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "table insert",
+      "syntax": "table <s>insert <v2>...",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "table insert",
+      "syntax": "table <s>insert <v2>...",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

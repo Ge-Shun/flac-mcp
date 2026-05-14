@@ -1,0 +1,140 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "compute"
+  ],
+  "description": "Compute fracture statistics. Various density measures of fractures, filtered by range, can be computed.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture compute",
+      "syntax": "fracture compute keyword [range]",
+      "keywords": [
+        {
+          "name": "average-trace-length",
+          "syntax": "average-trace-length <s>",
+          "description": "Return the average trace length, where traces are the intersections between the fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "center-density",
+          "syntax": "center-density",
+          "description": "Return the fracture center density (i.e, P20 in 2D and P30 in 3D)."
+        },
+        {
+          "name": "mass-density",
+          "syntax": "mass-density",
+          "description": "Return the fracture mass density (i.e., P21 in 2D and P32 in 3D)."
+        },
+        {
+          "name": "end",
+          "syntax": "end <v>",
+          "description": "Return the P10 along the line defined by begin and end , or along the geometry edges defined with the geometry keyword. P10 is measured along the edges of the geometry set with name s . Cannot be given with the begin or end keywords. Define the starting point of the reference line where P10 is measured. Cannot be given with the geometry keyword. Define the ending point of the reference line where P10 is measured. Cannot be given with the geometry keyword."
+        },
+        {
+          "name": "trace-center-density",
+          "syntax": "trace-center-density <s>",
+          "description": "Return the trace center density (i.e., P20), where traces are the intersections between fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "trace-mass-density",
+          "syntax": "trace-mass-density <s>",
+          "description": "Return the trace mass density (i.e., P21), where traces are the intersections between the fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "percolation",
+          "syntax": "percolation",
+          "description": "Return the percolation parameter."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "fracture compute",
+      "syntax": "fracture compute keyword [range]",
+      "keywords": [
+        {
+          "name": "average-trace-length",
+          "syntax": "average-trace-length <s>",
+          "description": "Return the average trace length, where traces are the intersections between the fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "center-density",
+          "syntax": "center-density",
+          "description": "Return the fracture center density (i.e, P20 in 2D and P30 in 3D)."
+        },
+        {
+          "name": "mass-density",
+          "syntax": "mass-density",
+          "description": "Return the fracture mass density (i.e., P21 in 2D and P32 in 3D)."
+        },
+        {
+          "name": "end",
+          "syntax": "end <v>",
+          "description": "Return the P10 along the line defined by begin and end , or along the geometry edges defined with the geometry keyword. P10 is measured along the edges of the geometry set with name s . Cannot be given with the begin or end keywords. Define the starting point of the reference line where P10 is measured. Cannot be given with the geometry keyword. Define the ending point of the reference line where P10 is measured. Cannot be given with the geometry keyword."
+        },
+        {
+          "name": "trace-center-density",
+          "syntax": "trace-center-density <s>",
+          "description": "Return the trace center density (i.e., P20), where traces are the intersections between fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "trace-mass-density",
+          "syntax": "trace-mass-density <s>",
+          "description": "Return the trace mass density (i.e., P21), where traces are the intersections between the fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "percolation",
+          "syntax": "percolation",
+          "description": "Return the percolation parameter."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "fracture compute",
+      "syntax": "fracture compute keyword [range]",
+      "keywords": [
+        {
+          "name": "average-trace-length",
+          "syntax": "average-trace-length <s>3D only",
+          "description": "Return the average trace length, where traces are the intersections between the fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "center-density",
+          "syntax": "center-density",
+          "description": "Return the fracture center density (i.e, P20 in 2D and P30 in 3D)."
+        },
+        {
+          "name": "mass-density",
+          "syntax": "mass-density",
+          "description": "Return the fracture mass density (i.e., P21 in 2D and P32 in 3D)."
+        },
+        {
+          "name": "end",
+          "syntax": "end <v>",
+          "description": "Return the P10 along the line defined by begin and end , or along the geometry edges defined with the geometry keyword. P10 is measured along the edges of the geometry set with name s . Cannot be given with the begin or end keywords. Define the starting point of the reference line where P10 is measured. Cannot be given with the geometry keyword. Define the ending point of the reference line where P10 is measured. Cannot be given with the geometry keyword."
+        },
+        {
+          "name": "trace-center-density",
+          "syntax": "trace-center-density <s>3D only",
+          "description": "Return the trace center density (i.e., P20), where traces are the intersections between fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "trace-mass-density",
+          "syntax": "trace-mass-density <s>3D only",
+          "description": "Return the trace mass density (i.e., P21), where traces are the intersections between the fractures and the planar geometry set with name s ."
+        },
+        {
+          "name": "option",
+          "syntax": "option <i>3D only",
+          "description": "Return the percolation parameter. In 2D, \\(p\\) is the sum of the squared fracture lengths per unit volume. In 3D, \\(p\\) is the sum of \\({\\pi}^2(area/\\pi)^{1.5}\\) per unit volume, where \\(area\\) is the fracture area. By default the volume used in the calculation is the domain volume. Optionally input the extents of a box in which the percolation is calculated. Only fractures inside of the box are considered in the calculation and the volume of the box is used to calculate \\(p\\) . An option may be given that determines how the percolation deals with fractures that intersect the edge of the box. By default ( i = 0), any fracture that intersects the edge of the box is not considered in the calculation. If i = 1, the area of fracture inside the box is used in the calculation above. If i = 2, a scaled radius is used to calculate the area, where the scaled radius equals the original fracture radius times the ratio of fracture area inside the box to total fracture area."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

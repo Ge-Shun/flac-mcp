@@ -1,0 +1,80 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "scalar-list"
+  ],
+  "description": "List scalar information on data in the range specified.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "data scalar list",
+      "syntax": "data scalar list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List scalar extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List scalar groups. All slots assigned will be listed, unless the slot keyword is used."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the scalar values."
+        }
+      ],
+      "examples": []
+    },
+    "7.0": {
+      "command": "data scalar list",
+      "syntax": "data scalar list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List scalar extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List scalar groups. All slots assigned will be listed, unless the slot keyword is used."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the scalar values."
+        }
+      ],
+      "examples": []
+    },
+    "9.0": {
+      "command": "data scalar list",
+      "syntax": "data scalar list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List scalar extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List scalar groups. All slots assigned will be listed, unless the slot keyword is used."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the scalar values."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

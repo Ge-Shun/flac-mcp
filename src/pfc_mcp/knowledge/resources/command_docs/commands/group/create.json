@@ -1,0 +1,32 @@
+{
+  "category": "group",
+  "search_keywords": [
+    "create"
+  ],
+  "description": "Create a group. The name s is given to the group. The group has no objects, however.",
+  "notes": [],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": ""
+  },
+  "versions": {
+    "6.0": {
+      "command": "group.create",
+      "syntax": "group create <s>",
+      "keywords": [],
+      "examples": []
+    },
+    "7.0": {
+      "command": "group.create",
+      "syntax": "group create <s>",
+      "keywords": [],
+      "examples": []
+    },
+    "9.0": {
+      "command": "group.create",
+      "syntax": "group create <s>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}
