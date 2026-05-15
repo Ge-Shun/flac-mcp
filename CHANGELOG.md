@@ -14,6 +14,34 @@ The release will fail to publish if no matching entry is found.
 Description of the release.
 -->
 
+## [0.3.15] - 2026-05-16
+
+Version-aware reference documentation. The `contact-models` reference grows
+from 5 to 22 models (all PFC mechanical + thermal contact models) and
+`pfc_browse_reference` becomes version-aware for PFC 6.0/7.0/9.0.
+
+- `pfc_browse_reference` gains a `version` parameter (6.0/7.0/9.0, default
+  7.0) mirroring `pfc_browse_commands`: the model list is filtered by
+  version availability, requesting a model absent in the target version
+  returns a friendly `item_unavailable_for_version` error (with
+  `available_versions`), and not-found suggestions are version-filtered.
+- New models: arrlinear, bilinear, burger, eepa, fish, flatjoint,
+  hysteretic, jkr, lineardipole, null, smoothjoint, softbond,
+  springnetwork, thermalnull, thermalpipe, plus 9.0-only `mohr` and
+  `subspringnetwork`. The 5 legacy curated models keep their content.
+- Content is shared across versions (measured: 7.0 == 9.0, and 6.0 == 7.0
+  for shared properties), so no per-version data duplication. Differences
+  are encoded as a per-model `availability` map and per-property `since`
+  markers (flatjoint `fj_cohres`/`fj_resmode` since 7.0; softbond
+  `rgap`/`sb_coh`/`sb_fa`/`sb_mcf` since 9.0). `range-elements` and
+  `plot-items` have no `availability` and remain version-agnostic
+  (backward compatible).
+- Property extraction reworked to split on `<dt id="kwd:...">` markers
+  instead of pairing `<dt>/<dd>`, so pages that nest base properties in a
+  child `<dl class="keyword">` (e.g. eepa) no longer bleed text or drop
+  the nested keywords; model-specific properties collapse into a single
+  clean group.
+
 ## [0.3.14] - 2026-05-15
 
 Second wave of command documentation expansion: 123 new commands across
