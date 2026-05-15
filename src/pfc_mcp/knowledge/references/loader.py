@@ -178,19 +178,36 @@ class ReferenceLoader:
             return cast(dict[str, Any], json.load(f))
 
     @staticmethod
-    def get_item_list(category: str) -> list[dict[str, Any]]:
+    def _entry_available(entry: dict[str, Any], version: str | None) -> bool:
+        """Whether an index entry is available in the requested version.
+
+        Entries without an ``availability`` map are version-agnostic and
+        treated as available in every version (backward compatible).
+        """
+        if version is None:
+            return True
+        availability = entry.get("availability")
+        if not isinstance(availability, dict):
+            return True
+        return bool(availability.get(version, False))
+
+    @staticmethod
+    def get_item_list(category: str, version: str | None = None) -> list[dict[str, Any]]:
         """Get list of items in a reference category.
 
         Args:
             category: Category name (e.g., "contact-models", "range-elements")
+            version: Optional PFC version (e.g. "6.0"). When given, items
+                whose ``availability`` map excludes that version are filtered
+                out. Items without an ``availability`` map are kept.
 
         Returns:
             List of item metadata dicts
 
         Example:
             >>> items = ReferenceLoader.get_item_list("contact-models")
-            >>> len(items)
-            5
+            >>> len(items) >= 5
+            True
             >>> items = ReferenceLoader.get_item_list("range-elements")
             >>> len(items)
             24
@@ -199,11 +216,30 @@ class ReferenceLoader:
         if not index:
             return []
 
-        # Each category uses its own list key: "models", "elements", "items", etc.
+        # Each category uses its own list key: "models", "elements", "items".
+        items: list[dict[str, Any]] = []
         for _key, value in index.items():
             if isinstance(value, list) and value and isinstance(value[0], dict):
-                return cast(list[dict[str, Any]], value)
-        return []
+                items = cast(list[dict[str, Any]], value)
+                break
+
+        if version is None:
+            return items
+        return [i for i in items if ReferenceLoader._entry_available(i, version)]
+
+    @staticmethod
+    def item_availability(category: str, item_name: str) -> dict[str, bool] | None:
+        """Return an item's availability map, or None if version-agnostic.
+
+        Used by the browse tool to gate a model behind a requested version.
+        """
+        doc = ReferenceLoader.load_item_doc(category, item_name)
+        if not doc:
+            return None
+        availability = doc.get("availability")
+        if isinstance(availability, dict):
+            return cast(dict[str, bool], availability)
+        return None
 
     @staticmethod
     def clear_cache() -> None:

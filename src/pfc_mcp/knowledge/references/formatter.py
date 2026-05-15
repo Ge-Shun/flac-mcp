@@ -144,6 +144,10 @@ class ReferenceFormatter:
         # Header
         parts.append(f"# {model_full_name}")
         parts.append(f"*Model name: `{model_name}`*")
+        availability = doc.get("availability")
+        if isinstance(availability, dict):
+            avail_in = [v for v, ok in availability.items() if ok]
+            parts.append(f"*Available in PFC: {', '.join(avail_in) or 'none'}*")
         parts.append("")
 
         # Description
@@ -178,9 +182,13 @@ class ReferenceFormatter:
 
                 properties = group.get("properties", [])
                 if properties:
-                    # Create property table
-                    parts.append("| Property | Symbol | Description | Type | Default |")
-                    parts.append("|----------|--------|-------------|------|---------|")
+                    has_since = any(p.get("since") for p in properties)
+                    if has_since:
+                        parts.append("| Property | Symbol | Description | Type | Default | Since |")
+                        parts.append("|----------|--------|-------------|------|---------|-------|")
+                    else:
+                        parts.append("| Property | Symbol | Description | Type | Default |")
+                        parts.append("|----------|--------|-------------|------|---------|")
 
                     for prop in properties:
                         keyword = prop.get("keyword", "")
@@ -193,7 +201,11 @@ class ReferenceFormatter:
                         if len(desc) > 60:
                             desc = desc[:57] + "..."
 
-                        parts.append(f"| `{keyword}` | {symbol} | {desc} | {prop_type} | {default} |")
+                        if has_since:
+                            since = prop.get("since", "")
+                            parts.append(f"| `{keyword}` | {symbol} | {desc} | {prop_type} | {default} | {since} |")
+                        else:
+                            parts.append(f"| `{keyword}` | {symbol} | {desc} | {prop_type} | {default} |")
 
                     parts.append("")
 
@@ -359,6 +371,9 @@ class ReferenceFormatter:
         parts.append("## Property Flags")
         parts.append(f"- **Modifiable**: {'Yes' if modifiable else 'No'}")
         parts.append(f"- **Inheritable**: {'Yes' if inheritable else 'No'}")
+        since = target_property.get("since")
+        if since:
+            parts.append(f"- **Since**: PFC {since}")
         parts.append("")
 
         # Notes

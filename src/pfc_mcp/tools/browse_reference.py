@@ -7,7 +7,11 @@ from pydantic import Field
 
 from pfc_mcp.contracts import build_docs_data, build_error, build_ok
 from pfc_mcp.knowledge.references import ReferenceLoader
-from pfc_mcp.utils import normalize_input
+from pfc_mcp.utils import (
+    CommandDocVersion,
+    normalize_command_doc_version,
+    normalize_input,
+)
 
 
 def register(mcp: FastMCP) -> None:
@@ -27,6 +31,14 @@ def register(mcp: FastMCP) -> None:
                 "- 'plot-items': Plot item types (ball, wall, contact keywords)\n"
                 "- 'plot-items ball': Ball overview + available sub-topics\n"
                 "- 'plot-items ball color-by': Ball color-by keyword details"
+            ),
+        ),
+        version: CommandDocVersion = Field(
+            CommandDocVersion.V7_0,
+            description=(
+                "PFC documentation version (6.0/7.0/9.0). Defaults to 7.0. "
+                "Filters contact models by version availability; "
+                "range-elements and plot-items are version-agnostic."
             ),
         ),
     ) -> dict[str, Any]:
@@ -52,30 +64,31 @@ def register(mcp: FastMCP) -> None:
         - pfc_query_command: Search commands by keywords
         """
         topic_str = normalize_input(topic, lowercase=True)
+        version_value = normalize_command_doc_version(version)
 
         if not topic_str:
-            return build_ok(_browse_references_root())
+            return build_ok(_browse_references_root(version_value))
 
         parts = topic_str.split()
         category = parts[0]
 
         if len(parts) == 1:
-            payload = _browse_category(category)
+            payload = _browse_category(category, version_value)
         elif len(parts) == 2:
-            payload = _browse_item(category, parts[1])
+            payload = _browse_item(category, parts[1], version_value)
         else:
             # 3+ parts: category + item + sub-item (remaining parts joined)
-            payload = _browse_sub_item(category, parts[1], " ".join(parts[2:]))
+            payload = _browse_sub_item(category, parts[1], " ".join(parts[2:]), version_value)
         return _wrap_payload(payload)
 
 
-def _browse_references_root() -> dict[str, Any]:
+def _browse_references_root(version: str) -> dict[str, Any]:
     refs_index = ReferenceLoader.load_index()
     categories = refs_index.get("categories", {})
     category_items: list[dict[str, Any]] = []
 
     for category_name, category_data in categories.items():
-        items = ReferenceLoader.get_item_list(category_name)
+        items = ReferenceLoader.get_item_list(category_name, version)
         category_items.append(
             {
                 "name": category_name,
@@ -88,11 +101,11 @@ def _browse_references_root() -> dict[str, Any]:
         source="reference",
         action="browse",
         entries=category_items,
-        summary={"count": len(category_items)},
+        summary={"count": len(category_items), "version": version},
     )
 
 
-def _browse_category(category: str) -> dict[str, Any]:
+def _browse_category(category: str, version: str) -> dict[str, Any]:
     refs_index = ReferenceLoader.load_index()
     categories = refs_index.get("categories", {})
 
@@ -104,7 +117,7 @@ def _browse_category(category: str) -> dict[str, Any]:
                 "code": "category_not_found",
                 "message": f"Category '{category}' not found.",
             },
-            "input": {"category": category},
+            "input": {"category": category, "version": version},
             "available_categories": sorted(categories.keys()),
         }
 
@@ -117,9 +130,9 @@ def _browse_category(category: str) -> dict[str, Any]:
                 "code": "category_index_not_found",
                 "message": f"Category index not found for '{category}'.",
             },
-            "input": {"category": category},
+            "input": {"category": category, "version": version},
         }
-    raw_items = ReferenceLoader.get_item_list(category)
+    raw_items = ReferenceLoader.get_item_list(category, version)
     items = []
     for item in raw_items:
         entry: dict[str, Any] = {
@@ -132,6 +145,8 @@ def _browse_category(category: str) -> dict[str, Any]:
             entry["category"] = item["category"]
         if "common_use" in item:
             entry["common_use"] = item["common_use"]
+        if "availability" in item:
+            entry["availability"] = item["availability"]
         items.append(entry)
 
     return build_docs_data(
@@ -141,11 +156,12 @@ def _browse_category(category: str) -> dict[str, Any]:
         summary={
             "count": len(items),
             "category": category,
+            "version": version,
         },
     )
 
 
-def _browse_item(category: str, item: str) -> dict[str, Any]:
+def _browse_item(category: str, item: str, version: str) -> dict[str, Any]:
     refs_index = ReferenceLoader.load_index()
     categories = refs_index.get("categories", {})
     if category not in categories:
@@ -156,14 +172,14 @@ def _browse_item(category: str, item: str) -> dict[str, Any]:
                 "code": "category_not_found",
                 "message": f"Category '{category}' not found.",
             },
-            "input": {"category": category, "item": item},
+            "input": {"category": category, "item": item, "version": version},
             "available_categories": sorted(categories.keys()),
         }
 
     item_doc = ReferenceLoader.load_item_doc(category, item)
 
     if not item_doc:
-        items = ReferenceLoader.get_item_list(category)
+        items = ReferenceLoader.get_item_list(category, version)
         available = [i.get("name", "") for i in items]
         return {
             "source": "reference",
@@ -172,8 +188,24 @@ def _browse_item(category: str, item: str) -> dict[str, Any]:
                 "code": "item_not_found",
                 "message": f"Item '{item}' not found in '{category}'.",
             },
-            "input": {"category": category, "item": item},
+            "input": {"category": category, "item": item, "version": version},
             "available_items": available,
+        }
+
+    availability = item_doc.get("availability")
+    if isinstance(availability, dict) and not availability.get(version, False):
+        supported = [v for v, ok in availability.items() if ok]
+        return {
+            "source": "reference",
+            "action": "browse",
+            "error": {
+                "code": "item_unavailable_for_version",
+                "message": (
+                    f"'{item}' is not available in PFC {version} (available in: {', '.join(supported) or 'none'})."
+                ),
+            },
+            "input": {"category": category, "item": item, "version": version},
+            "available_versions": supported,
         }
 
     # Directory-based item: return overview with sub-item list instead of full doc
@@ -197,25 +229,28 @@ def _browse_item(category: str, item: str) -> dict[str, Any]:
             summary={
                 "count": 1,
                 "sub_item_count": len(sub_items),
+                "version": version,
                 "hint": f"Use pfc_browse_reference('{category} {item} <sub_item>') for details",
             },
         )
 
+    entry: dict[str, Any] = {
+        "category": category,
+        "item": item,
+        "doc": item_doc,
+    }
+    summary: dict[str, Any] = {"count": 1, "version": version}
+    if isinstance(item_doc.get("availability"), dict):
+        summary["available_in"] = [v for v, ok in item_doc["availability"].items() if ok]
     return build_docs_data(
         source="reference",
         action="browse",
-        entries=[
-            {
-                "category": category,
-                "item": item,
-                "doc": item_doc,
-            }
-        ],
-        summary={"count": 1},
+        entries=[entry],
+        summary=summary,
     )
 
 
-def _browse_sub_item(category: str, item: str, sub_item: str) -> dict[str, Any]:
+def _browse_sub_item(category: str, item: str, sub_item: str, version: str) -> dict[str, Any]:
     refs_index = ReferenceLoader.load_index()
     categories = refs_index.get("categories", {})
     if category not in categories:
@@ -226,7 +261,12 @@ def _browse_sub_item(category: str, item: str, sub_item: str) -> dict[str, Any]:
                 "code": "category_not_found",
                 "message": f"Category '{category}' not found.",
             },
-            "input": {"category": category, "item": item, "sub_item": sub_item},
+            "input": {
+                "category": category,
+                "item": item,
+                "sub_item": sub_item,
+                "version": version,
+            },
             "available_categories": sorted(categories.keys()),
         }
 
@@ -238,7 +278,12 @@ def _browse_sub_item(category: str, item: str, sub_item: str) -> dict[str, Any]:
                 "code": "no_sub_items",
                 "message": f"Item '{item}' in '{category}' does not have sub-items.",
             },
-            "input": {"category": category, "item": item, "sub_item": sub_item},
+            "input": {
+                "category": category,
+                "item": item,
+                "sub_item": sub_item,
+                "version": version,
+            },
         }
 
     sub_doc = ReferenceLoader.load_sub_item_doc(category, item, sub_item)
@@ -252,7 +297,12 @@ def _browse_sub_item(category: str, item: str, sub_item: str) -> dict[str, Any]:
                 "code": "sub_item_not_found",
                 "message": f"Sub-item '{sub_item}' not found in '{category} {item}'.",
             },
-            "input": {"category": category, "item": item, "sub_item": sub_item},
+            "input": {
+                "category": category,
+                "item": item,
+                "sub_item": sub_item,
+                "version": version,
+            },
             "available_sub_items": available,
         }
 
@@ -267,7 +317,7 @@ def _browse_sub_item(category: str, item: str, sub_item: str) -> dict[str, Any]:
                 "doc": sub_doc,
             }
         ],
-        summary={"count": 1},
+        summary={"count": 1, "version": version},
     )
 
 
