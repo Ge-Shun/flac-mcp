@@ -343,6 +343,67 @@ CATEGORY_METADATA: dict[str, dict[str, Any]] = {
             "Most domain configuration is done via 'model domain' shortcuts; standalone 'domain' commands are lower-level overrides",
         ],
     },
+    # ---- FLAC-unique categories (continuum + structural elements + geometry)
+    "zone": {
+        "full_name": "Zone Commands",
+        "description": "Commands for creating, configuring, and solving the FLAC continuum grid — zones (finite-volume elements) and their gridpoints, constitutive models, boundary/initial conditions, and coupled (fluid/thermal/dynamic/creep) processes.",
+        "command_prefix": "zone",
+        "python_module": "itasca.zone",
+        "python_object_class": "Zone",
+        "doc_url": "https://docs.itascacg.com/flac3d900/flac3d/zone/doc/manual/zone_manual/zone.html",
+        "related_categories": ["structure", "body", "model", "geometry"],
+        "notes": [
+            "Zones are the FLAC continuum primitive; 'zone create' builds primitive-shaped grids, 'zone generate' meshes from building blocks",
+            "'zone cmodel assign <model>' attaches a constitutive model; properties via 'zone property'",
+            "Gridpoint conditions (fix/initialize) are addressed via 'zone gridpoint ...' (Python: itasca.gridpoint)",
+            "Coupled physics live under zone subkeywords: 'zone fluid', 'zone thermal', 'zone dynamic', 'zone creep'",
+            "Use 'model solve' / 'model cycle' to step; 'zone relax' / 'zone initialize-stresses' for stress initialization",
+        ],
+    },
+    "structure": {
+        "full_name": "Structural Element Commands",
+        "description": "Commands for creating and managing structural elements (SEL) — beams, cables, piles, shells, liners, geogrids, hybrids — plus their nodes, links, properties, and results. Shared by the FLAC and 3DEC families.",
+        "command_prefix": "structure",
+        "python_module": "itasca.structure",
+        "python_object_class": "Structure (Beam, Cable, Pile, Shell, Liner, GeoGrid, ...)",
+        "doc_url": "https://docs.itascacg.com/flac3d900/common/sel/doc/manual/sel_manual/sel.html",
+        "related_categories": ["zone", "geometry", "model"],
+        "notes": [
+            "Element type is part of the command: 'structure beam create', 'structure cable property', etc.",
+            "Structural nodes ('structure node') connect elements and attach to the zone grid via links ('structure link')",
+            "Constitutive behavior via 'structure <type> cmodel' / property; results via 'structure <type> results'",
+            "2D-specific syntax variants exist for some elements; this index ships the dimension-shared base command",
+        ],
+    },
+    "body": {
+        "full_name": "Building-Blocks Commands",
+        "description": "Commands for the building-blocks geometry builder — interactively defining blocks, faces, edges, and points that are meshed into the FLAC zone grid via 'zone generate from-build-blocks'.",
+        "command_prefix": "building-blocks",
+        "python_module": None,
+        "doc_url": "https://docs.itascacg.com/flac3d900/flac3d/body/doc/manual/buildingblocks_manual/building-blocks.html",
+        "related_categories": ["zone", "geometry"],
+        "notes": [
+            "Building blocks are a topology-first meshing workflow: define blocks, then generate zones from them",
+            "Command verb is 'building-blocks' even though the docs/UI call it the Building Blocks pane",
+            "Primarily a model-setup tool; most workflows drive it via the GUI or 'itasca.command()'",
+            "Use 'zone generate from-build-blocks' to turn the block topology into a zone grid",
+        ],
+    },
+    "extruder": {
+        "full_name": "Extruder (Sketch) Commands",
+        "description": "Commands for the extruder/sketch tool — defining 2D cross-sections (points, edges, segments, blocks) and extruding them into a 3D FLAC zone grid.",
+        "command_prefix": "sketch",
+        "python_module": None,
+        "doc_url": "https://docs.itascacg.com/flac3d900/flac3d/extruder/doc/manual/sketch_manual/sketch.html",
+        "related_categories": ["zone", "body", "geometry"],
+        "notes": [
+            "Command verb is 'sketch' even though the tool/UI is called the Extruder",
+            "Workflow: sketch a 2D section (sketch point/edge/segment), then extrude it into zones",
+            "Sub-namespace is part of the JSON key: 'sketch block create' -> commands/extruder/block-create.json",
+            "Primarily a GUI-driven model-setup tool; scriptable via 'itasca.command()'",
+            "Nested keyword options (e.g. <kwd>-group) are captured; some parent keywords may be partial pending nested-dl parsing",
+        ],
+    },
 }
 
 # Python SDK alternatives (command-level, kept in index for quick reference)
@@ -394,9 +455,10 @@ PYTHON_SDK_ALTERNATIVES: dict[str, dict[str, Any]] = {
 # Command patterns metadata
 COMMAND_PATTERNS: dict[str, list[str]] = {
     "object_commands": ["ball", "wall", "clump", "measure", "brick", "rblock"],
+    "continuum_commands": ["zone", "structure"],
     "system_commands": ["model", "contact", "program", "project", "domain"],
     "analysis_commands": ["fragment", "measure", "history", "trace"],
-    "geometry_commands": ["geometry", "fracture"],
+    "geometry_commands": ["geometry", "fracture", "body"],
     "data_commands": ["table", "data", "group"],
     "visualization_commands": ["plot"],
     "scripting_commands": ["fish"],

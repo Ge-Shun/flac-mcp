@@ -1,0 +1,20 @@
+{
+  "category": "body",
+  "search_keywords": [
+    "block",
+    "hide",
+    "building-blocks"
+  ],
+  "description": "Set the blocks to be hide or not.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "building-blocks block hide",
+      "syntax": "building-blocks block hide <b>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

@@ -28,7 +28,9 @@ async def test_browse_commands_root_contract() -> None:
     assert isinstance(data["entries"], list)
     assert data["summary"]["count"] >= 1
     assert data["summary"]["total_commands"] >= 1
-    assert data["summary"]["version"] == "7.0"
+    # flac-mcp targets ITASCA 9.0; the command tools default to 9.0
+    # (legacy PFC remains reachable via explicit version=7.0/6.0).
+    assert data["summary"]["version"] == "9.0"
 
 
 @pytest.mark.asyncio
@@ -61,7 +63,8 @@ async def test_query_command_contract() -> None:
     assert data["source"] == "commands"
     assert data["action"] == "query"
     assert data["summary"]["count"] >= 1
-    assert data["summary"]["version"] == "7.0"
+    # Command tools default to 9.0 (current ITASCA Software release).
+    assert data["summary"]["version"] == "9.0"
     assert isinstance(data["entries"], list)
     assert len(data["entries"]) >= 1
 

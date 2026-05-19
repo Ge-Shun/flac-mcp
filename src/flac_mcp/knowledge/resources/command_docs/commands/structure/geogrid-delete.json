@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geogrid",
+    "delete",
+    "structure"
+  ],
+  "description": "Delete all geogrid elements in the range. Structure nodes and links that become disconnected from any element are deleted automatically as well.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geogrid delete",
+      "syntax": "structure geogrid delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

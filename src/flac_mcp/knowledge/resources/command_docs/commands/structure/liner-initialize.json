@@ -1,0 +1,26 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "liner",
+    "initialize",
+    "structure"
+  ],
+  "description": "Initialize quantities on the element.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure liner initialize",
+      "syntax": "structure liner initialize [keyword]",
+      "keywords": [
+        {
+          "name": "coupling",
+          "syntax": "coupling",
+          "description": "finds any deformable links attached to the element and attempts to initialize the force to match the stress state of the link target"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "gridpoint",
+    "free",
+    "zone"
+  ],
+  "description": "Free properties at gridpoints in the range. The list of properties here is identical to that for zone gridpoint fix , where they are also described.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone gridpoint free",
+      "syntax": "zone gridpoint free keyword [range]",
+      "keywords": [
+        {
+          "name": "acceleration",
+          "syntax": "acceleration",
+          "description": "Free acceleration."
+        },
+        {
+          "name": "acceleration-x",
+          "syntax": "acceleration-x",
+          "description": "Free \\(x\\) -acceleration."
+        },
+        {
+          "name": "acceleration-y",
+          "syntax": "acceleration-y",
+          "description": "Free \\(y\\) -acceleration."
+        },
+        {
+          "name": "acceleration-z",
+          "syntax": "acceleration-z 3D ONLY",
+          "description": "Free \\(z\\) -acceleration."
+        },
+        {
+          "name": "force-applied",
+          "syntax": "force-applied",
+          "description": "Fix applied force."
+        },
+        {
+          "name": "force-applied-x",
+          "syntax": "force-applied-x",
+          "description": "Fix applied force in the x -direction."
+        },
+        {
+          "name": "force-applied-y",
+          "syntax": "force-applied-y",
+          "description": "Fix applied force in the y -direction."
+        },
+        {
+          "name": "force-applied-z",
+          "syntax": "force-applied-z 3D ONLY",
+          "description": "Fix applied force in the z -direction."
+        },
+        {
+          "name": "pore-pressure",
+          "syntax": "pore-pressure",
+          "description": "Free pore pressures."
+        },
+        {
+          "name": "source",
+          "syntax": "source",
+          "description": "Frees the applied thermal source."
+        },
+        {
+          "name": "temperature",
+          "syntax": "temperature",
+          "description": "Frees temperatures."
+        },
+        {
+          "name": "velocity",
+          "syntax": "velocity",
+          "description": "Frees velocity."
+        },
+        {
+          "name": "velocity-x",
+          "syntax": "velocity-x",
+          "description": "Frees \\(x\\) -velocity."
+        },
+        {
+          "name": "velocity-y",
+          "syntax": "velocity-y",
+          "description": "Frees \\(y\\) -velocity."
+        },
+        {
+          "name": "velocity-z",
+          "syntax": "velocity-z 3D ONLY",
+          "description": "Frees \\(z\\) -velocity."
+        },
+        {
+          "name": "well",
+          "syntax": "well",
+          "description": "Frees an applied fluid source."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

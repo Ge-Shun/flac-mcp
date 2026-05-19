@@ -1,0 +1,45 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "water",
+    "zone"
+  ],
+  "description": "This command initializes pore pressures, changing the effective stresses. FLAC uses effective stresses (i.e., total stresses plus pore pressure) in constitutive models. Pore pressures are defined at gridpoints, and zone pore pressures are then calculated as the average of the zone gridpoints. If model configure fluid is not set, pore pressures are not affected by zone volume changes, there is no flow of water, and the dry density must be specified for zones above the water table and the saturated material density for zones below.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone water",
+      "syntax": "zone water keyword",
+      "keywords": [
+        {
+          "name": "density-skip-assignment",
+          "syntax": "skip-assignment",
+          "description": "fluid density, \\(ρ_w\\) [SI units: kg/m 3 ]. This will force a recalculation of pore pressures on all gridpoints in the range. The following keywords are available: If this keyword is specified, then the total stresses in all zones connected to gridpoints in the range are adjusted to keep the effective stress constant. If this keyword is specified, then the values used to calculate pore-pressures is changed to pore-pressures are not actually assigned to any gridpoints. The values specified will remain until the next zone water command is given."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "Lists the current water table settings. This includes the assumed fluid density, the geometric set to use (if any), and the water table plane last specified."
+        },
+        {
+          "name": "set-skip-assignment",
+          "syntax": "skip-assignment",
+          "description": "Specify the geometric set used to determine water surface location. By default, the name is Water Table . Specifying a new set name causes a recalculation of gridpoint pore pressures for all gridpoints below polygons in that set that are also in the range. See the geometry command. The following keywords are available: If this keyword is specified, then the total stresses in all zones connected to gridpoints in the range will be adjusted to keep the effective stress constant. If this keyword is specified, then the values used to calculate pore-pressures are not actually assigned to any gridpoints. The values specified will remain until the next zone water command is given."
+        },
+        {
+          "name": "plane-skip-assignment",
+          "syntax": "skip-assignment",
+          "description": "Specify a water table plane (represented by a line in 2D). The water table sets pore pressure for all gridpoints (and, hence, zones) below the water table. The pore-pressure gradient is given by the direction of the gravity vector, which can be arbitrary (see the model gravity command). The following keywords are available to set the plane location and orientation. If this keyword is specified, then the total stresses in all zones connected to gridpoints in the range will be adjusted to keep the effective stress constant. Normal direction to the plane (line in 2D), defined by unit vector v and pointing in the direction of increasing pore pressure. One point at coordinate location ( v ) on the plane (line in 2D). Though the plane (line in 2D) is specified, pore pressures are not actually assigned to gridpoints in the range."
+        },
+        {
+          "name": "table",
+          "syntax": "table keyword [range]",
+          "description": "Specify a water table by coordinates. For 2D, it is a table by (x,y) pairs. For 3D, it is a table by (x,z) pairs which will extrude along y-direction."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

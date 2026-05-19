@@ -1,0 +1,20 @@
+{
+  "category": "body",
+  "search_keywords": [
+    "face",
+    "cycle",
+    "building-blocks"
+  ],
+  "description": "Rotate (cycle) the topology of triangular faces. Aspects of the face, such as the degeneracy point, edge zone sizes, and ratio, are affected when the topology is changed.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "building-blocks face cycle",
+      "syntax": "building-blocks face cycle [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

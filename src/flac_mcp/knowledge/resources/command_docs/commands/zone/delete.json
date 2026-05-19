@@ -1,0 +1,19 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "delete",
+    "zone"
+  ],
+  "description": "Delete zones.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone delete",
+      "syntax": "zone delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "link",
+    "tolerance",
+    "contact",
+    "structure",
+    "tolerance-contact"
+  ],
+  "description": "Set the tolerance used when establishing node-to-zone links. A node is considered to be in a zone if it is within a distance \\(d\\) of the zone boundary, where \\(d\\) equals f times zone size (taken as the maximum \\(x\\) -, \\(y\\) -, or \\(z\\) -dimension ( \\(x\\) -, or \\(y\\) -dimension in 2D) of the zone bounding box). Nodes that are used by elements with their sliding flag on will utilize structure link tolerance-slide instead of f when attempting to update the zone interpolation point of an existing link. By default, f equals 1 × 10 -5 .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure link tolerance-contact",
+      "syntax": "structure link tolerance-contact <f>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

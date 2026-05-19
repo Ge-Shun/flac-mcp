@@ -1,0 +1,111 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "liner",
+    "property",
+    "structure"
+  ],
+  "description": "Assign properties to liner elements in the range. The properties consist of constitutive model properties, shell-type properties, and coupling-spring properties. The constitutive model property names are primary keywords, but are not included in the list above. The following properties are available, with the constitutive model properties listed first.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure liner property",
+      "syntax": "structure liner property keyword ... [range]",
+      "keywords": [
+        {
+          "name": "density",
+          "syntax": "density <f>",
+          "description": "mass density"
+        },
+        {
+          "name": "thermal-expansion",
+          "syntax": "thermal-expansion <f>",
+          "description": "thermal-expansion coefficient"
+        },
+        {
+          "name": "thickness",
+          "syntax": "thickness <f>",
+          "description": "thickness"
+        },
+        {
+          "name": "coupling-cohesion-shear",
+          "syntax": "coupling-cohesion-shear <f>",
+          "description": "shear coupling spring cohesion (stress units)"
+        },
+        {
+          "name": "coupling-cohesion-shear-2",
+          "syntax": "coupling-cohesion-shear-2 <f>",
+          "description": "shear coupling spring cohesion (stress units) on side 2"
+        },
+        {
+          "name": "coupling-cohesion-shear-residual",
+          "syntax": "coupling-cohesion-shear-residual <f>",
+          "description": "shear coupling spring residual cohesion (stress units)"
+        },
+        {
+          "name": "coupling-cohesion-shear-residual-2",
+          "syntax": "coupling-cohesion-shear-residual-2 <f>",
+          "description": "shear coupling spring residual cohesion (stress units) on side 2"
+        },
+        {
+          "name": "coupling-friction-shear",
+          "syntax": "coupling-friction-shear <f>",
+          "description": "shear coupling spring friction angle (degrees)"
+        },
+        {
+          "name": "coupling-friction-shear-2",
+          "syntax": "coupling-friction-shear-2 <f>",
+          "description": "shear coupling spring friction angle (degrees) on side 2"
+        },
+        {
+          "name": "coupling-stiffness-normal",
+          "syntax": "coupling-stiffness-normal <f>",
+          "description": "coupling spring normal stiffness per unit area"
+        },
+        {
+          "name": "coupling-stiffness-normal-2",
+          "syntax": "coupling-stiffness-normal-2 <f>",
+          "description": "coupling spring normal stiffness per unit area on side 2"
+        },
+        {
+          "name": "coupling-stiffness-shear",
+          "syntax": "coupling-stiffness-shear <f>",
+          "description": "coupling spring shear stiffness per unit area"
+        },
+        {
+          "name": "coupling-stiffness-shear-2",
+          "syntax": "coupling-stiffness-shear-2 <f>",
+          "description": "coupling spring shear stiffness per unit area on side 2"
+        },
+        {
+          "name": "coupling-yield-normal",
+          "syntax": "coupling-yield-normal <f>",
+          "description": "normal coupling spring tensile strength (stress units)"
+        },
+        {
+          "name": "coupling-yield-normal-2",
+          "syntax": "coupling-yield-normal-2 <f>",
+          "description": "normal coupling spring tensile strength (stress units) on side 2"
+        },
+        {
+          "name": "effective",
+          "syntax": "effective <b>",
+          "description": "effective stress flag (default: on )"
+        },
+        {
+          "name": "slide",
+          "syntax": "slide <b>",
+          "description": "large-strain sliding flag (default: off )"
+        },
+        {
+          "name": "slide-tolerance",
+          "syntax": "slide-tolerance <f>",
+          "description": "large-strain sliding tolerance"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

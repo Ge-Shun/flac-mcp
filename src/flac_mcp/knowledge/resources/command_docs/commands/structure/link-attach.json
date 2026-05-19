@@ -1,0 +1,86 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "link",
+    "attach",
+    "structure"
+  ],
+  "description": "Set attachment conditions for the specified link directions. The current attachment condition will be replaced by the condition specified here. Conditions are specified in keyword pairs, the first ( keyword ) being the degree-of-freedom and the second ( [linkattachblock] ) being the type of condition to use. The following keywords are available to specify the degree-of-freedom.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure link attach",
+      "syntax": "structure link attach keyword ... [range]",
+      "keywords": [
+        {
+          "name": "x",
+          "syntax": "x [linkattachblock]",
+          "description": "Set the translational \\(x\\) -direction, also degree-of-freedom 1."
+        },
+        {
+          "name": "y",
+          "syntax": "y [linkattachblock]",
+          "description": "Set the translational \\(y\\) -direction, also degree-of-freedom 2."
+        },
+        {
+          "name": "z",
+          "syntax": "z 3D ONLY [linkattachblock]",
+          "description": "Set the translational \\(z\\) -direction, also degree-of-freedom 3."
+        },
+        {
+          "name": "rotation",
+          "syntax": "rotation 2D ONLY [linkattachblock]",
+          "description": "Set rotation."
+        },
+        {
+          "name": "rotation-x",
+          "syntax": "rotation-x 3D ONLY [linkattachblock]",
+          "description": "Set the rotational \\(x\\) -direction, also degree-of-freedom 4."
+        },
+        {
+          "name": "rotation-y",
+          "syntax": "rotation-y 3D ONLY [linkattachblock]",
+          "description": "Set the rotational \\(y\\) -direction, also degree-of-freedom 5."
+        },
+        {
+          "name": "rotation-z",
+          "syntax": "rotation-z 3D ONLY [linkattachblock]",
+          "description": "Set the rotational \\(z\\) -direction, also degree-of-freedom 6."
+        },
+        {
+          "name": "free",
+          "syntax": "free",
+          "description": "free"
+        },
+        {
+          "name": "linear",
+          "syntax": "linear",
+          "description": "deformable linear spring"
+        },
+        {
+          "name": "normal-yield",
+          "syntax": "normal-yield",
+          "description": "deformable normal-yield spring"
+        },
+        {
+          "name": "pile-yield",
+          "syntax": "pile-yield",
+          "description": "pile yield spring. This is only available in the \\(x\\) or \\(y\\) translational degrees-of-freedom, and the dependent model is automatically installed in \\(y\\) or \\(z\\) , respectively."
+        },
+        {
+          "name": "rigid",
+          "syntax": "rigid",
+          "description": "rigid"
+        },
+        {
+          "name": "shear-yield",
+          "syntax": "shear-yield",
+          "description": "shear yield deformable spring (only available in translational degrees-of-freedom)"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

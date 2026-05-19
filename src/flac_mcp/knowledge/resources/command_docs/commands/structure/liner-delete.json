@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "liner",
+    "delete",
+    "structure"
+  ],
+  "description": "Delete all liner elements in the range. Structure nodes and links that become disconnected from any element are automatically deleted as well.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure liner delete",
+      "syntax": "structure liner delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

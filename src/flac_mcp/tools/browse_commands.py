@@ -27,8 +27,12 @@ def register(mcp: FastMCP) -> None:
             ),
         ),
         version: CommandDocVersion = Field(
-            CommandDocVersion.V7_0,
-            description="FLAC documentation version to browse. Defaults to 7.0.",
+            CommandDocVersion.V9_0,
+            description=(
+                "FLAC documentation version to browse. Defaults to 9.0 "
+                "(current ITASCA Software release; covers FLAC continuum + "
+                "structural-element commands). Use 7.0/6.0 for legacy PFC."
+            ),
         ),
     ) -> dict[str, Any]:
         """Browse FLAC command documentation by path (like glob + cat).
@@ -70,7 +74,12 @@ def _iter_available_category_commands(category: str, version: str) -> list[tuple
     available: list[tuple[dict[str, Any], dict[str, Any]]] = []
 
     for cmd_meta in category_data.get("commands", []):
-        cmd_doc = CommandLoader.load_command_doc(category, cmd_meta.get("name", ""), version)
+        try:
+            cmd_doc = CommandLoader.load_command_doc(category, cmd_meta.get("name", ""), version)
+        except KeyError:
+            # Doc has no entry for this version (e.g. FLAC 9.0-only docs
+            # browsed at 7.0/6.0) — not available here, skip.
+            continue
         if cmd_doc and cmd_doc.get("available") is not False:
             available.append((cmd_meta, cmd_doc))
 
@@ -155,9 +164,36 @@ def _browse_command(category: str, command_name: str, version: str) -> dict[str,
     # JSON filenames use dash as sub-command separator (e.g. edge-create,
     # cmat-add, scalar-create) while FLAC syntax separates them with spaces.
     # Accept either form on input.
-    cmd_doc = CommandLoader.load_command_doc(category, command_name, version)
-    if not cmd_doc and " " in command_name:
-        cmd_doc = CommandLoader.load_command_doc(category, command_name.replace(" ", "-"), version)
+    try:
+        cmd_doc = CommandLoader.load_command_doc(category, command_name, version)
+        if not cmd_doc and " " in command_name:
+            cmd_doc = CommandLoader.load_command_doc(category, command_name.replace(" ", "-"), version)
+    except KeyError:
+        # Command exists but has no entry for this version (FLAC docs are
+        # 9.0-only). Same structured error as the available=false path,
+        # reporting the versions it does support.
+        available_versions: list[str] = []
+        for probe in ("9.0", "7.0", "6.0"):
+            for name in (command_name, command_name.replace(" ", "-")):
+                try:
+                    probe_doc = CommandLoader.load_command_doc(category, name, probe)
+                except KeyError:
+                    continue
+                if probe_doc:
+                    available_versions = probe_doc.get("versions", [])
+                    break
+            if available_versions:
+                break
+        return {
+            "source": "commands",
+            "action": "browse",
+            "error": {
+                "code": "command_unavailable_for_version",
+                "message": f"Command '{command_name}' is not available in FLAC {version}.",
+            },
+            "input": {"category": category, "command": command_name, "version": version},
+            "available_versions": available_versions,
+        }
 
     if not cmd_doc:
         index = CommandLoader.load_index()

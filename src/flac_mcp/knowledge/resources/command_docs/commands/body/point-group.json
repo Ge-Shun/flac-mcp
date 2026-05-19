@@ -1,0 +1,20 @@
+{
+  "category": "body",
+  "search_keywords": [
+    "point",
+    "group",
+    "building-blocks"
+  ],
+  "description": "Assign a group name to points. The command is applied to points in the current < range >, if supplied, or to all points if not. If the < remove > option is used, the points in the range will be removed from the group s .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "building-blocks point group",
+      "syntax": "building-blocks point group <s>[slot <s>] [remove] [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

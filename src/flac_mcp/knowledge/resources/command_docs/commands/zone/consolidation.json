@@ -1,0 +1,30 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "consolidation",
+    "zone"
+  ],
+  "description": "Perform fluid calculations, simplified. This command provides a simplified syntax for performing uncoupled consolidation calculations. The input f is the total fluid time.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone consolidation",
+      "syntax": "zone consolidation <f>keyword",
+      "keywords": [
+        {
+          "name": "convergence",
+          "syntax": "convergence <f>",
+          "description": "Set the solution limit based on the maximum mechanical convergence value of all gridpoints and zones in the model."
+        },
+        {
+          "name": "ratio",
+          "syntax": "ratio <f>",
+          "description": "Set the solution limit based on the current mechanical convergence ratio value, as defined by the various modules that use it. By default this is the same as ratio-average ."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

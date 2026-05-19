@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "list",
+    "information",
+    "structure"
+  ],
+  "description": "Lists global program settings and information related to structural elements. The information includes: large-strain update interval, damping information, behavior during creation of links, liner behavior during large-strain sliding, maximum equilibrium ratios during the last step, and current number of structural-element entities (cables, beams, nodes, etc.).",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure list information",
+      "syntax": "structure list information",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

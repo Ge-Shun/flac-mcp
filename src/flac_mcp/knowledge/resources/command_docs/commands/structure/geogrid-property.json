@@ -1,0 +1,61 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geogrid",
+    "property",
+    "structure"
+  ],
+  "description": "Assign properties to geogrid elements in the range. The properties consist of constitutive model properties, shell-type properties, and coupling-spring properties. The constitutive model property names are primary keywords, but are not included in the list above. The following properties are available, with the constitutive model properties listed first.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geogrid property",
+      "syntax": "structure geogrid property keyword ... [range]",
+      "keywords": [
+        {
+          "name": "density",
+          "syntax": "density <f>",
+          "description": "mass density"
+        },
+        {
+          "name": "thermal-expansion",
+          "syntax": "thermal-expansion <f>",
+          "description": "thermal-expansion coefficient"
+        },
+        {
+          "name": "thickness",
+          "syntax": "thickness <f>",
+          "description": "thickness"
+        },
+        {
+          "name": "coupling-cohesion",
+          "syntax": "coupling-cohesion <f>",
+          "description": "coupling spring cohesion (stress units)"
+        },
+        {
+          "name": "coupling-friction",
+          "syntax": "coupling-friction <f>",
+          "description": "coupling spring friction angle (degrees)"
+        },
+        {
+          "name": "coupling-stiffness",
+          "syntax": "coupling-stiffness <f>",
+          "description": "coupling spring stiffness per unit area"
+        },
+        {
+          "name": "slide",
+          "syntax": "slide <b>",
+          "description": "large-strain sliding flag"
+        },
+        {
+          "name": "slide-tolerance",
+          "syntax": "slide-tolerance <f>",
+          "description": "large-strain sliding tolerance"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

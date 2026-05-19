@@ -1,0 +1,285 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "history",
+    "zone"
+  ],
+  "description": "Add a zone history . The history can be assigned a name for later reference with the optional name keyword; if not, the history will be given a default name based on its internally assigned id number.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone history",
+      "syntax": "zone history [name <s>] keyword",
+      "keywords": [
+        {
+          "name": "acceleration",
+          "syntax": "acceleration [zonehistoryblock]",
+          "description": "Acceleration magnitude at the gridpoint (only available if model configure dynamic has been specified)."
+        },
+        {
+          "name": "acceleration-x",
+          "syntax": "acceleration-x [zonehistoryblock]",
+          "description": "\\(x\\) -acceleration at the gridpoint (only available if model configure dynamic has been specified)."
+        },
+        {
+          "name": "acceleration-y",
+          "syntax": "acceleration-y [zonehistoryblock]",
+          "description": "\\(y\\) -acceleration at the gridpoint (only available if model configure dynamic has been specified)."
+        },
+        {
+          "name": "acceleration-z",
+          "syntax": "acceleration-z 3D Only [zonehistoryblock]",
+          "description": "\\(z\\) -acceleration at the gridpoint (only available if model configure dynamic has been specified)."
+        },
+        {
+          "name": "condition",
+          "syntax": "condition [zonehistoryblock]",
+          "description": "Measure of how badly deformed a zone is. [URGENT: CS: content required for link here appears to need adding to doc set: Link to wherever the contents of section 1.1.5 in the Command Reference end up"
+        },
+        {
+          "name": "density",
+          "syntax": "density [zonehistoryblock]",
+          "description": "The density of the zone."
+        },
+        {
+          "name": "density-fluid",
+          "syntax": "density-fluid [zonehistoryblock]",
+          "description": "The fluid density of the zone."
+        },
+        {
+          "name": "displacement",
+          "syntax": "displacement [zonehistoryblock]",
+          "description": "Displacement magnitude at the gridpoint."
+        },
+        {
+          "name": "displacement-x",
+          "syntax": "displacement-x [zonehistoryblock]",
+          "description": "\\(x\\) -displacement at the gridpoint."
+        },
+        {
+          "name": "displacement-y",
+          "syntax": "displacement-y [zonehistoryblock]",
+          "description": "\\(y\\) -displacement at the gridpoint."
+        },
+        {
+          "name": "displacement-z",
+          "syntax": "displacement-z 3D Only [zonehistoryblock]",
+          "description": "\\(z\\) -displacement at the gridpoint."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra [zonehistoryblock]",
+          "description": "Extra variable value. The extra variable index used will default to 1 and can be changed with the index modifier keyword. The value will by default come from the grid point extra variables, but this can be specified using the source modifier keyword. The value will, by default, be treated as a scalar floating point type, but this can be specified using the type modifier keyword."
+        },
+        {
+          "name": "factor-of-safety",
+          "syntax": "factor-of-safety [zonehistoryblock]",
+          "description": "The largest factor of safety that remains stable for this grid point. Only available after a model factor-of-safety calculation. The velocity-limit keyword is used to specify a velocity magnitude over which the gridpoint is considered unstable at a given factor of safety."
+        },
+        {
+          "name": "fluid-biot-modulus",
+          "syntax": "fluid-biot-modulus [zonehistoryblock]",
+          "description": "The fluid Biot modulus of the gridpoint."
+        },
+        {
+          "name": "fluid-bulk-modulus",
+          "syntax": "fluid-bulk-modulus [zonehistoryblock]",
+          "description": "The fluid bulk modulus of the gridpoint."
+        },
+        {
+          "name": "multiplier",
+          "syntax": "multiplier [zonehistoryblock]",
+          "description": "The gridpoint multiplier used in dynamic multi-stepping."
+        },
+        {
+          "name": "pore-pressure",
+          "syntax": "pore-pressure [zonehistoryblock]",
+          "description": "By default, this will be the grid point pore pressure, but the zone average pore pressure can be specified by using the source keyword modifier."
+        },
+        {
+          "name": "property",
+          "syntax": "property name <s>[zonehistoryblock]",
+          "description": "A property of the mechanical constitutive model of the zone. The value s is the keyword for the desired property, supplied as a string—for example, the property keyword bulk becomes 'bulk' in this command (quotes required). By default, it will be assumed the property is a floating point scalar, but this can be specified using the type modifier keyword (one of the keywords available in the zone history Keyword Block )."
+        },
+        {
+          "name": "property-fluid",
+          "syntax": "property-fluid name <s>[zonehistoryblock]",
+          "description": "A property of the fluid constitutive model of the zone. The value s is the keyword for the desired property, supplied as a string (see property above). By default, it will be assumed the property is a floating point scalar, but this can be specified using the type modifier keyword (one of the keywords available in the zone history Keyword Block )."
+        },
+        {
+          "name": "property-thermal",
+          "syntax": "property-thermal name <s>[zonehistoryblock]",
+          "description": "A property of the thermal constitutive model of the zone. The value s is the keyword for the desired property, supplied as a string (see property above). By default, it will be assumed the property is a floating point scalar, but this can be specified using the type modifier keyword (one of the keywords available in the zone history Keyword Block ). Try zone history property type or zone history property instead."
+        },
+        {
+          "name": "ratio-local",
+          "syntax": "ratio-local [zonehistoryblock]",
+          "description": "The local unbalanced force ratio at each gridpoint. Like all results, this can be changed to the logarithm of the value by using the log keyword modifier."
+        },
+        {
+          "name": "ratio-target",
+          "syntax": "ratio-target [zonehistoryblock]",
+          "description": "The target local gridpoint mechanical convergence ratio at each gridpoint. Like all results, this can be changed to the logarithm of the value by using the log keyword modifier."
+        },
+        {
+          "name": "saturation",
+          "syntax": "saturation [zonehistoryblock]",
+          "description": "The saturation at the gridpoint (only available if model configure fluid has been specified)."
+        },
+        {
+          "name": "strain-increment",
+          "syntax": "strain-increment [zonehistoryblock]",
+          "description": "The strain increment tensor of the zone, determined by the current displacement field. Use the quantity keyword to specify which scalar value to retrieve from the tensor."
+        },
+        {
+          "name": "strain-rate",
+          "syntax": "strain-rate [zonehistoryblock]",
+          "description": "The strain rate tensor of the zone, determined by the current velocity field. Use the quantity keyword to specify which scalar value to retrieve from the tensor."
+        },
+        {
+          "name": "stress",
+          "syntax": "stress [zonehistoryblock]",
+          "description": "The stress tensor of the zone, determined by the weighted average of the subzone stresses. Use the quantity keyword to specify which scalar value to retrieve from the tensor."
+        },
+        {
+          "name": "strength-stress-ratio",
+          "syntax": "strength-stress-ratio [zonehistoryblock]",
+          "description": "The ratio of the current stress to a failure surface of the zone, as determined by the current zone constitutive model. Not all constitutive models support this calculation. If unsupported, the value returned will be 10. The value returned is generally held to a maximum of 10."
+        },
+        {
+          "name": "stress-effective",
+          "syntax": "stress-effective [zonehistoryblock]",
+          "description": "The effective stress tensor of the zone, determined by the weighted average of the subzone stresses minus the zone-averaged pore pressure. Use the quantity keyword to specify which scalar value to retrieve from the tensor."
+        },
+        {
+          "name": "temperature",
+          "syntax": "temperature [zonehistoryblock]",
+          "description": "The temperature at the gridpoints. The source modifier keyword can be used to specify that zone-based temperature should be used instead."
+        },
+        {
+          "name": "timestep-dynamic",
+          "syntax": "timestep-dynamic [zonehistoryblock]",
+          "description": "The local critical dynamic time step of that particular gridpoint. (only available if model configure dynamic has been specified)."
+        },
+        {
+          "name": "unbalanced-force",
+          "syntax": "unbalanced-force [zonehistoryblock]",
+          "description": "The unbalanced force magnitude at the gridpoint."
+        },
+        {
+          "name": "unbalanced-force-x",
+          "syntax": "unbalanced-force-x [zonehistoryblock]",
+          "description": "\\(x\\) -unbalanced force at the gridpoint."
+        },
+        {
+          "name": "unbalanced-force-y",
+          "syntax": "unbalanced-force-y [zonehistoryblock]",
+          "description": "\\(y\\) -unbalanced force at the gridpoint."
+        },
+        {
+          "name": "unbalanced-force-z",
+          "syntax": "unbalanced-force-z 3D Only [zonehistoryblock]",
+          "description": "\\(z\\) -unbalanced force at the gridpoint."
+        },
+        {
+          "name": "velocity",
+          "syntax": "velocity [zonehistoryblock]",
+          "description": "The velocity magnitude at the gridpoint."
+        },
+        {
+          "name": "velocity-x",
+          "syntax": "velocity-x [zonehistoryblock]",
+          "description": "\\(x\\) -velocity at the gridpoint."
+        },
+        {
+          "name": "velocity-y",
+          "syntax": "velocity-y [zonehistoryblock]",
+          "description": "\\(y\\) -velocity at the gridpoint."
+        },
+        {
+          "name": "velocity-z",
+          "syntax": "velocity-z 3D Only [zonehistoryblock]",
+          "description": "\\(z\\) -velocity at the gridpoint."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude",
+          "description": "This keyword selects which scalar to retrieve from a vector type value, such as velocity or displacement. If the value type is not a vector, this setting is ignored. The available options are: \\(x\\) -component of the vector. \\(y\\) -component of the vector. \\(z\\) -component of the vector. Vector magnitude."
+        },
+        {
+          "name": "index",
+          "syntax": "index <i>",
+          "description": "For keywords that require it (most notably extra ), this specifies the index that should be used. The default value will be 1."
+        },
+        {
+          "name": "gravity",
+          "syntax": "gravity <b>",
+          "description": "If on , then gravitational forces are included in the returned applied force. The default is off ."
+        },
+        {
+          "name": "gridpointid",
+          "syntax": "gridpointid <i>",
+          "description": "Specify the location of the history by the location of the gridpoint with ID number i ."
+        },
+        {
+          "name": "label",
+          "syntax": "label <s>",
+          "description": "Assign a label to the history, used in prints and plots."
+        },
+        {
+          "name": "log",
+          "syntax": "log <b>",
+          "description": "If on , the returned number is the base 10 log of the absolute value of the original value. The default is off ."
+        },
+        {
+          "name": "polynomial",
+          "syntax": "polynomial [tolerance <f>] 3D Only",
+          "description": "Specifies the method of calculation used to bring zone-based quantities to arbitrary locations in space (including at gridpoint positions). Assume values are constant inside zones. This is the default option. Values at gridpoints or at zone boundaries will pick one adjacent zone to use. Use a volume-weighted average of all the zones connected to the gridpoint. Use a weighted average of up to 32 zones in the immediate vicinity of the point. The weighting is determined by a power of the distance of the zone centroid from the specified point. Specify the power of the distance used to weight values. The default power is 3.0. Specify the ratio of the maximum distance from the point of the zones selected, to the ratio used to calculate weighted values. Zones farther from this value are discounted. The default value is 0.75. Use a fit to a polynomial function based on the zones in the vicinity of the point. Degenerate degrees of freedom are detected and removed. The optional tolerance flag can be used to change the value used to detect a degeneracy. The default value is 1e-7 ."
+        },
+        {
+          "name": "name",
+          "syntax": "name <s>",
+          "description": "Certain keywords (most notably property ) require a name value to be fully specified. This will determine the specific property name retrieved."
+        },
+        {
+          "name": "thermal",
+          "syntax": "thermal <b>",
+          "description": "Specify the criteria used to ignore zone values. By default, mechanical null zones are ignored. Zones with a null fluid constitutive model are also ignored if this is set to on . Zones with a null mechanical constitutive model are ignored if this is set to on (this is the default). Zones with a null thermal constitutive model are ignored if this is set to on ."
+        },
+        {
+          "name": "position",
+          "syntax": "position <v>",
+          "description": "Specify the location of the history at v . This location must be inside a zone."
+        },
+        {
+          "name": "zz",
+          "syntax": "zz",
+          "description": "Select which scalar to retrieve from a symmetric tensor type value, such as stress or strain. If the value type is not a tensor, this setting is ignored. The available options are: Intermediate principal stress. The maximum (most positive) value of principal stress. Note that in FLAC compressive stresses are negative . The mean pressure value, defined as the trace of the tensor divided by 3. For stresses this is most often referred to as the pressure. The minimum (most negative) principal stress. Note that in FLAC compressive stresses are negative . The norm of the strain rate; see the equation in Zone Field Data Names Octahedral stress; see the equation in Zone Field Data Names . Maximum shear stress. Distance of tensor value to the origin in principal space. Volumetric change, or trace. Von Mises measure; see the equation in Zone Field Data Names . xx -component of the tensor. xy -component of the tensor. xz -component of the tensor. yy -component of the tensor. yz -component of the tensor. zz -component of the tensor."
+        },
+        {
+          "name": "zone",
+          "syntax": "zone",
+          "description": "Certain keywords (like extra and pore-pressure ) can be retrieved either from the zone structure or from the gridpoint structure. The default value is gridpoint . Values are retrieved directly from the gridpoint. Values are retrieved from the zone."
+        },
+        {
+          "name": "tensor",
+          "syntax": "tensor",
+          "description": "In certain cases the type (scalar, vector, or tensor) of the value cannot necessarily be determined ahead of time. Extra variables, for example, can hold values of all three types. This keyword allows specifying which type it is assumed to be. If the original value type does not match, 0.0 is returned. A scalar float type. This is the default. A vector type. A tensor type."
+        },
+        {
+          "name": "velocity-limit",
+          "syntax": "velocity-limit <f>",
+          "description": "Specify the velocity limit used to determine if an object is stable or not for the factor-of-safety value. The default value is 1e-4 ."
+        },
+        {
+          "name": "zoneid",
+          "syntax": "zoneid <i>",
+          "description": "Specify the location of the history is at the centroid of zone with ID i ."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

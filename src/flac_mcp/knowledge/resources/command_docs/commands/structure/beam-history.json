@@ -1,0 +1,86 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "beam",
+    "history",
+    "structure"
+  ],
+  "description": "Sample beam responses. Quantities for sampling include the force and moment at one end of the beam and the axial stress for elements with a plastic material model. The force and moment are expressed using the force-moment sign convention .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure beam history",
+      "syntax": "structure beam history [name <s>] keyword",
+      "keywords": [
+        {
+          "name": "force",
+          "syntax": "force [beamhistoryblock]",
+          "description": "force magnitude"
+        },
+        {
+          "name": "force-x",
+          "syntax": "force-x [beamhistoryblock]",
+          "description": "force ( \\(x\\) -component, force-moment sign convention)"
+        },
+        {
+          "name": "force-y",
+          "syntax": "force-y [beamhistoryblock]",
+          "description": "force ( \\(y\\) -component, force-moment sign convention)"
+        },
+        {
+          "name": "force-z",
+          "syntax": "force-z 3D ONLY [beamhistoryblock]",
+          "description": "force ( \\(z\\) -component, force-moment sign convention)"
+        },
+        {
+          "name": "ipstress",
+          "syntax": "ipstress 3D ONLY [beamhistoryblock]",
+          "description": "axial stress ( \\(\\sigma_{xx}\\) ) for an element with a plastic material model. Uses the integration-point keyword."
+        },
+        {
+          "name": "moment",
+          "syntax": "moment [beamhistoryblock]",
+          "description": "moment magnitude"
+        },
+        {
+          "name": "moment-x",
+          "syntax": "moment-x 3D ONLY [beamhistoryblock]",
+          "description": "moment ( \\(x\\) -component, force-moment sign convention)"
+        },
+        {
+          "name": "moment-y",
+          "syntax": "moment-y 3D ONLY [beamhistoryblock]",
+          "description": "moment ( \\(y\\) -component, force-moment sign convention)"
+        },
+        {
+          "name": "moment-z",
+          "syntax": "moment-z 3D ONLY [beamhistoryblock]",
+          "description": "moment ( \\(z\\) -component, force-moment sign convention)"
+        },
+        {
+          "name": "component-id",
+          "syntax": "component-id <i>",
+          "description": "the particular element is identified by the component ID number. If this keyword is used, position should not be used."
+        },
+        {
+          "name": "end",
+          "syntax": "end <i>",
+          "description": "the quantity will be sampled at end i (where i is 1 or 2 ), which corresponds with the order in the nodal-connectivity list. The history is sampled at end 1 (the default) if this keyword is not supplied."
+        },
+        {
+          "name": "integration-point",
+          "syntax": "integration-point <ind>3D ONLY",
+          "description": "the integration point at which the axial stress is sampled. The integration point locations are shown here and here . If this keyword is not specified, then the integration point index is set to 1 . Only available if noted."
+        },
+        {
+          "name": "position",
+          "syntax": "position <v>",
+          "description": "the particular element is identified by ( v ) coordinates (the nearest element is taken). If this keyword is used, component-id should not be used."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

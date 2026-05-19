@@ -1,0 +1,31 @@
+{
+  "category": "extruder",
+  "search_keywords": [
+    "section",
+    "rectangle",
+    "sketch"
+  ],
+  "description": "Adds rectangular section(s).",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "sketch section rectangle",
+      "syntax": "sketch section rectangle keyword",
+      "keywords": [
+        {
+          "name": "center",
+          "syntax": "center <v1>point <v2>",
+          "description": "Create a rectangle from a center location v1 to a corner v2 ."
+        },
+        {
+          "name": "point-1",
+          "syntax": "point-1 <v1>point-2 <v2>[point-3 <v3>]",
+          "description": "if the first two points are specified, create a rectangle using two opposite corners. if the third point is specified, create a rectangle using two adjacent corners and a point on the opposite side."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

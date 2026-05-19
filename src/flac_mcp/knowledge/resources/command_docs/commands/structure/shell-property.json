@@ -1,0 +1,36 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "shell",
+    "property",
+    "structure"
+  ],
+  "description": "Assigns properties to shell elements in the range. The properties consist of constitutive model properties, and additional properties of shell-type elements. The constitutive model property names are primary keywords, but are not included in the list above. The following properties are available, with the constitutive model properties listed first.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure shell property",
+      "syntax": "structure shell property keyword ... [range]",
+      "keywords": [
+        {
+          "name": "density",
+          "syntax": "density <f>",
+          "description": "mass density"
+        },
+        {
+          "name": "thermal-expansion",
+          "syntax": "thermal-expansion <f>",
+          "description": "thermal-expansion coefficient"
+        },
+        {
+          "name": "thickness",
+          "syntax": "thickness <f>",
+          "description": "thickness"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

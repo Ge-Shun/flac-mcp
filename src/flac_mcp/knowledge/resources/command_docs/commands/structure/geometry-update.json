@@ -1,0 +1,21 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geometry",
+    "update",
+    "structure",
+    "geometry-update"
+  ],
+  "description": "Updates associated with geometric or property changes are performed at the start of every model solve command (including model step and model cycle ). In large-strain mode, these calculations are also updated every 10 steps by default. The number of steps between these large strain updates can be changed with this command to every i steps. The update rate specified here is independent of the update rate for the zones (see zone geometry-update ).",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geometry-update",
+      "syntax": "structure geometry-update <i>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "hybrid",
+    "list",
+    "structure"
+  ],
+  "description": "Lists properties and responses of hybrid bolt elements in the range. If no keyword is given, the default output of the command is that associated with the information keyword.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure hybrid list",
+      "syntax": "structure hybrid list keyword [range]",
+      "keywords": [
+        {
+          "name": "apply",
+          "syntax": "apply",
+          "description": "axial tension that will be maintained during cycling"
+        },
+        {
+          "name": "dowel",
+          "syntax": "dowel",
+          "description": "list of dowels associated with each element in the range"
+        },
+        {
+          "name": "force-axial",
+          "syntax": "force-axial",
+          "description": "axial force in the bolt (average of the two end forces)"
+        },
+        {
+          "name": "force-node-global",
+          "syntax": "global",
+          "description": "generalized nodal forces (force and moment) acting on the element. These are the generalized forces exerted by the nodes on the element. express the values in the element coordinate system (the default) express the values in the global coordinate system"
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "group assignment(s). If slot is specified, then list the group assignment, if any, in slot s ."
+        },
+        {
+          "name": "grout",
+          "syntax": "grout",
+          "description": "information about the grout that is modeled as coupling springs that connect the bolt to the target object (zones in FLAC3D and 3DEC, and particles in PFC3D): confinement, displacement, stress, yield state and average axial direction"
+        },
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "general element information: nodal connectivity, centroid, surface area, volume, and hide/select status"
+        },
+        {
+          "name": "length",
+          "syntax": "length",
+          "description": "length of the bolt"
+        },
+        {
+          "name": "property-young-dowel-yield",
+          "syntax": "dowel-yield",
+          "description": "cross-sectional area mass density grout cohesion (force units) per unit length grout friction angle grout exposed perimeter grout stiffness per unit length large-strain sliding flag large-strain sliding tolerance tensile failure strain thermal-expansion coefficient compressive yield strength tensile yield strength Young’s modulus Active length of dowel segments [L] Dowel shear strain limit [-] Dowel shear stiffness [F/L] Dowel shear yield strength [F]"
+        },
+        {
+          "name": "stress",
+          "syntax": "stress",
+          "description": "axial stress in the hybrid bolt element (not to be confused with stress in the grout)"
+        },
+        {
+          "name": "system-local",
+          "syntax": "system-local",
+          "description": "element local coordinate system"
+        },
+        {
+          "name": "yield",
+          "syntax": "yield",
+          "description": "yield state indicating whether or not the hybrid bolt element has yielded"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

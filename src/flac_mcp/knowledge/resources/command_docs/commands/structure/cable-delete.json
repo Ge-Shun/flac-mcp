@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "cable",
+    "delete",
+    "structure"
+  ],
+  "description": "Delete all cable elements in the range. Structure nodes and links that become disconnected from any element will automatically be deleted as well.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure cable delete",
+      "syntax": "structure cable delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

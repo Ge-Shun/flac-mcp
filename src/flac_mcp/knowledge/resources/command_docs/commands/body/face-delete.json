@@ -1,0 +1,20 @@
+{
+  "category": "body",
+  "search_keywords": [
+    "face",
+    "delete",
+    "building-blocks"
+  ],
+  "description": "Delete faces. This operation will also delete any blocks attached to the deleted faces. If < range > is not supplied, all faces (and blocks) will be deleted from the current set.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "building-blocks face delete",
+      "syntax": "building-blocks face delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

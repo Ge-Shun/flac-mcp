@@ -1,0 +1,26 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "beam",
+    "initialize",
+    "structure"
+  ],
+  "description": "Initialize quantities on the element.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure beam initialize",
+      "syntax": "structure beam initialize [keyword]",
+      "keywords": [
+        {
+          "name": "coupling",
+          "syntax": "coupling",
+          "description": "Find any deformable links attached to the element and attempt to initialize the force to match the stress state of the link target."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "category": "body",
+  "search_keywords": [
+    "edge",
+    "ratio",
+    "building-blocks"
+  ],
+  "description": "Apply a sizing ratio to zones on edges. The ratio is applied to edges in the current < range >, if supplied, or on all edges if not. The ratio f must be between 0.1 and 10.0 (the default is 1.0).",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "building-blocks edge ratio",
+      "syntax": "building-blocks edge ratio <f>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

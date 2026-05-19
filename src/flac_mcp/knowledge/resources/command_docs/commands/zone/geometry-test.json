@@ -1,0 +1,21 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "geometry",
+    "test",
+    "zone",
+    "geometry-test"
+  ],
+  "description": "Evaluate the integrity of model zones. FLAC has several tests built in to check the integrity of gridded models, to make sure that the model is adequate for simulation purposes. The first two tests are used to check for zone degeneracy and whether zone geometry can support both overlays. These situations may occur if a primitive is created without satisfying the requirements of geometry conditions, such as the number of vertices, edges and faces, or if zone is inverted (meaning that some of the internal primitives overlap within the overlay). Warning messages are given if any of the zone primitives are degenerate or if a zone cannot support two overlays.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone geometry-test",
+      "syntax": "zone geometry-test [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

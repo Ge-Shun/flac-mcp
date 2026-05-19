@@ -1,0 +1,33 @@
+{
+  "category": "extruder",
+  "search_keywords": [
+    "segment",
+    "node",
+    "id",
+    "sketch",
+    "segment-node"
+  ],
+  "description": "Modify a single node by ID.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "sketch segment-node id",
+      "syntax": "sketch segment-node id <i>keyword",
+      "keywords": [
+        {
+          "name": "merge",
+          "syntax": "merge [node] <i2>",
+          "description": "Merge the node with node i2 (node ID positive integer)."
+        },
+        {
+          "name": "move-to",
+          "syntax": "move-to <v>[merge-tolerance <f>]",
+          "description": "Moves the node to location v , 3D coordinate vector ( \\(u,v,w\\) ). If supplied, merge-tolerance f will be used as a tolerance for merging nodes during moving."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

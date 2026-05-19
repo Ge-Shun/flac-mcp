@@ -1,0 +1,21 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "safety",
+    "factor",
+    "structure",
+    "safety-factor"
+  ],
+  "description": "Set the safety factor for static analysis. The static safety factor is multiplied into the inertial masses calculated from the accumulated stiffness contributions to a structural node. The default is 2, the minimum allowed is 1.2. In general, the static rate of convergence will vary as the square root of this number.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure safety-factor",
+      "syntax": "structure safety-factor <f>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

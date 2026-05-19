@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "shell",
+    "apply",
+    "structure"
+  ],
+  "description": "Assign uniform applied pressure f to all shell elements in the range. Positive pressure acts in the positive \\(z\\) -direction of the element system and maintains this orientation during large-strain motion.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure shell apply",
+      "syntax": "structure shell apply <f>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

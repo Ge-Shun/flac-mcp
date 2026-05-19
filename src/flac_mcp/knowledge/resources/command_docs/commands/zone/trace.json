@@ -1,0 +1,35 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "trace",
+    "zone"
+  ],
+  "description": "Trace zone position and velocity. See the c trace commands.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone trace",
+      "syntax": "zone trace keyword",
+      "keywords": [
+        {
+          "name": "zoneid",
+          "syntax": "zoneid <i>",
+          "description": "Add a trace of the centroid of the zone with ID i ."
+        },
+        {
+          "name": "gridpointid",
+          "syntax": "gridpointid <i>",
+          "description": "Add a trace of the location corresponding to the gridpoint ID i ."
+        },
+        {
+          "name": "position",
+          "syntax": "position <v>",
+          "description": "Add a trace at position v , which must fall in or on some zone."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

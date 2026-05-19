@@ -1,0 +1,51 @@
+{
+  "category": "extruder",
+  "search_keywords": [
+    "segment",
+    "id",
+    "sketch"
+  ],
+  "description": "Modify a single segment by ID.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "sketch segment id",
+      "syntax": "sketch segment id <i>[keyword ...]",
+      "keywords": [
+        {
+          "name": "control-point-remove",
+          "syntax": "remove <i>[<i>...]",
+          "description": "Add one or more control points at locations v3 , a 3D coordinate vector ( \\(u, v, w\\) ). If local is used, then the locations are in a coordinate system defined by the segment, where \\(x\\) goes from end 1 at 0.0 to end 2 at 1.0, and \\(y\\) is normal to that. Remove all control points. Move the control point with index i to location v3 , a 3D coordinate vector ( \\(u, v, w\\) ). If local is used, then the segment local coordinate system is used (see add above). Remove one or more control points."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s1>[slot <s2>] [remove]",
+          "description": "Assign the group name s1 in slot s2 (if supplied) to the segment. The segment is removed from the group/slot if remove is present. If the slot keyword is omitted, the slot is set the slot named Default ."
+        },
+        {
+          "name": "ratio",
+          "syntax": "ratio <f>",
+          "description": "Set the ratio f (a number between 0.1 and 10.1 ), which is used to distribute zone lengths along the segment (each zone will be f of the size of the zone preceding it)."
+        },
+        {
+          "name": "ratio-reverse",
+          "syntax": "ratio-reverse",
+          "description": "Reverse the ratio direction."
+        },
+        {
+          "name": "size",
+          "syntax": "size <i>",
+          "description": "Set the number of zones on the segment."
+        },
+        {
+          "name": "type-curve",
+          "syntax": "curve represented by a B-spline",
+          "description": "Specify the curve type of the segment. This is the default type (a line)."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

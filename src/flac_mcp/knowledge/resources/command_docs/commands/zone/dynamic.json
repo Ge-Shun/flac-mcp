@@ -1,0 +1,55 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "dynamic",
+    "zone"
+  ],
+  "description": "Set parameters for a dynamic model (only available with the dynamic model option – see Dynamic Analysis . These parameters apply to zones only, other model elements may have different values.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone dynamic",
+      "syntax": "zone dynamic keyword",
+      "keywords": [
+        {
+          "name": "active",
+          "syntax": "active <b>",
+          "description": "Set zone mechanical calculations to use the dynamic option. The dynamic option is on for zones, by default, when the model configure dynamic command is given. Generally this setting is unnecessary and is inherent in the model configure dynamic setting."
+        },
+        {
+          "name": "damping-rayleigh",
+          "syntax": "rayleigh [<f1>[gradient <v>] <f2>[gradient <v>] [mass] [stiffness]]",
+          "description": "Select the damping type for the dynamic analysis. Damping in dynamic analysis is described in the topic Dynamic Damping . Damping values can vary from region to region within the model. The following keywords apply. Set the von Neumann ( f2 ) and Landshoff ( f2 ) constants, which in general should both be 1.0. This damping only applies to the main grid. See the topic Artificial Viscosity . Set combined local damping (see Combined Damping ). For example, for a target 0.05 (5%) damping ratio the input should be \\(0.05\\pi\\) . A gradient map be applied to vary the parameter in space. Set local damping (see Local Nonviscous Damping ). For example, for a target 0.05 (5%) damping ratio the input should be \\(0.05\\pi\\) . A gradient map be applied to vary the parameter in space. Select hysteretic damping (see Hysteretic Damping ). The following keywords and coefficients are the functions available to represent the variation in G/G max . Select the default model represented by a cubic equation with two parameters, \\(L_1\\) and \\(L_2\\) , respectively. Set the Hardin/Dernevich equation with one parameter, \\(\\gamma_{ref}\\) . Turn hysteretic damping off. Set the sigmoidal equation with three parameters, \\(a\\) , \\(b\\) and \\(x_0\\) , respectively. Set the sigmoidal equation with four parameters, \\(a\\) , \\(b\\) , \\(x_0\\) and \\(L\\) , respectively. Set the Ramberg-Osgood equation with three parameters, \\(\\gamma_{ref}\\) , \\(r\\) and \\(\\alpha\\) , respectively. Set the minimum (lower-bound) of the modulus reduction factor. The default is 0.005. Selecdt local damping (see Local Nonviscous Damping ). The damping value is 0.8, by default. A gradient map be applied to vary the parameter in space. Select Maxwell damping (see Dynamic Damping ). f1 is the center frequency of the first Maxwell component and fd1 is the maximum damping ratio of the first Maxwell component; f2 is the center frequency of the second Maxwell component and fd2 is the maximum damping ratio of the second Maxwell component; f3 is the center frequency of the third Maxwell component and fd3 is the maximum damping ratio of the third Maxwell component. If off-when-yield is set on (default), the Maxwell damping will be inactivated when the constitutive model is yielding; If off-when-yield is set off , the Maxwell damping will still be active when the constitutive model is yielding. Select Rayleigh damping. For dynamic calculations, a certain fraction of critical damping is usually required over a given frequency range. This type of damping is known as Rayleigh damping (see Rayleigh Damping ), where f1 = the fraction of critical damping operating at center frequency of f2 . ( Note: input frequencies for the program are in cycles/sec or Hertz – not radians/sec.) The optional modifiers stiffness and mass denote that the damping is to be restricted to stiffness- or mass-proportional, respectively. If they are left out, normal Rayleigh damping is used. Note By specifying stiffness damping, the critical timestep for numerical stability will automatically be reduced. It is still possible for instability to result if large mesh deformation occurs. In such a case, lower the timestep with the model dynamic timestep command."
+        },
+        {
+          "name": "free-field-plane-y",
+          "syntax": "plane-y 3D ONLY",
+          "description": "Control the free-field boundary condition (available only for dynamic option; see Free-Field Boundaries ). The following keywords are available. If on , create free field boundary zones. If off , destroy the free field boundary zones and the rest of the associated apply conditions. For FLAC2D , the option always creates free field boundary zones along the \\(x\\) -axis. Creates free field zones only on the planes perpendicular to the \\(x\\) -axis. So free field zones will be created on the \\(-x\\) and \\(+x\\) sides of the model, but not on the \\(-y\\) and \\(+y\\) side of the model, and corner zones will not be created. This is useful when FLAC3D is used to model 2D dynamic problems. Creates free field zones only on the planes perpendicular to the \\(y\\) -axis. So free field zones will be created on the \\(-y\\) and \\(+y\\) sides of the model, but not on the \\(-x\\) and \\(+x\\) side of the model, and corner zones will not be created. This is useful when FLAC3D is used to model 2D dynamic problems."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "List dynamic calculation-mode information."
+        },
+        {
+          "name": "multi-step",
+          "syntax": "multi-step <b>",
+          "description": "Turn multi-stepping on/off (see Dynamic Multi-stepping ). Multi-stepping speeds up calculations in dynamic models which have a large zone size or modulus contrast. Areas of the grid with critical timesteps greater than the global critical timestep are updated less frequently, thus saving execution time. The logic is general in the sense that all zones, gridpoints and structures are included. The user does not need to do anything beyond switching it on ."
+        },
+        {
+          "name": "safety-factor",
+          "syntax": "safety-factor <f>",
+          "description": "Set a safety factor applied to the critical timestep calculation for every gridpoint. The default safety factor is 1.3. Lowering the safety factor may produce ringing or actual instability, depending on the problem. If lowering the timestep for any reason, it may be easier and safer to apply a larger safety factor than specify a specific timestep."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total <f>",
+          "description": "Specify the accumulated zone dynamic time, defined as the sum of all the timesteps over which zone dynamic mode is active. Once set, dynamic time will continue to accumulate with subsequent cycles. [DR: please check that all the “see —-” links on this page land where they should]"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

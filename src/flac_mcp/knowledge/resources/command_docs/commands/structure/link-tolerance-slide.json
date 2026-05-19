@@ -1,0 +1,22 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "link",
+    "tolerance",
+    "slide",
+    "structure",
+    "tolerance-slide"
+  ],
+  "description": "Set the tolerance used when updating node-to-zone links in response to large-strain motion. A node is considered to be in a zone if it is within a distance \\(\\delta\\) of the zone boundary, where \\(\\delta\\) equals f times zone size (taken as the maximum \\(x\\) -, \\(y\\) -, or \\(z\\) -dimension of the zone bounding box). By default, f equals 1 × 10 -5 .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure link tolerance-slide",
+      "syntax": "structure link tolerance-slide <f>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

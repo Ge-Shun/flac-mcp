@@ -1,0 +1,36 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geogrid",
+    "select",
+    "structure"
+  ],
+  "description": "Selects or de-select all elements in the range. Selected objects can be specified in a range filter by using the selected keyword. Objects that are not selected can be specified in a range filter by using the deselected keyword.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geogrid select",
+      "syntax": "structure geogrid select keyword",
+      "keywords": [
+        {
+          "name": "adummy",
+          "syntax": "<b>",
+          "description": "Set on to select all elements in the range. Set off to de-select all elements in the range. on is the default if no keyword is given."
+        },
+        {
+          "name": "new",
+          "syntax": "new",
+          "description": "implies on . This will select elements in the range and automatically de-select elements not in the range."
+        },
+        {
+          "name": "undo",
+          "syntax": "undo",
+          "description": "Reverse the operation of the last structure geogrid select command. The program keeps a maximum undo stack of size 12."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

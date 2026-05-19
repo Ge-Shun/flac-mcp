@@ -1,0 +1,46 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "gridpoint",
+    "import",
+    "zone"
+  ],
+  "description": "Imports grid point data.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone gridpoint import",
+      "syntax": "zone gridpoint import pore-pressure <sfile>[keyword ...] [range] 3D ONLY",
+      "keywords": [
+        {
+          "name": "cutoff",
+          "syntax": "cutoff <f>",
+          "description": "Pore pressure values are not allowed to fall below this cutoff value. The default cutoff value is 0.0 . The cutoff is applied before the scaling of pressure, if scale-pressure is given."
+        },
+        {
+          "name": "geometry",
+          "syntax": "geometry",
+          "description": "If this keyword is given, then geometric data representing the pore pressure is created. MineDW nodes and zones will be created in a geometric set named MineDW . Nodes and edges are created only. Unstructured imported points are added as nodes only to a geometry set called PorePressure . The first extra variable of the node will be assigned the pore pressure value."
+        },
+        {
+          "name": "translate",
+          "syntax": "translate <v>",
+          "description": "If this keyword is used, the node locations in the file will be translate by the specified vector on import. The default value is (0,0,0). The translate is applied before the scale operation if scale-pressure is given."
+        },
+        {
+          "name": "scale-position",
+          "syntax": "scale-position <f>",
+          "description": "Scale the components of the position vector of the individual points by multiplying by the scalar f. This scale operation is performed after the translate operation. The default value is 1.0"
+        },
+        {
+          "name": "scale-pressure",
+          "syntax": "scale-pressure <f>",
+          "description": "Scale the pore pressure by multiplying by the scalar f. This scaler operation is performed after the cuttoff operation. The default value is 1.0 ."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

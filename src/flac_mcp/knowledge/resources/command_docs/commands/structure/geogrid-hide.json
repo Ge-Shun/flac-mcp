@@ -1,0 +1,31 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geogrid",
+    "hide",
+    "structure"
+  ],
+  "description": "Hide or un-hide all geogrid elements in the range. By default, commands that use a range filter will skip hidden objects. This can be overruled with the use-hidden keyword in the range specification.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geogrid hide",
+      "syntax": "structure geogrid hide keyword",
+      "keywords": [
+        {
+          "name": "adummy",
+          "syntax": "<b>",
+          "description": "If a boolean type is specified, and if on , it hides all elements in the range. If off , it un-hides (or shows) all elements in the range, and the use-hidden keyword is applied to the range implicitly. on is the default if no keyword is given."
+        },
+        {
+          "name": "undo",
+          "syntax": "undo",
+          "description": "Reverse the operation of the last structure geogrid hide command. The program keeps a maximum undo stack of size 12."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

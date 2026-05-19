@@ -19,8 +19,12 @@ def register(mcp: FastMCP) -> None:
         query: SearchQuery,
         limit: SearchLimit = 10,
         version: CommandDocVersion = Field(
-            CommandDocVersion.V7_0,
-            description="FLAC documentation version to search. Defaults to 7.0.",
+            CommandDocVersion.V9_0,
+            description=(
+                "FLAC documentation version to search. Defaults to 9.0 "
+                "(current ITASCA Software release; covers FLAC continuum + "
+                "structural-element commands). Use 7.0/6.0 for legacy PFC."
+            ),
         ),
     ) -> dict[str, Any]:
         """Search FLAC command documentation by keywords (like grep).

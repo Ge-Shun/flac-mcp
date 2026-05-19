@@ -1,0 +1,22 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "node",
+    "damping",
+    "local",
+    "structure",
+    "damping-local"
+  ],
+  "description": "Sets the local-damping factor to f for all nodes in the range (see the structure mechanical damping command). By default, f equals to 0.8.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure node damping-local",
+      "syntax": "structure node damping-local <f>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "cable",
+    "refine",
+    "structure"
+  ],
+  "description": "This command refines an existing element in the range by subdividing it into i equal-size segments. The original structural element is deleted.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure cable refine",
+      "syntax": "structure cable refine <i>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

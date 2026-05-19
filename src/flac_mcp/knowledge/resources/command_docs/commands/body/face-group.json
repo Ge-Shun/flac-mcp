@@ -1,0 +1,20 @@
+{
+  "category": "body",
+  "search_keywords": [
+    "face",
+    "group",
+    "building-blocks"
+  ],
+  "description": "Assign a group name to faces. The command is applied to faces in the current < range >, if supplied, or to all faces if not. If the < remove > option is used, the faces in the range will be removed from the group s .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "building-blocks face group",
+      "syntax": "building-blocks face group <s>[slot <s>] [remove] [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

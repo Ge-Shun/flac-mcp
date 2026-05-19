@@ -1,0 +1,25 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "export",
+    "zone"
+  ],
+  "description": "Export a grid to a file.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone export",
+      "syntax": "zone export <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "binary",
+          "syntax": "binary",
+          "description": "Set exported grid file to binary-format instead of ASCII-format."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

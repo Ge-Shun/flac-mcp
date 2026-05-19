@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "beam",
+    "apply",
+    "structure"
+  ],
+  "description": "Assign uniform applied distributed load (force per unit length) to all beam elements in the range. Positive loads acts in the positive \\(y\\) - or \\(z\\) -directions ( f1 and f2 , respectively) of the element coordinate system and maintains this orientation during large-strain motion. Point loads are applied at the nodes using the command structure node apply .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure beam apply",
+      "syntax": "structure beam apply <f1><f2>[range] only 1 component in 2D",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

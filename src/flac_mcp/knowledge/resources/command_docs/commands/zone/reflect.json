@@ -1,0 +1,45 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "reflect",
+    "zone"
+  ],
+  "description": "All zones within the given range are reflected across the plane. Note that group information is copied from the original to the new zones.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone reflect",
+      "syntax": "zone reflect keyword ... [range]",
+      "keywords": [
+        {
+          "name": "dip-direction",
+          "syntax": "dip-direction <f>3D ONLY",
+          "description": "Specify the dip direction f [degrees] of the plane measured in the global \\(xy\\) -plane clockwise from the positive \\(y\\) -axis. (The default is f = 0.)"
+        },
+        {
+          "name": "dip",
+          "syntax": "dip <f>",
+          "description": "Specify (in FLAC3D ) the dip angle f [degrees] of the plane, measured in the negative \\(z\\) -direction from the global \\(xy\\) -plane. (The default is f = 0.) In FLAC2D , this specifies the angle f [degrees] of the plane measured clockwise from the global \\(x\\) -axis. (The default is f = 0.)"
+        },
+        {
+          "name": "normal",
+          "syntax": "normal <v>",
+          "description": "Specify a normal vector to the plane, with the components specified as v . If normal is specified, dip and dip-direction are not required."
+        },
+        {
+          "name": "origin",
+          "syntax": "origin <v>",
+          "description": "Specify the location of one point through which the plane crosses. The coordinates of the point are v ."
+        },
+        {
+          "name": "merge",
+          "syntax": "merge <b>",
+          "description": "If b is off , then boundary gridpoints of the newly created zones are not automatically merged with previous existing gridpoints. By default merge is on ."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

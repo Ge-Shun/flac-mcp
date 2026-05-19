@@ -1,0 +1,66 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "link",
+    "list",
+    "structure"
+  ],
+  "description": "List properties and responses of structural element links in the range.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure link list",
+      "syntax": "structure link list keyword [range]",
+      "keywords": [
+        {
+          "name": "attach",
+          "syntax": "attach",
+          "description": "attachment conditions"
+        },
+        {
+          "name": "displacement",
+          "syntax": "displacement",
+          "description": "displacement in deformable models of this link. Displacement of target object minum displacement of source node (node-local coordinate system)."
+        },
+        {
+          "name": "force",
+          "syntax": "force",
+          "description": "Force in deformable models of this link (sign corresponds with sign of displacement)"
+        },
+        {
+          "name": "property",
+          "syntax": "property [<s>]",
+          "description": "value of property s in deformable models of this link (see Link Model Properties )"
+        },
+        {
+          "name": "slide",
+          "syntax": "slide",
+          "description": "flag for large-strain sliding"
+        },
+        {
+          "name": "slide-tolerance",
+          "syntax": "slide-tolerance",
+          "description": "sliding tolerance (used during large-strain sliding)"
+        },
+        {
+          "name": "source-node",
+          "syntax": "source-node",
+          "description": "node from which the link emanates"
+        },
+        {
+          "name": "state",
+          "syntax": "state",
+          "description": "yield state for each degree-of-freedom that has a deformable model"
+        },
+        {
+          "name": "target",
+          "syntax": "target",
+          "description": "type (node-to-node or node-to-object) and ID (or component-id of a node) of the link target"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

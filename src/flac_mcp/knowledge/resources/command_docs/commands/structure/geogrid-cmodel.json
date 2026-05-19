@@ -1,0 +1,36 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geogrid",
+    "cmodel",
+    "structure"
+  ],
+  "description": "Assign or get information about shell constitutive models. This command allows one to assign a constitutive model to a specified shell-type element, query properties and states of constitutive models, and assign and query the integration scheme for plastic elements.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geogrid cmodel",
+      "syntax": "structure geogrid cmodel keyword",
+      "keywords": [
+        {
+          "name": "assign-von-mises",
+          "syntax": "von-mises",
+          "description": "Assign the specified constitutive model to all elements in the range. If a model has already been assigned, then the command replaces the existing model with the new one. If either an elastic or plastic model is replaced by an elastic model, then the nodal forces acting on the element remain the same. If a plastic constitutive model is replaced by another plastic model, then both the integration scheme and the stress at each integration point remain the same. The case of an elastic model being replaced by a plastic model is not yet implemented. The properties of the newly assigned constitutive model will be default values, and should be set with the structure geogrid property command. The integration scheme for elements with a plastic material model is set with the structure geogrid cmodel plastic-integration command. Shell Elastic Constitutive Models isotropic elastic model (see the Shell Elastic Constitutive Models description). orthotropic elastic model (see the Shell Elastic Constitutive Models description). anisotropic elastic model (see the Shell Elastic Constitutive Models description). Shell Elastic-Plastic Constitutive Models Mohr Coulomb elasto-plasticity model in plane-stress mode (see the Mohr Coulomb model description). Plastic material behavior is supported by the DKT, CST and DKT-CST finite elements. Strain-softening/hardening Mohr Coulomb elasto-plasticity model in plane-stress mode (see the Mohr Coulomb strain softening model description). Plastic material behavior is supported by the DKT, CST and DKT-CST finite elements. The softening properties vary over the integration points. von Mises elasto-plasticity model in plane-stress mode (see the von Mises model description). Plastic material behavior is supported by the DKT, CST and DKT-CST finite elements."
+        },
+        {
+          "name": "list-plastic-integration",
+          "syntax": "plastic-integration [integration-point <ind>] [range]",
+          "description": "Outputs available shell constitutive model keywords and full names. Output is restricted to the model named s if supplied. Outputs the property list for each shell constitutive model. Output is restricted to the model named s if supplied. Outputs the state flags for each shell constitutive model. Output is restricted to the model named s if supplied. Integration data. Data for all integration points is listed, unless integration-point is specified, in which case the following data for integration point ind is listed: the area coordinates \\(( \\xi, \\eta )\\) and weight factor with respect to the element area \\(( W )\\) as well as the abscissa \\((z^\\star, z = z^\\star {t\\over2})\\) and weight factor with respect to the element thickness \\(( a )\\) . The integration point locations are shown here ."
+        },
+        {
+          "name": "plastic-integration",
+          "syntax": "plastic-integration <i1><i2>[range]",
+          "description": "number of integration points through the thickness ( i1 ) and over the element area ( i2 ) for plastic materials. The integration point layout is shown here . The allowable values for { i1 , i2 } are \\(\\{ 1, 1 \\}\\) or \\(\\{ 2-12, 3 \\}\\) . The default values are five and three, respectively. See Shell Plastic Constitutive Models for additional discussion of the integration scheme, and see this Figure for guidance on choosing the number of integration points through the thickness. The integration scheme cannot be modified after cycling has occurred. When the integration scheme is set, then the shell constitutive model properties are reset to their default values; thus, the shell constitutive model properties should be set after setting the integration scheme. Plastic integration data can be queried with the structure geogrid cmodel list plastic-integration command."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "node",
+    "list",
+    "structure"
+  ],
+  "description": "List properties and responses of structural element nodes in the range.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure node list",
+      "syntax": "structure node list keyword [range]",
+      "keywords": [
+        {
+          "name": "acceleration-local",
+          "syntax": "local",
+          "description": "translational and rotational acceleration. The following keywords, if present, specify the coordinate system in which these values are expressed. values are expressed in the global system values are expressed in the node-local system. This is the default if no keyword is specified."
+        },
+        {
+          "name": "apply-moment",
+          "syntax": "moment",
+          "description": "apply conditions on the node. One of the following keywords can be supplied to specify which apply condition is listed. applied force and system in which it is specified (global or node-local). This is the default if no keyword is specified. applied moment and system in which it is specified (global or node-local)"
+        },
+        {
+          "name": "connectivity",
+          "syntax": "connectivity",
+          "description": "component-id numbers of all structural elements that are connected to this node"
+        },
+        {
+          "name": "damping",
+          "syntax": "damping",
+          "description": "damping type (local, combined, Rayleigh or Maxwell) and associated properties"
+        },
+        {
+          "name": "displacement-local",
+          "syntax": "local",
+          "description": "translational and rotational displacement. The following keywords, if present, specify the coordinate system in which these values are expressed. values are expressed in the global system values are expressed in the node-local system. This is the default if no keyword is specified."
+        },
+        {
+          "name": "fix-local",
+          "syntax": "fix-local",
+          "description": "fixity state of node-local coordinate system (if free, then the system orientation will be set by the structural element that uses the node; if fixed, then the system orientation will remain fixed)."
+        },
+        {
+          "name": "fixity",
+          "syntax": "fixity",
+          "description": "velocity fixity conditions for each degree of freedom (free, fixed or slaved to velocity of target object)"
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "group assignment(s). If slot is specified, then list the group assignment, if any, in slot s ."
+        },
+        {
+          "name": "link",
+          "syntax": "link",
+          "description": "component-id numbers of any links that are attached to the node"
+        },
+        {
+          "name": "mass",
+          "syntax": "mass",
+          "description": "translational and rotational mass expressed in the node-local system"
+        },
+        {
+          "name": "position-reference",
+          "syntax": "reference",
+          "description": "position. There are two different position values; the following keywords (if present) allow you to select which position is listed. By default, the reference position is listed. current position of the node, which is updated from the starting (or reference) position even in small-strain mode reference position of the node, which is updated only in large-strain mode. In small-strain mode, this is the initial location of the node and does not change. The reference position corresponds to the nodal position at the time that the stiffness matrices of all finite elements that use the node were formed."
+        },
+        {
+          "name": "ratio-target",
+          "syntax": "ratio-target",
+          "description": "target local force ratio that is considered to be converged for mechanical calculations (see the ratio-target keyword in the structure node initialize command)"
+        },
+        {
+          "name": "stiffness",
+          "syntax": "stiffness",
+          "description": "translational and rotational stiffness expressed in the node-local system"
+        },
+        {
+          "name": "system-local",
+          "syntax": "system-local",
+          "description": "orientation of the node-local coordinate system"
+        },
+        {
+          "name": "system-surface",
+          "syntax": "system-surface 3D ONLY",
+          "description": "orientation of the surface coordinate system"
+        },
+        {
+          "name": "unbalanced-force-local",
+          "syntax": "local",
+          "description": "unbalanced force and moment (equal to sum of all forces and moments acting on the node). The following keywords, if present, specify the coordinate system in which these values are expressed. values are expressed in the global system values are expressed in the node-local system. This is the default if no keyword is specified."
+        },
+        {
+          "name": "velocity-local",
+          "syntax": "local",
+          "description": "translational and rotational velocity. The following keywords, if present, specify the coordinate system in which these values are expressed. values are expressed in the global system values are expressed in the node-local system. This is the default if no keyword is specified."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

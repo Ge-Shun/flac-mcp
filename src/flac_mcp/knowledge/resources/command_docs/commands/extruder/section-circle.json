@@ -1,0 +1,31 @@
+{
+  "category": "extruder",
+  "search_keywords": [
+    "section",
+    "circle",
+    "sketch"
+  ],
+  "description": "Adds circular section(s).",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "sketch section circle",
+      "syntax": "sketch section circle keyword",
+      "keywords": [
+        {
+          "name": "center-point",
+          "syntax": "point <v2>",
+          "description": "Create a circle at the center location v1 . Specifies the circle radius f . Specifies a point v2 on the circle."
+        },
+        {
+          "name": "point-1",
+          "syntax": "point-1 <v1>point-2 <v2>[keyword]",
+          "description": "Create a circle through two points on the circumference. .. kwd:: quad-split f Add a square block inside the circle. The square helps improve the shape of the zones inside the circle."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

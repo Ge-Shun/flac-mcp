@@ -1,0 +1,31 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "cable",
+    "initialize",
+    "structure"
+  ],
+  "description": "Initializes quantities on the element.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure cable initialize",
+      "syntax": "structure cable initialize [keyword]",
+      "keywords": [
+        {
+          "name": "coupling",
+          "syntax": "coupling",
+          "description": "finds any deformable links attached to the element and attempts to initialize the force to match the stress state of the link target"
+        },
+        {
+          "name": "force-axial",
+          "syntax": "force-axial <f>",
+          "description": "initializes the axial force in the element to f by setting the internal nodal forces. Note that this will override the existing internal nodal translational force state in the element."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "link",
+    "tolerance",
+    "node",
+    "structure",
+    "tolerance-node"
+  ],
+  "description": "Set the tolerance used when establishing node-to-node links. A node-to-node link can only be established if the distance between the two nodes is less than f . By default, f equals 1 × 10 -5 .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure link tolerance-node",
+      "syntax": "structure link tolerance-node <f>",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

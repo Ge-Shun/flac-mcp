@@ -1,0 +1,100 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "fluid",
+    "zone"
+  ],
+  "description": "Set parameters for a groundwater fluid flow analysis.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone fluid",
+      "syntax": "zone fluid keyword",
+      "keywords": [
+        {
+          "name": "active",
+          "syntax": "active <b>",
+          "description": "Set the fluid process on or off. The process is on for zones, by default, when the model configure fluid command is given. Specify off to suppress the fluid calculation for zones."
+        },
+        {
+          "name": "biot",
+          "syntax": "biot <b>",
+          "description": "Set use of the Biot coefficient. If on , the fluid-flow calculation uses the Biot coefficient, \\(α\\) , and the Biot modulus, \\(M\\) . If off , then the fluid modulus, \\(K_f\\) , and porosity, \\(n\\) , are used and \\(α\\) = 1. The default is off . See Biot Coefficient and Biot Modulus ."
+        },
+        {
+          "name": "cmodel-list",
+          "syntax": "list",
+          "description": "Associate a fluid constitutive model with specified zones in the grid. The command also allows querying of properties and states of constitutive models. Assign a fluid model to all zones in the range . This keyword may only be given if the model is configured for fluid calculations (i.e., the command model configure fluid has been issued). Fluid models are described in Grid Configured for Fluid Flow . Assign the anisotropic flow model. Assign the isotropic flow model. Assign the null fluid model. List the available fluid constitutive models and their properties."
+        },
+        {
+          "name": "fastflow",
+          "syntax": "fastflow <b>",
+          "description": "Turn the fastflow solution scheme on/off . See Fully Saturated Fast Flow ."
+        },
+        {
+          "name": "fastflow-relaxation",
+          "syntax": "fastflow-relaxation <f>",
+          "description": "Set the relaxation parameters used in the fastflow solution scheme."
+        },
+        {
+          "name": "implicit-solver-pcg-iterations-limit-preserve",
+          "syntax": "preserve",
+          "description": "Turn implicit mode on/off . By default implicit mode is off . Implicit mode requires a manually specified timestep. If no keyword is specified, the implicit logic uses iterative Jacobi solver. If Jacobi solver fails to converge to the solution, the logic switches to preconditioned conjugate gradient solver (see below). The following keywords apply: Use the iterative Jacobi solver based on the local matrix formulation (see Implicit Formulation ). Note that specifying a timestep that is too large can cause the Jacobi solver to fail to converge. If this keyword is specified and the solver diverges, the system will exit with an error message. The benefit of using the Jacobi solver compared to other solvers is that it is usually faster for small implicit timesteps (<< the divergence timestep). Use the direct solver similar to matrix inversion (see Advanced implicit solvers ). This highly efficient solver is able to handle small to medium size models (< 50-100K zones) and it is unconditionally stable for any timestep. Before this solver is called, the global right-hand-side (RHS) vector and global coefficient matrix (M) are formed for the whole model to incorporate contributions from all relevant gridpoints. Then the solver solves a system of linear equations for unknown global vector of pore pressure changes. The following keyword is available: Specify to preserve the global pressure coefficients matrix and only update its diagonal containing timestep-dependent terms. In general, the global matrix M must be re-created each time the implicit solver is called as model parameters, such as geometry, physical properties, implicit timestep, etc., may change. However, if the model parameters do not change during the simulation but user wishes to specify a different implicit timestep (e.g., to gradually increase it every certain number of steps), only the diagonal terms of the global matrix must be updated, which is very efficient. To stop this procedure and form a new global pressure coefficients matrix, the command zone thermal implicit must be issued (this resets the implicit solvers settings). Use the preconditioned conjugate gradient iterative solver (see Advanced implicit solvers ). This highly efficient solver is able to handle very large models and it is unconditionally stable for any timestep due to its special technique of matching desired solution accuracy to the number of iterations required to reach this accuracy. Before the solver is called, the global right-hand-side (RHS) vector and global pressure coefficients matrix (M) are created for the whole model to incorporate contributions from all relevant gridpoints. Then the solver analyses matrix properties (eigenvalues, condition number) and determines the required number of iterations, after which the iterative solution procedure starts. The following keywords are available. Specify an error tolerance (solution accuracy) that will determine when to stop iterations. The default tolerance value is 1.e-6. Specify the limit on the number of iterations. By default, the number of iterations is determined based on the analysis of the global matrix properties, such as minimum/maximum eigenvalues and the the condition number. This analysis is usually done rather fast, and it assures that the system can be solved to reach desired solution accuracy. Specifying a limit on the number of iteration skips the global matrix analysis, which may decrease overall solution time, but the risk of this is that the number of iterations specified may be insufficient to reach desired accuracy. The pcg solver has a general limit of 1000 on the number of iterations. Specify to preserve the global pressure coefficients matrix and only update its diagonal containing timestep-dependent terms. For detailed description see the equivalent usage above with the solver-direct keyword."
+        },
+        {
+          "name": "list-property-rotation",
+          "syntax": "rotation <f>",
+          "description": "Output current configuration settings and status information for the fluid model. Output the values of the specified fluid property in all zones in the range. Biot coefficient (grain compressibility), \\(\\alpha\\) . The default is 1.0. List isotropic hydraulic conductivity, \\(k\\) . This is the conventional hydraulic conductivity in units of [Length/Time]. Non-zero gravity and water density should be set in advance. Hydraulic conductivity must be non-zero if the command zone fluid active on applies. Only one between hydraulic conductivity and permeability is needed. List porosity, \\(n\\) . The default is 0.5. List undrained thermal coefficient, \\(\\beta\\) . List isotropic permeability, \\(k\\) . The permeability used in FLAC is defined as the conventional hydraulic conductivity divided by the unit weight of water. Permeability must be non-zero if the command zone fluid active on applies. Only one between hydraulic conductivity and permeability is needed. List the principal permeability plane dip angle (in degrees). List the principal permeability plane dip direction angle (in degrees). List the principal permeability value. List the principal permeability value. List the principal permeability value. List the xx -component of permeability. List the xy -component of permeability. List the xz -component of permeability. List the yy -component of permeability. List the yz -component of permeability. List the zz -component of permeability. List the principal permeability plane rotation angle (in degrees)."
+        },
+        {
+          "name": "property-rotation",
+          "syntax": "rotation <f>",
+          "description": "Assign properties for the fluid flow constitutive models of all zones in the range. Any number of name-value pairs may be assigned. The type of the value a must match the type expected by the property s . Any constitutive model that has a matching property name will be assigned the value. Set the biot coefficient (grain compressibility), \\(\\alpha\\) . The default is 1.0. Set porosity, \\(n\\) . The default is 0.5. Set the undrained thermal coefficient, \\(\\beta\\) . Isotropic Fluid Flow: Set isotropic hydraulic conductivity (units of length/time). Gravity and water density must be defined to use this quanitity. Only one of hydraulic-conductivity or permeability needs to be assigned. Set isotropic permeability, \\(k\\) . The permeability used in FLAC is defined as the conventional hydraulic permeability divided by the unit weight of water. Permeability must be non-zero if the command zone fluid active on applies. Only one of hydraulic-conductivity or permeability needs to be assigned. Anisotropic Fluid Flow: Set the principal permeability plane dip angle (in degrees). Set the principal permeability plane dip direction angle (in degrees). Set the principal hydraulic conductivity value (units of length/time). Set the principal hydraulic conductivity value (units of length/time). Set the principal hydraulic conductivity value (units of length/time). Set the xx -component of hydraulic conductivity (units of length/time). Set the xy -component of hydraulic conductivity (units of length/time). Set the xz -component of hydraulic conductivity (units of length/time). Set the yy -component of hydraulic conductivity (units of length/time). Set the yz -component of hydraulic conductivity (units of length/time). Set the zz -component of hydraulic conductivity (units of length/time). Set the principal permeability value. Set the principal permeability value. Set the principal permeability value. Set the xx -component of permeability. Set the xy -component of permeability. Set the xz -component of permeability. Set the yy -component of permeability. Set the yz -component of permeability. Set the zz -component of permeability. Set the principal permeability plane rotation angle (in degrees)."
+        },
+        {
+          "name": "property-distribution-vary",
+          "syntax": "vary <v>",
+          "description": "Assign a single property name to the fluid flow constitutive models of all zones in the range. The property value may be varied in space by using the following optional keyword values. Add a to the property value. This keyword only applies to float type property values. A gaussian distribution is used to assign the value randomly, with a mean value of a and a standard deviation of f . This keyword only applies to float type property values. A uniform distribution is used to assign the value randomly, with a mean value of a and a standard deviation of f . This keyword only applies to float type property values. Apply a gradient to the property value. This keyword only applies to float type property values. Note the origin keyword is optional, however, the default value (0,0,0) is used if the origin keyword is not included in the command — which may not produce the intended result. Multiply the property value by a . Apply a linear variation to the property value. This keyword only applies to float type property values."
+        },
+        {
+          "name": "saturation-tolerance",
+          "syntax": "saturation-tolerance <f>",
+          "description": "Specify that the effect of saturation changes to gridpoints is only applied when the accumulated saturation change is greater than this value. This is done for efficiency of calculation. The default value is 1e-3."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total <f>",
+          "description": "Specify the accumulated zone fluid time, defined as the sum of all the timesteps over which zone fluid is active. Once set, fluid time will continue to accumulate with subsequent cycles."
+        },
+        {
+          "name": "track-trace",
+          "syntax": "trace [name <s>] <i>",
+          "description": "Place a particle in the grid at the location specified. The particle flows with the fluid and maintains a record of its path over a finite period of time. The grid must be configured for fluid flow (see model configure fluid ), and the zone must have a non-null fluid model in order for a particle to exist in a zone. The particle is not created (and no error message is output) if the location does not map into a zone with these specifications. The particles have no mass and do not influence the flow or mechanical behavior in any way; they are simply carried along by the fluid and record its motion. Several TRACK commands may be given, at different times, if desired. See the data files in One-Dimensional Filling of a Porous Region for an example of particle track usage. Location and keywords are given as follows. Turn particle tracking on/off . track is off by default. Create one or more particles in zones. The location and number of the particles created are controlled by the following keywords. The <[zonefluidblock]> following can be used to specify attributes on the created particles. Place a particle in the grid at the specified location v . For each vector value given, another particle will be created. Add particles to the grid along a line. Specify the start position of the line. The default value is (0,0,0). Specify the end position of the line. The default value is (0,0,0). Specify the line be divided equally into i + 1 segments, causing i particles to be introduced into the grid. The default value is 2. Add particles to the grid along a plane defined by two lines. Specify the shared start point of both lines that will define the plane. The default value is (0,0,0). Specify the end of the first line. The default value is (0,0,0). Specify the end of the second line. The default value is (0,0,0). Divide the first line into i1 + 1 equal segments and divide the second line into i2 + 1 equal segments. i1 x i2 particles will be introduced to the grid on an evenly spaced grid along the plane. The default values of i1 and i2 are 2. Delete particles within the given range . Assign or remove groups to particles in the range. Use of the group logic is described in Groups . Remove the group s from particles within the given range. This does not remove the particles themselves. Assign groups in the given range to the slot named s . By default groups will be assigned to slot Default . List summary information about tracking particles. If the path keyword is omitted, the current particle position information is output. If the path keyword is included, then particle path information is output. Create a location trace (see the trace command) of the particle with ID number i ."
+        },
+        {
+          "name": "zone-based-pp",
+          "syntax": "zone-based-pp <b>",
+          "description": "Specify that pore-pressures should be retrieved directly from the zone, rather than averaged from the gridpoints. Zone pore pressures must be assigned manually via FISH , using the zone.pp intrinsic."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s1>[slot <s2>]",
+          "description": "Assign the created particles to the group s1 and, if supplied, assign that group to slot s2 . By default the slot name will be Default ."
+        },
+        {
+          "name": "tail",
+          "syntax": "tail <b>",
+          "description": "When on (the default setting), particles will automatically store a list of coordinates along their path as they move through the grid. If off particles will only keep track of their current position."
+        },
+        {
+          "name": "tortuosity",
+          "syntax": "tortuosity <f>",
+          "description": "Specify the tortuosity as f . Tortuosity is the ratio of the straight line path to the actual fluid path through a zone. This factor will be used to multiply track increments calculated from the flow velocity. The value defaults to 1 if not given."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

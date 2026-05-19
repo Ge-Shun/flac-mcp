@@ -1,0 +1,45 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "mechanical",
+    "zone"
+  ],
+  "description": "Set parameters for a static mechanical analysis that are specific to zones. The following keywords apply.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone mechanical",
+      "syntax": "zone mechanical keyword",
+      "keywords": [
+        {
+          "name": "active",
+          "syntax": "active <b>",
+          "description": "Set mechanical calculation off / on (default is on ). The mechanical calculation may be turned off for a thermal-only calculation or a fluid flow-only calculation. Note that in general it is preferable to set mechanical calculations off for the entire model with the model mechanical active command."
+        },
+        {
+          "name": "damping-local",
+          "syntax": "local [<f>][alternate]",
+          "description": "Select the damping type for the static, mechanical process (the default damping is local ). Combined local damping (default is 0.8). Local damping (default is 0.8). If the alternate keyword is specified, an experimental alternate implementation of local damping is used that produces less sensitivity to small changes in the model."
+        },
+        {
+          "name": "energy-clear",
+          "syntax": "clear [range]",
+          "description": "Allow elastic strain energy and dissipated plastic energy to be calculated (see Energy Calculation in FLAC3D ). Turn the calculations off / on in the stress-strain loop. Set the four zone energy values in every zone back to zero. The zone mechanical active command does not clear these values. This stops accumulating plastic work over any desired interval, and resumes accumulating at any time from where it left off."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "Show a summary of current zone mechanical settings in the console."
+        },
+        {
+          "name": "safety-factor",
+          "syntax": "safety-factor <f>",
+          "description": "Set a safety factor applied to the gridpoint stiffness calculation, which is done in stability calculations for both static and dynamic mode. The default safety factor is 1.0."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

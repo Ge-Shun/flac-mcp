@@ -184,6 +184,465 @@
         }
       ]
     },
+    "body": {
+      "full_name": "Building-Blocks Commands",
+      "description": "Commands for the building-blocks geometry builder — interactively defining blocks, faces, edges, and points that are meshed into the FLAC zone grid via 'zone generate from-build-blocks'.",
+      "command_prefix": "building-blocks",
+      "python_module": null,
+      "doc_url": "https://docs.itascacg.com/flac3d900/flac3d/body/doc/manual/buildingblocks_manual/building-blocks.html",
+      "related_categories": [
+        "zone",
+        "geometry"
+      ],
+      "notes": [
+        "Building blocks are a topology-first meshing workflow: define blocks, then generate zones from them",
+        "Command verb is 'building-blocks' even though the docs/UI call it the Building Blocks pane",
+        "Primarily a model-setup tool; most workflows drive it via the GUI or 'itasca.command()'",
+        "Use 'zone generate from-build-blocks' to turn the block topology into a zone grid"
+      ],
+      "commands": [
+        {
+          "name": "block-create",
+          "file": "commands/body/block-create.json",
+          "short_description": "Create a block or blocks",
+          "syntax": "building-blocks block create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-delete",
+          "file": "commands/body/block-delete.json",
+          "short_description": "Delete blocks",
+          "syntax": "building-blocks block delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-export",
+          "file": "commands/body/block-export.json",
+          "short_description": "Export blocks",
+          "syntax": "building-blocks block export keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-group",
+          "file": "commands/body/block-group.json",
+          "short_description": "Assign or remove a group name to blocks",
+          "syntax": "building-blocks block group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-hide",
+          "file": "commands/body/block-hide.json",
+          "short_description": "Set the blocks to be hide or not",
+          "syntax": "building-blocks block hide <b>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-id",
+          "file": "commands/body/block-id.json",
+          "short_description": "Perform an operation on a block (by ID)",
+          "syntax": "building-blocks block id <i>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-import",
+          "file": "commands/body/block-import.json",
+          "short_description": "Import blocks from a file",
+          "syntax": "building-blocks block import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-list",
+          "file": "commands/body/block-list.json",
+          "short_description": "Print information about blocks",
+          "syntax": "building-blocks block list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-make-hex-only",
+          "file": "commands/body/block-make-hex-only.json",
+          "short_description": "Split all triangular faces of wedge and tetrahedral blocks",
+          "syntax": "building-blocks block make-hex-only",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-multiplier",
+          "file": "commands/body/block-multiplier.json",
+          "short_description": "Set the zone multiplier coefficient for final zone generation",
+          "syntax": "building-blocks block multiplier <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-snapon",
+          "file": "commands/body/block-snapon.json",
+          "short_description": "Snap a block to a geometric set",
+          "syntax": "building-blocks block snapon id <i>set <s>keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-transform",
+          "file": "commands/body/block-transform.json",
+          "short_description": "Perform a general geometric transformation on points of blocks",
+          "syntax": "building-blocks block transform [origin <v>] keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-add-controls",
+          "file": "commands/body/edge-add-controls.json",
+          "short_description": "Add control points to edges",
+          "syntax": "building-blocks edge add-controls keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-delete",
+          "file": "commands/body/edge-delete.json",
+          "short_description": "Delete edges",
+          "syntax": "building-blocks edge delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-drape",
+          "file": "commands/body/edge-drape.json",
+          "short_description": "Move the points of edges onto an external geometric set",
+          "syntax": "building-blocks edge drape keyword [novalidate] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-factor",
+          "file": "commands/body/edge-factor.json",
+          "short_description": "Apply a sizing factor to zones on edges",
+          "syntax": "building-blocks edge factor <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-group",
+          "file": "commands/body/edge-group.json",
+          "short_description": "Assign or remove a group name to edges",
+          "syntax": "building-blocks edge group <s>[slot <s>] [remove] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-id",
+          "file": "commands/body/edge-id.json",
+          "short_description": "Modify the properties of an edge",
+          "syntax": "building-blocks edge id <i>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-list",
+          "file": "commands/body/edge-list.json",
+          "short_description": "Print information about edges",
+          "syntax": "building-blocks edge list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-ratio-isolate",
+          "file": "commands/body/edge-ratio-isolate.json",
+          "short_description": "Determine whether zone ratios or factors propagate",
+          "syntax": "building-blocks edge ratio-isolate <b>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-ratio",
+          "file": "commands/body/edge-ratio.json",
+          "short_description": "Apply a sizing ratio to zones on edges",
+          "syntax": "building-blocks edge ratio <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-size",
+          "file": "commands/body/edge-size.json",
+          "short_description": "Specify the number of zones on an edge",
+          "syntax": "building-blocks edge size <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-snapon",
+          "file": "commands/body/edge-snapon.json",
+          "short_description": "Snap an edge to a geometric set",
+          "syntax": "building-blocks edge snapon id <i>set <s>keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-transform",
+          "file": "commands/body/edge-transform.json",
+          "short_description": "Transform and edge (via its points)",
+          "syntax": "building-blocks edge transform [origin <v_o>] keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-type",
+          "file": "commands/body/edge-type.json",
+          "short_description": "Specify edge curve-type",
+          "syntax": "building-blocks edge type keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-add-controls",
+          "file": "commands/body/face-add-controls.json",
+          "short_description": "Add control points to faces",
+          "syntax": "building-blocks face add-controls keyword [no-edges-cp] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-cycle",
+          "file": "commands/body/face-cycle.json",
+          "short_description": "Rotate (cycle) the topology of triangular faces",
+          "syntax": "building-blocks face cycle [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-delete",
+          "file": "commands/body/face-delete.json",
+          "short_description": "Delete faces",
+          "syntax": "building-blocks face delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-drape",
+          "file": "commands/body/face-drape.json",
+          "short_description": "Move the points of faces onto an external geometric set",
+          "syntax": "building-blocks face drape keyword [novalidate] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-group",
+          "file": "commands/body/face-group.json",
+          "short_description": "Assign a group name to faces",
+          "syntax": "building-blocks face group <s>[slot <s>] [remove] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-id",
+          "file": "commands/body/face-id.json",
+          "short_description": "Modify the properties of a face",
+          "syntax": "building-blocks face id <i>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-list",
+          "file": "commands/body/face-list.json",
+          "short_description": "Print information about faces",
+          "syntax": "building-blocks face list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-snapon",
+          "file": "commands/body/face-snapon.json",
+          "short_description": "Snap a face to a geometric set",
+          "syntax": "building-blocks face snapon id <i>set <s>keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-transform",
+          "file": "commands/body/face-transform.json",
+          "short_description": "Transform a face (via its points)",
+          "syntax": "building-blocks face transform [origin <v_o>] [control-point <b>] keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-delete",
+          "file": "commands/body/point-delete.json",
+          "short_description": "Delete points",
+          "syntax": "building-blocks point delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-drape",
+          "file": "commands/body/point-drape.json",
+          "short_description": "Move points onto an external geometric set",
+          "syntax": "building-blocks point drape keyword [novalidate] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-group",
+          "file": "commands/body/point-group.json",
+          "short_description": "Assign a group name to points",
+          "syntax": "building-blocks point group <s>[slot <s>] [remove] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-list",
+          "file": "commands/body/point-list.json",
+          "short_description": "Print information about points",
+          "syntax": "building-blocks point list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-merge",
+          "file": "commands/body/point-merge.json",
+          "short_description": "Merge two points",
+          "syntax": "building-blocks point merge <i1><i2>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-move-to",
+          "file": "commands/body/point-move-to.json",
+          "short_description": "Move points",
+          "syntax": "building-blocks point move-to keyword <f>[control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-snapon",
+          "file": "commands/body/point-snapon.json",
+          "short_description": "Snap points to a geometric set",
+          "syntax": "building-blocks point snapon id <i>set <s>keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-transform",
+          "file": "commands/body/point-transform.json",
+          "short_description": "Transform points",
+          "syntax": "building-blocks point transform [origin <v_o>] keyword [control-point <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-arrest-triangle",
+          "file": "commands/body/set-arrest-triangle.json",
+          "short_description": "Specify how to split a wedge block",
+          "syntax": "building-blocks set arrest-triangle <b>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-auto-tolerance",
+          "file": "commands/body/set-auto-tolerance.json",
+          "short_description": "Set the auto-tolerance flag for geometric manipulations",
+          "syntax": "building-blocks set auto-tolerance <b>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-automatic-zone",
+          "file": "commands/body/set-automatic-zone.json",
+          "short_description": "Specify a automatic zoning method",
+          "syntax": "building-blocks set automatic-zone keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-break-angle",
+          "file": "commands/body/set-break-angle.json",
+          "short_description": "Set the break angle",
+          "syntax": "building-blocks set break-angle [<f>]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-create",
+          "file": "commands/body/set-create.json",
+          "short_description": "Create a building block set",
+          "syntax": "building-blocks set create <s>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-delete",
+          "file": "commands/body/set-delete.json",
+          "short_description": "Delete a building block set",
+          "syntax": "building-blocks set delete [<s>]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-export",
+          "file": "commands/body/set-export.json",
+          "short_description": "Export current building blocks to a file",
+          "syntax": "building-blocks set export [<s>] [binary]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-geometry",
+          "file": "commands/body/set-geometry.json",
+          "short_description": "Associate a geometry set with the current set",
+          "syntax": "building-blocks set geometry keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-import",
+          "file": "commands/body/set-import.json",
+          "short_description": "Import a building blocks set",
+          "syntax": "building-blocks set import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-list",
+          "file": "commands/body/set-list.json",
+          "short_description": "Print information about a building blocks set",
+          "syntax": "building-blocks set list [<s>]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-select",
+          "file": "commands/body/set-select.json",
+          "short_description": "Specify the current building blocks set",
+          "syntax": "building-blocks set select <s>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-tolerance",
+          "file": "commands/body/set-tolerance.json",
+          "short_description": "Set the tolerance for geometric manipulations",
+          "syntax": "building-blocks set tolerance <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-validate-all",
+          "file": "commands/body/set-validate-all.json",
+          "short_description": "Check the validity of blocks",
+          "syntax": "building-blocks set validate-all",
+          "python_available": false,
+          "python_alternative": ""
+        }
+      ]
+    },
     "brick": {
       "full_name": "Brick Commands",
       "description": "Commands for creating, importing, assembling, and managing brick-based geometry and inlets used by rigid-body workflows.",
@@ -931,6 +1390,611 @@
           "file": "commands/domain/strain-rate.json",
           "short_description": "Specify the domain strain rate",
           "syntax": "domain strain-rate <v>",
+          "python_available": false,
+          "python_alternative": ""
+        }
+      ]
+    },
+    "extruder": {
+      "full_name": "Extruder (Sketch) Commands",
+      "description": "Commands for the extruder/sketch tool — defining 2D cross-sections (points, edges, segments, blocks) and extruding them into a 3D FLAC zone grid.",
+      "command_prefix": "sketch",
+      "python_module": null,
+      "doc_url": "https://docs.itascacg.com/flac3d900/flac3d/extruder/doc/manual/sketch_manual/sketch.html",
+      "related_categories": [
+        "zone",
+        "body",
+        "geometry"
+      ],
+      "notes": [
+        "Command verb is 'sketch' even though the tool/UI is called the Extruder",
+        "Workflow: sketch a 2D section (sketch point/edge/segment), then extrude it into zones",
+        "Sub-namespace is part of the JSON key: 'sketch block create' -> commands/extruder/block-create.json",
+        "Primarily a GUI-driven model-setup tool; scriptable via 'itasca.command()'",
+        "Nested keyword options (e.g. <kwd>-group) are captured; some parent keywords may be partial pending nested-dl parsing"
+      ],
+      "commands": [
+        {
+          "name": "block-create",
+          "file": "commands/extruder/block-create.json",
+          "short_description": "Create block(s)",
+          "syntax": "sketch block create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-delete",
+          "file": "commands/extruder/block-delete.json",
+          "short_description": "Delete block(s)",
+          "syntax": "sketch block delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-group",
+          "file": "commands/extruder/block-group.json",
+          "short_description": "Assign/remove a group name to blocks",
+          "syntax": "sketch block group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-id",
+          "file": "commands/extruder/block-id.json",
+          "short_description": "Modify a single block by ID",
+          "syntax": "sketch block id <i>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-list",
+          "file": "commands/extruder/block-list.json",
+          "short_description": "Print information about blocks",
+          "syntax": "sketch block list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-multiplier",
+          "file": "commands/extruder/block-multiplier.json",
+          "short_description": "The command only applies to regular (3- or 4-sided) blocks with structured mesh",
+          "syntax": "sketch block multiplier <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "block-position",
+          "file": "commands/extruder/block-position.json",
+          "short_description": "Modify a block by position",
+          "syntax": "sketch block position <v2>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-clear",
+          "file": "commands/extruder/edge-clear.json",
+          "short_description": "Clear all zone size and ratio settings on edges",
+          "syntax": "sketch edge clear",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-combine",
+          "file": "commands/extruder/edge-combine.json",
+          "short_description": "Combine edges into a single edge",
+          "syntax": "sketch edge combine keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-create",
+          "file": "commands/extruder/edge-create.json",
+          "short_description": "Create an edge or a set of edges",
+          "syntax": "sketch edge create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-delete",
+          "file": "commands/extruder/edge-delete.json",
+          "short_description": "Delete edges",
+          "syntax": "sketch edge delete [invalid] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-group",
+          "file": "commands/extruder/edge-group.json",
+          "short_description": "Assign/remove a group name to edges",
+          "syntax": "sketch edge group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-id",
+          "file": "commands/extruder/edge-id.json",
+          "short_description": "Modify a single edge by ID",
+          "syntax": "sketch edge id <i>[keyword ...]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-list",
+          "file": "commands/extruder/edge-list.json",
+          "short_description": "Print information about edges",
+          "syntax": "sketch edge list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-ratio-isolate",
+          "file": "commands/extruder/edge-ratio-isolate.json",
+          "short_description": "This keyword only applies to edges that form regular (3- or 4-sided) blocks",
+          "syntax": "sketch edge ratio-isolate <b>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-ratio-reverse",
+          "file": "commands/extruder/edge-ratio-reverse.json",
+          "short_description": "This keyword reverses the ratio for edges in the range",
+          "syntax": "sketch edge ratio-reverse [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-ratio",
+          "file": "commands/extruder/edge-ratio.json",
+          "short_description": "Set the ratio",
+          "syntax": "sketch edge ratio <f>keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-size-default",
+          "file": "commands/extruder/edge-size-default.json",
+          "short_description": "Set the default number of zones on the edge",
+          "syntax": "sketch edge size-default <i>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-size",
+          "file": "commands/extruder/edge-size.json",
+          "short_description": "Set the number of zones on the edge",
+          "syntax": "sketch edge size <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-zone-length-default",
+          "file": "commands/extruder/edge-zone-length-default.json",
+          "short_description": "Set the default length of zones on the edge",
+          "syntax": "sketch edge zone-length-default <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "edge-zone-length",
+          "file": "commands/extruder/edge-zone-length.json",
+          "short_description": "Set the length of zones on the edge",
+          "syntax": "sketch edge zone-length <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-gradation",
+          "file": "commands/extruder/mesh-gradation.json",
+          "short_description": "Specify the maximum gradation f > 0 for the unstructured mesher",
+          "syntax": "sketch mesh gradation <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-list",
+          "file": "commands/extruder/mesh-list.json",
+          "short_description": "Display information about meshing settings",
+          "syntax": "sketch mesh list keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-mode",
+          "file": "commands/extruder/mesh-mode.json",
+          "short_description": "Specify the operating mode for the unstructured mesher",
+          "syntax": "sketch mesh mode keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-optimization",
+          "file": "commands/extruder/mesh-optimization.json",
+          "short_description": "Specify optimization level 0 ≤ i ≤ 10 for the unstructured mesher",
+          "syntax": "sketch mesh optimization <i>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-quad-weight",
+          "file": "commands/extruder/mesh-quad-weight.json",
+          "short_description": "Specify a weight on quadrilaterals 0 ≤ f ≤ 1 for the unstructured mesher",
+          "syntax": "sketch mesh quad-weight <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-reset",
+          "file": "commands/extruder/mesh-reset.json",
+          "short_description": "Reset all meshing parameters to defaults",
+          "syntax": "sketch mesh reset",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-shape-quality",
+          "file": "commands/extruder/mesh-shape-quality.json",
+          "short_description": "Specify a value for the shape-quality 0 ≤ f ≤ 1 for the unstructured mesher",
+          "syntax": "sketch mesh shape-quality <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-target-size",
+          "file": "commands/extruder/mesh-target-size.json",
+          "short_description": "Specify the desired zone size (target size) inside of a block, f ≥ 0",
+          "syntax": "sketch mesh target-size <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mesh-type",
+          "file": "commands/extruder/mesh-type.json",
+          "short_description": "Specify the type of mesh",
+          "syntax": "sketch mesh type keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "path-clear",
+          "file": "commands/extruder/path-clear.json",
+          "short_description": "Clear all path data (segments, nodes)",
+          "syntax": "sketch path clear keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "path-continuous",
+          "file": "commands/extruder/path-continuous.json",
+          "short_description": "Keep the path continous when deleing a segment or a node",
+          "syntax": "sketch path continuous <b>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "path-ends-paralle",
+          "file": "commands/extruder/path-ends-paralle.json",
+          "short_description": "Keep the cross-sections at the ends of the path parallel to the construction plane",
+          "syntax": "sketch path ends-paralle <b>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "path-extrude-mode",
+          "file": "commands/extruder/path-extrude-mode.json",
+          "short_description": "Set the extrude-mode",
+          "syntax": "sketch path extrude-mode keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "path-translate",
+          "file": "commands/extruder/path-translate.json",
+          "short_description": "Translate the whole path based on the extent of the blocks in the construction scene",
+          "syntax": "sketch path translate keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-create",
+          "file": "commands/extruder/point-create.json",
+          "short_description": "Create a point",
+          "syntax": "sketch point create <v2>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-delete",
+          "file": "commands/extruder/point-delete.json",
+          "short_description": "Delete points",
+          "syntax": "sketch point delete [invalid] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-group",
+          "file": "commands/extruder/point-group.json",
+          "short_description": "Assign/remove a group name to points",
+          "syntax": "sketch point group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-id",
+          "file": "commands/extruder/point-id.json",
+          "short_description": "Modify a single point by ID",
+          "syntax": "sketch point id <i>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-list",
+          "file": "commands/extruder/point-list.json",
+          "short_description": "Print information about points",
+          "syntax": "sketch point list keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "point-transform",
+          "file": "commands/extruder/point-transform.json",
+          "short_description": "Transform points",
+          "syntax": "sketch point transform keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "section-circle",
+          "file": "commands/extruder/section-circle.json",
+          "short_description": "Adds circular section(s)",
+          "syntax": "sketch section circle keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "section-polygon",
+          "file": "commands/extruder/section-polygon.json",
+          "short_description": "Adds polygon section(s)",
+          "syntax": "sketch section polygon keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "section-rectangle",
+          "file": "commands/extruder/section-rectangle.json",
+          "short_description": "Adds rectangular section(s)",
+          "syntax": "sketch section rectangle keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-clear",
+          "file": "commands/extruder/segment-clear.json",
+          "short_description": "Clear all zone size and ratio settings on segments",
+          "syntax": "sketch segment clear",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-create",
+          "file": "commands/extruder/segment-create.json",
+          "short_description": "Create a segment or a set of segments",
+          "syntax": "sketch segment create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-delete",
+          "file": "commands/extruder/segment-delete.json",
+          "short_description": "Delete segments",
+          "syntax": "sketch segment delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-group",
+          "file": "commands/extruder/segment-group.json",
+          "short_description": "Assign/remove a group name to segments",
+          "syntax": "sketch segment group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-id",
+          "file": "commands/extruder/segment-id.json",
+          "short_description": "Modify a single segment by ID",
+          "syntax": "sketch segment id <i>[keyword ...]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-list",
+          "file": "commands/extruder/segment-list.json",
+          "short_description": "Print information about segments",
+          "syntax": "sketch segment list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-node-create",
+          "file": "commands/extruder/segment-node-create.json",
+          "short_description": "Create a node",
+          "syntax": "sketch segment-node create <v3>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-node-delete",
+          "file": "commands/extruder/segment-node-delete.json",
+          "short_description": "Delete nodes",
+          "syntax": "sketch segment-node delete [invalid] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-node-group",
+          "file": "commands/extruder/segment-node-group.json",
+          "short_description": "Assign/remove a group name to nodes",
+          "syntax": "sketch segment-node group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-node-id",
+          "file": "commands/extruder/segment-node-id.json",
+          "short_description": "Modify a single node by ID",
+          "syntax": "sketch segment-node id <i>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-node-list",
+          "file": "commands/extruder/segment-node-list.json",
+          "short_description": "Print information about nodes",
+          "syntax": "sketch segment-node list keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-node-transform",
+          "file": "commands/extruder/segment-node-transform.json",
+          "short_description": "Transform segment-nodes",
+          "syntax": "sketch segment-node transform keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-ratio-reverse",
+          "file": "commands/extruder/segment-ratio-reverse.json",
+          "short_description": "The ratio direction is reversed on the segments",
+          "syntax": "sketch segment ratio-reverse [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-ratio",
+          "file": "commands/extruder/segment-ratio.json",
+          "short_description": "Set the ratio",
+          "syntax": "sketch segment ratio <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-size-default",
+          "file": "commands/extruder/segment-size-default.json",
+          "short_description": "Set the default number of zones on the segment",
+          "syntax": "sketch segment size-default <i>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-size",
+          "file": "commands/extruder/segment-size.json",
+          "short_description": "Set the number of zones on the segment",
+          "syntax": "sketch segment size <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-zone-length-default",
+          "file": "commands/extruder/segment-zone-length-default.json",
+          "short_description": "Set the default length of zones on the segment",
+          "syntax": "sketch segment zone-length-default <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "segment-zone-length",
+          "file": "commands/extruder/segment-zone-length.json",
+          "short_description": "Set the length of zones on the segments",
+          "syntax": "sketch segment zone-length <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-automatic-validate",
+          "file": "commands/extruder/set-automatic-validate.json",
+          "short_description": "Set automatic validation off/on ",
+          "syntax": "sketch set automatic-validate <b>[keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-automatic-zone",
+          "file": "commands/extruder/set-automatic-zone.json",
+          "short_description": "Set automatic zoning of the sketch set",
+          "syntax": "sketch set automatic-zone keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-clear",
+          "file": "commands/extruder/set-clear.json",
+          "short_description": "Clear all set data (points, edges, blocks in the 2D construction data, and segments in the 1D ext...",
+          "syntax": "sketch set clear",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-create",
+          "file": "commands/extruder/set-create.json",
+          "short_description": "Create a new sketch set with name s ",
+          "syntax": "sketch set create <s>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-delete",
+          "file": "commands/extruder/set-delete.json",
+          "short_description": "Delete a sketch set",
+          "syntax": "sketch set delete [<s>]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-list",
+          "file": "commands/extruder/set-list.json",
+          "short_description": "List sketch set information",
+          "syntax": "sketch set list keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-metadata",
+          "file": "commands/extruder/set-metadata.json",
+          "short_description": "Manipulate sketch set metadata",
+          "syntax": "sketch set metadata keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-rename",
+          "file": "commands/extruder/set-rename.json",
+          "short_description": "Rename sketch set from name s1 to s2 ",
+          "syntax": "sketch set <s1>rename <s2>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-select",
+          "file": "commands/extruder/set-select.json",
+          "short_description": "Set the current sketch set",
+          "syntax": "sketch set select <s>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-system",
+          "file": "commands/extruder/set-system.json",
+          "short_description": "Set the coordinate system",
+          "syntax": "sketch set system keyword ...",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "set-update-polygons",
+          "file": "commands/extruder/set-update-polygons.json",
+          "short_description": "Update the internal list of closed polygons to assure that it reflects current geometry",
+          "syntax": "sketch set update-polygons <b>[keyword]",
           "python_available": false,
           "python_alternative": ""
         }
@@ -3025,6 +4089,1075 @@
         }
       ]
     },
+    "structure": {
+      "full_name": "Structural Element Commands",
+      "description": "Commands for creating and managing structural elements (SEL) — beams, cables, piles, shells, liners, geogrids, hybrids — plus their nodes, links, properties, and results. Shared by the FLAC and 3DEC families.",
+      "command_prefix": "structure",
+      "python_module": "itasca.structure",
+      "python_object_class": "Structure (Beam, Cable, Pile, Shell, Liner, GeoGrid, ...)",
+      "doc_url": "https://docs.itascacg.com/flac3d900/common/sel/doc/manual/sel_manual/sel.html",
+      "related_categories": [
+        "zone",
+        "geometry",
+        "model"
+      ],
+      "notes": [
+        "Element type is part of the command: 'structure beam create', 'structure cable property', etc.",
+        "Structural nodes ('structure node') connect elements and attach to the zone grid via links ('structure link')",
+        "Constitutive behavior via 'structure <type> cmodel' / property; results via 'structure <type> results'",
+        "2D-specific syntax variants exist for some elements; this index ships the dimension-shared base command"
+      ],
+      "commands": [
+        {
+          "name": "beam-apply",
+          "file": "commands/structure/beam-apply.json",
+          "short_description": "Assign uniform applied distributed load (force per unit length) to all beam elements in the range",
+          "syntax": "structure beam apply <f1><f2>[range] only 1 component in 2D",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-cmodel",
+          "file": "commands/structure/beam-cmodel.json",
+          "short_description": "Assign or get information about beam constitutive models",
+          "syntax": "structure beam cmodel keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-create",
+          "file": "commands/structure/beam-create.json",
+          "short_description": "Create a beam consisting of a collection of beam finite elements",
+          "syntax": "structure beam create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-delete",
+          "file": "commands/structure/beam-delete.json",
+          "short_description": "Delete all beam elements in the range",
+          "syntax": "structure beam delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-group",
+          "file": "commands/structure/beam-group.json",
+          "short_description": "Assign all beam elements in the range to the group with the name s ",
+          "syntax": "structure beam group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-hide",
+          "file": "commands/structure/beam-hide.json",
+          "short_description": "Hide or un-hide all beam elements in the range",
+          "syntax": "structure beam hide [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-history",
+          "file": "commands/structure/beam-history.json",
+          "short_description": "Sample beam responses",
+          "syntax": "structure beam history [name <s>] keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-import",
+          "file": "commands/structure/beam-import.json",
+          "short_description": "Create beam elements from an outside source (currently 3D ONLY)",
+          "syntax": "structure beam import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-initialize",
+          "file": "commands/structure/beam-initialize.json",
+          "short_description": "Initialize quantities on the element",
+          "syntax": "structure beam initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-list",
+          "file": "commands/structure/beam-list.json",
+          "short_description": "List properties and responses of beam elements in the range",
+          "syntax": "structure beam list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-property-{elastic}",
+          "file": "commands/structure/beam-property-{elastic}.json",
+          "short_description": "Young’s modulus, \\(E\\)",
+          "syntax": "elastic",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-property",
+          "file": "commands/structure/beam-property.json",
+          "short_description": "Assigns properties to beam elements in the range",
+          "syntax": "structure beam property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-refine",
+          "file": "commands/structure/beam-refine.json",
+          "short_description": "Refine any existing element in the range by subdividing it into i equal-size segments",
+          "syntax": "structure beam refine <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "beam-select",
+          "file": "commands/structure/beam-select.json",
+          "short_description": "This command selects or de-selects all elements in the range",
+          "syntax": "structure beam select [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-apply",
+          "file": "commands/structure/cable-apply.json",
+          "short_description": "Create or modify cable apply conditions",
+          "syntax": "structure cable apply keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-create",
+          "file": "commands/structure/cable-create.json",
+          "short_description": "Create a cable consisting of a collection of cable finite elements",
+          "syntax": "structure cable create keyword ...",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-delete",
+          "file": "commands/structure/cable-delete.json",
+          "short_description": "Delete all cable elements in the range",
+          "syntax": "structure cable delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-group",
+          "file": "commands/structure/cable-group.json",
+          "short_description": "Assign all cable elements in the range to the group with the name s ",
+          "syntax": "structure cable group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-hide",
+          "file": "commands/structure/cable-hide.json",
+          "short_description": "This commands hides or un-hides all cable elements in the range",
+          "syntax": "structure cable hide [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-history",
+          "file": "commands/structure/cable-history.json",
+          "short_description": "Sample cable responses",
+          "syntax": "structure cable history keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-import",
+          "file": "commands/structure/cable-import.json",
+          "short_description": "Create cable elements from an outside source",
+          "syntax": "structure cable import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-initialize",
+          "file": "commands/structure/cable-initialize.json",
+          "short_description": "Initializes quantities on the element",
+          "syntax": "structure cable initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-list",
+          "file": "commands/structure/cable-list.json",
+          "short_description": "Lists properties and responses of cable elements in the range",
+          "syntax": "structure cable list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-property",
+          "file": "commands/structure/cable-property.json",
+          "short_description": "Assigns properties to cable elements in the range",
+          "syntax": "structure cable property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-refine",
+          "file": "commands/structure/cable-refine.json",
+          "short_description": "This command refines an existing element in the range by subdividing it into i equal-size segments",
+          "syntax": "structure cable refine <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cable-select",
+          "file": "commands/structure/cable-select.json",
+          "short_description": "This commands selects or de-selects all elements in the range",
+          "syntax": "structure cable select [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "dynamic-damping",
+          "file": "commands/structure/dynamic-damping.json",
+          "short_description": "Set the damping scheme used by the structural elements for dynamic analysis (see Structual Elemen...",
+          "syntax": "structure dynamic damping keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "dynamic-safety-factor",
+          "file": "commands/structure/dynamic-safety-factor.json",
+          "short_description": "Set the safety factor for dynamic analysis",
+          "syntax": "structure dynamic-safety-factor <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-apply",
+          "file": "commands/structure/geogrid-apply.json",
+          "short_description": "Assign uniform applied pressure f to all geogrid elements in the range",
+          "syntax": "structure geogrid apply <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-cmodel",
+          "file": "commands/structure/geogrid-cmodel.json",
+          "short_description": "Assign or get information about shell constitutive models",
+          "syntax": "structure geogrid cmodel keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-create",
+          "file": "commands/structure/geogrid-create.json",
+          "short_description": "Create a geogrid consisting of a collection of shell finite elements",
+          "syntax": "structure geogrid create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-delete",
+          "file": "commands/structure/geogrid-delete.json",
+          "short_description": "Delete all geogrid elements in the range",
+          "syntax": "structure geogrid delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-group",
+          "file": "commands/structure/geogrid-group.json",
+          "short_description": "Assign all geogrid elements in the range to the group with the name s ",
+          "syntax": "structure geogrid group <s1>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-hide",
+          "file": "commands/structure/geogrid-hide.json",
+          "short_description": "Hide or un-hide all geogrid elements in the range",
+          "syntax": "structure geogrid hide keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-history",
+          "file": "commands/structure/geogrid-history.json",
+          "short_description": "Sample geogrid responses",
+          "syntax": "structure geogrid history keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-import",
+          "file": "commands/structure/geogrid-import.json",
+          "short_description": "Create a geogrid as a collection of shell finite elements, where the elements are obtained from a...",
+          "syntax": "structure geogrid import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-initialize",
+          "file": "commands/structure/geogrid-initialize.json",
+          "short_description": "Initializes quantities on the element",
+          "syntax": "structure geogrid initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-list",
+          "file": "commands/structure/geogrid-list.json",
+          "short_description": "Lists properties and responses of geogrid elements in the range",
+          "syntax": "structure geogrid list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-property",
+          "file": "commands/structure/geogrid-property.json",
+          "short_description": "Assign properties to geogrid elements in the range",
+          "syntax": "structure geogrid property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-recover",
+          "file": "commands/structure/geogrid-recover.json",
+          "short_description": "Recover stress and stress resultants for shell-type elements",
+          "syntax": "structure geogrid recover keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-refine",
+          "file": "commands/structure/geogrid-refine.json",
+          "short_description": "Refine elements in the range by subdividing them by a factor of i ",
+          "syntax": "structure geogrid refine <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geogrid-select",
+          "file": "commands/structure/geogrid-select.json",
+          "short_description": "Selects or de-select all elements in the range",
+          "syntax": "structure geogrid select keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geometry-update",
+          "file": "commands/structure/geometry-update.json",
+          "short_description": "Updates associated with geometric or property changes are performed at the start of every model s...",
+          "syntax": "structure geometry-update <i>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-apply",
+          "file": "commands/structure/hybrid-apply.json",
+          "short_description": "Create or modify hybrid bolt apply conditions",
+          "syntax": "structure hybrid apply keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-create",
+          "file": "commands/structure/hybrid-create.json",
+          "short_description": "Create a hybrid bolt consisting of a collection of cable finite elements and dowels",
+          "syntax": "structure hybrid create keyword ...",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-delete",
+          "file": "commands/structure/hybrid-delete.json",
+          "short_description": "Delete all hybrid bolt elements and associated dowels in the range",
+          "syntax": "structure hybrid delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-group",
+          "file": "commands/structure/hybrid-group.json",
+          "short_description": "Assign all hybrid bolt elements in the range to the group with the name s ",
+          "syntax": "structure hybrid group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-hide",
+          "file": "commands/structure/hybrid-hide.json",
+          "short_description": "This commands hides or un-hides all hybrid bolt elements in the range",
+          "syntax": "structure hybrid hide [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-history",
+          "file": "commands/structure/hybrid-history.json",
+          "short_description": "Sample hybrid bolt responses",
+          "syntax": "structure hybrid history keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-import",
+          "file": "commands/structure/hybrid-import.json",
+          "short_description": "Create hybrid bolt elements from an outside source",
+          "syntax": "structure hybrid import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-initialize",
+          "file": "commands/structure/hybrid-initialize.json",
+          "short_description": "Initializes quantities on the element",
+          "syntax": "structure hybrid initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-list",
+          "file": "commands/structure/hybrid-list.json",
+          "short_description": "Lists properties and responses of hybrid bolt elements in the range",
+          "syntax": "structure hybrid list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-property",
+          "file": "commands/structure/hybrid-property.json",
+          "short_description": "Assigns properties to hybrid bolt elements in the range",
+          "syntax": "structure hybrid property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hybrid-select",
+          "file": "commands/structure/hybrid-select.json",
+          "short_description": "This commands selects or de-selects all elements in the range",
+          "syntax": "structure hybrid select [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-apply",
+          "file": "commands/structure/liner-apply.json",
+          "short_description": "Assign uniform applied pressure f to all liner elements in the range",
+          "syntax": "structure liner apply <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-cmodel",
+          "file": "commands/structure/liner-cmodel.json",
+          "short_description": "Assign or get information about shell constitutive models",
+          "syntax": "structure liner cmodel keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-create",
+          "file": "commands/structure/liner-create.json",
+          "short_description": "Create a liner consisting of a collection of shell finite elements",
+          "syntax": "structure liner create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-delete",
+          "file": "commands/structure/liner-delete.json",
+          "short_description": "Delete all liner elements in the range",
+          "syntax": "structure liner delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-gap-factor",
+          "file": "commands/structure/liner-gap-factor.json",
+          "short_description": "Sets the gap factor used during large-strain sliding of liner elements",
+          "syntax": "structure liner gap-factor <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-group",
+          "file": "commands/structure/liner-group.json",
+          "short_description": "Assign all liner elements in the range to the group with the name s ",
+          "syntax": "structure liner group <s1>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-hide",
+          "file": "commands/structure/liner-hide.json",
+          "short_description": "Hide or un-hide all liner elements in the range",
+          "syntax": "structure liner hide [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-history",
+          "file": "commands/structure/liner-history.json",
+          "short_description": "Sample liner responses",
+          "syntax": "structure liner history keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-import",
+          "file": "commands/structure/liner-import.json",
+          "short_description": "Create a liner as a collection of shell finite elements, where the elements are obtained from an ...",
+          "syntax": "structure liner import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-initialize",
+          "file": "commands/structure/liner-initialize.json",
+          "short_description": "Initialize quantities on the element",
+          "syntax": "structure liner initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-list",
+          "file": "commands/structure/liner-list.json",
+          "short_description": "List properties and responses of liner elements in the range",
+          "syntax": "structure liner list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-property",
+          "file": "commands/structure/liner-property.json",
+          "short_description": "Assign properties to liner elements in the range",
+          "syntax": "structure liner property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-recover",
+          "file": "commands/structure/liner-recover.json",
+          "short_description": "Recover stress and stress resultants for shell-type elements",
+          "syntax": "structure liner recover keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-refine",
+          "file": "commands/structure/liner-refine.json",
+          "short_description": "this command refines elements in the range by subdividing them by a factor of i ",
+          "syntax": "structure liner refine <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "liner-select",
+          "file": "commands/structure/liner-select.json",
+          "short_description": "Select or de-select all elements in the range",
+          "syntax": "structure liner select [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-attach",
+          "file": "commands/structure/link-attach.json",
+          "short_description": "Set attachment conditions for the specified link directions",
+          "syntax": "structure link attach keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-create",
+          "file": "commands/structure/link-create.json",
+          "short_description": "Creates new links on structure nodes in the range",
+          "syntax": "structure link create keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-delete",
+          "file": "commands/structure/link-delete.json",
+          "short_description": "Delete all links in the range",
+          "syntax": "structure link delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-dynamic-damping",
+          "file": "commands/structure/link-dynamic-damping.json",
+          "short_description": "Set dynamic damping type to the link",
+          "syntax": "structure link dynamic-damping keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-group",
+          "file": "commands/structure/link-group.json",
+          "short_description": "Assign all links in the range to the group with the name s ",
+          "syntax": "structure link group <s1>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-hide",
+          "file": "commands/structure/link-hide.json",
+          "short_description": "This commands hides or un-hides all links in the range",
+          "syntax": "structure link hide [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-history",
+          "file": "commands/structure/link-history.json",
+          "short_description": "Sample relative displacement or force from a single degree-of-freedom in a structural element link",
+          "syntax": "structure link history [name <s>] keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-list",
+          "file": "commands/structure/link-list.json",
+          "short_description": "List properties and responses of structural element links in the range",
+          "syntax": "structure link list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-property",
+          "file": "commands/structure/link-property.json",
+          "short_description": "Set a property of a deformable force-displacement model in the link at the degree-of-freedom spec...",
+          "syntax": "structure link property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-select",
+          "file": "commands/structure/link-select.json",
+          "short_description": "This commands selects or de-selects all links in the range",
+          "syntax": "structure link select [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-slide",
+          "file": "commands/structure/link-slide.json",
+          "short_description": "Set the large-strain sliding flag",
+          "syntax": "structure link slide <b>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-tolerance-contact",
+          "file": "commands/structure/link-tolerance-contact.json",
+          "short_description": "Set the tolerance used when establishing node-to-zone links",
+          "syntax": "structure link tolerance-contact <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-tolerance-node",
+          "file": "commands/structure/link-tolerance-node.json",
+          "short_description": "Set the tolerance used when establishing node-to-node links",
+          "syntax": "structure link tolerance-node <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "link-tolerance-slide",
+          "file": "commands/structure/link-tolerance-slide.json",
+          "short_description": "Set the tolerance used when updating node-to-zone links in response to large-strain motion",
+          "syntax": "structure link tolerance-slide <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "list-information",
+          "file": "commands/structure/list-information.json",
+          "short_description": "Lists global program settings and information related to structural elements",
+          "syntax": "structure list information",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mechanical-damping",
+          "file": "commands/structure/mechanical-damping.json",
+          "short_description": "Set the damping scheme used by the structural elements for static analysis (see Mechanical Damping )",
+          "syntax": "structure mechanical damping keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-apply",
+          "file": "commands/structure/node-apply.json",
+          "short_description": "Set generalized point loads for all nodes in the range",
+          "syntax": "structure node apply keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-create",
+          "file": "commands/structure/node-create.json",
+          "short_description": "Create a structure node at location v ",
+          "syntax": "structure node create <v>[group <s1>[slot <s2>]]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-damping-local",
+          "file": "commands/structure/node-damping-local.json",
+          "short_description": "Sets the local-damping factor to f for all nodes in the range (see the structure mechanical dampi...",
+          "syntax": "structure node damping-local <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-delete",
+          "file": "commands/structure/node-delete.json",
+          "short_description": "Delete all nodes in the range",
+          "syntax": "structure node delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-fix",
+          "file": "commands/structure/node-fix.json",
+          "short_description": "Fix the velocity-fixity conditions for all nodes in the range, thereby preventing these values fr...",
+          "syntax": "structure node fix keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-free",
+          "file": "commands/structure/node-free.json",
+          "short_description": "Free the velocity-fixity conditions for all nodes in the range, thereby allowing these values to ...",
+          "syntax": "structure node free keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-group",
+          "file": "commands/structure/node-group.json",
+          "short_description": "Assign all nodes in the range to the group with the name s1 ",
+          "syntax": "structure node group <s1>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-hide",
+          "file": "commands/structure/node-hide.json",
+          "short_description": "This command hides or un-hides all nodes in the range",
+          "syntax": "structure node hide [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-history",
+          "file": "commands/structure/node-history.json",
+          "short_description": "Samples nodal responses",
+          "syntax": "structure node history [name <s>] keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-initialize",
+          "file": "commands/structure/node-initialize.json",
+          "short_description": "Initialize displacement, velocity and position of all structure nodes in the range",
+          "syntax": "structure node initialize keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-join",
+          "file": "commands/structure/node-join.json",
+          "short_description": "Create node-to-node links on all nodes in the range by attempting to find another node in the ran...",
+          "syntax": "structure node join [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-list",
+          "file": "commands/structure/node-list.json",
+          "short_description": "List properties and responses of structural element nodes in the range",
+          "syntax": "structure node list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-select",
+          "file": "commands/structure/node-select.json",
+          "short_description": "Select or de-select all structural nodes in the range",
+          "syntax": "structure node select [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "node-system-local",
+          "file": "commands/structure/node-system-local.json",
+          "short_description": "Set the orientation of the node-local system for all nodes in the range",
+          "syntax": "structure node system-local keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-apply",
+          "file": "commands/structure/pile-apply.json",
+          "short_description": "Assign uniform applied distributed load (force per unit length) to all pile elements in the range",
+          "syntax": "structure pile apply keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-cmodel",
+          "file": "commands/structure/pile-cmodel.json",
+          "short_description": "Assign or get information about beam constitutive models",
+          "syntax": "structure pile cmodel keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-create",
+          "file": "commands/structure/pile-create.json",
+          "short_description": "Create a pile consisting of a collection of beam finite elements",
+          "syntax": "structure pile create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-delete",
+          "file": "commands/structure/pile-delete.json",
+          "short_description": "Delete all pile elements in the range",
+          "syntax": "structure pile delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-group",
+          "file": "commands/structure/pile-group.json",
+          "short_description": "Assign all pile elements in the range to the group with the name s ",
+          "syntax": "structure pile group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-hide",
+          "file": "commands/structure/pile-hide.json",
+          "short_description": "This commands hides or un-hides all pile elements in the range",
+          "syntax": "structure pile hide [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-history",
+          "file": "commands/structure/pile-history.json",
+          "short_description": "Sample pile responses",
+          "syntax": "structure pile history [name <s>] keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-import",
+          "file": "commands/structure/pile-import.json",
+          "short_description": "Create pile elements from an outside source",
+          "syntax": "structure pile import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-initialize",
+          "file": "commands/structure/pile-initialize.json",
+          "short_description": "Initializes quantities on the element",
+          "syntax": "structure pile initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-list",
+          "file": "commands/structure/pile-list.json",
+          "short_description": "Lists properties and responses of pile elements in the range",
+          "syntax": "structure pile list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-property",
+          "file": "commands/structure/pile-property.json",
+          "short_description": "Assigns properties to pile elements in the range",
+          "syntax": "structure pile property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-refine",
+          "file": "commands/structure/pile-refine.json",
+          "short_description": "this command refines an existing element in the range by subdividing it into i equal-size segments",
+          "syntax": "structure pile refine <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "pile-select",
+          "file": "commands/structure/pile-select.json",
+          "short_description": "This command selects or de-selects all elements in the range",
+          "syntax": "structure pile select [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "ratio",
+          "file": "commands/structure/ratio.json",
+          "short_description": "Please see Reaching Equilibrium ",
+          "syntax": "structure ratio [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "results",
+          "file": "commands/structure/results.json",
+          "short_description": "Controls if and what values are saved from zones in an exported results file",
+          "syntax": "structure results keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "safety-factor",
+          "file": "commands/structure/safety-factor.json",
+          "short_description": "Set the safety factor for static analysis",
+          "syntax": "structure safety-factor <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "scale-rotational-mass",
+          "file": "commands/structure/scale-rotational-mass.json",
+          "short_description": "This value applies to dynamic analysis only",
+          "syntax": "structure scale-rotational-mass [<b>]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-apply",
+          "file": "commands/structure/shell-apply.json",
+          "short_description": "Assign uniform applied pressure f to all shell elements in the range",
+          "syntax": "structure shell apply <f>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-cmodel",
+          "file": "commands/structure/shell-cmodel.json",
+          "short_description": "Assign or get information about shell constitutive models",
+          "syntax": "structure shell cmodel keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-create",
+          "file": "commands/structure/shell-create.json",
+          "short_description": "Create a shell consisting of a collection of shell finite elements",
+          "syntax": "structure shell create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-delete",
+          "file": "commands/structure/shell-delete.json",
+          "short_description": "Delete all shell elements in the range",
+          "syntax": "structure shell delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-group",
+          "file": "commands/structure/shell-group.json",
+          "short_description": "Assign all shell elements in the range to the group with the name s ",
+          "syntax": "structure shell group <s1>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-hide",
+          "file": "commands/structure/shell-hide.json",
+          "short_description": "This command hides or un-hides all shell elements in the range",
+          "syntax": "structure shell hide keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-history",
+          "file": "commands/structure/shell-history.json",
+          "short_description": "Add a shell element history ",
+          "syntax": "structure shell history [name <s>] keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-import",
+          "file": "commands/structure/shell-import.json",
+          "short_description": "Create a shell as a collection of shell finite elements, where the elements are obtained from an ...",
+          "syntax": "structure shell import keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-initialize",
+          "file": "commands/structure/shell-initialize.json",
+          "short_description": "Initializes quantities on the element",
+          "syntax": "structure shell initialize [keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-list",
+          "file": "commands/structure/shell-list.json",
+          "short_description": "Lists properties and responses of shell elements in the range",
+          "syntax": "structure shell list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-property-{elastic}",
+          "file": "commands/structure/shell-property-{elastic}.json",
+          "short_description": "Young’s modulus, \\(E\\)",
+          "syntax": "elastic",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-property",
+          "file": "commands/structure/shell-property.json",
+          "short_description": "Assigns properties to shell elements in the range",
+          "syntax": "structure shell property keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-recover",
+          "file": "commands/structure/shell-recover.json",
+          "short_description": "Stress and stress resultant recovery for shell-type elements",
+          "syntax": "structure shell recover keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-refine",
+          "file": "commands/structure/shell-refine.json",
+          "short_description": "This command refines elements in the range by subdividing them by a factor of i ",
+          "syntax": "structure shell refine <i>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "shell-select",
+          "file": "commands/structure/shell-select.json",
+          "short_description": "This commands selects or de-selects all elements in the range",
+          "syntax": "structure shell select keyword",
+          "python_available": false,
+          "python_alternative": ""
+        }
+      ]
+    },
     "table": {
       "full_name": "Table Commands",
       "description": "Commands for managing numerical tables — paired x/y data used as input for time-varying boundary conditions, property curves, and history post-processing.",
@@ -3389,6 +5522,573 @@
           "python_alternative": "Facet.set_conveyor(vec) or Facet.set_conveyor_x/y/z(float) - requires manual calculation of tangential velocities and iteration: for w in itasca.wall.list(): for f in w.facets(): v_tangent = omega_cross_r; f.set_conveyor(v_tangent). For automatic calculation, use itasca.command('wall velocity-conveyor ...')"
         }
       ]
+    },
+    "zone": {
+      "full_name": "Zone Commands",
+      "description": "Commands for creating, configuring, and solving the FLAC continuum grid — zones (finite-volume elements) and their gridpoints, constitutive models, boundary/initial conditions, and coupled (fluid/thermal/dynamic/creep) processes.",
+      "command_prefix": "zone",
+      "python_module": "itasca.zone",
+      "python_object_class": "Zone",
+      "doc_url": "https://docs.itascacg.com/flac3d900/flac3d/zone/doc/manual/zone_manual/zone.html",
+      "related_categories": [
+        "structure",
+        "body",
+        "model",
+        "geometry"
+      ],
+      "notes": [
+        "Zones are the FLAC continuum primitive; 'zone create' builds primitive-shaped grids, 'zone generate' meshes from building blocks",
+        "'zone cmodel assign <model>' attaches a constitutive model; properties via 'zone property'",
+        "Gridpoint conditions (fix/initialize) are addressed via 'zone gridpoint ...' (Python: itasca.gridpoint)",
+        "Coupled physics live under zone subkeywords: 'zone fluid', 'zone thermal', 'zone dynamic', 'zone creep'",
+        "Use 'model solve' / 'model cycle' to step; 'zone relax' / 'zone initialize-stresses' for stress initialization"
+      ],
+      "commands": [
+        {
+          "name": "apply-remove",
+          "file": "commands/zone/apply-remove.json",
+          "short_description": "Remove a zone condition",
+          "syntax": "zone apply-remove [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "apply",
+          "file": "commands/zone/apply.json",
+          "short_description": "Create or modify zone apply conditions",
+          "syntax": "zone apply keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "attach",
+          "file": "commands/zone/attach.json",
+          "short_description": "Create attached gridpoints",
+          "syntax": "zone attach keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "cmodel",
+          "file": "commands/zone/cmodel.json",
+          "short_description": "Assign, load, or get information on a zone constitutive model",
+          "syntax": "zone cmodel keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "consolidation",
+          "file": "commands/zone/consolidation.json",
+          "short_description": "Perform fluid calculations, simplified",
+          "syntax": "zone consolidation <f>keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "copy",
+          "file": "commands/zone/copy.json",
+          "short_description": "Copy zones",
+          "syntax": "zone copy <v>[merge <b>] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "create",
+          "file": "commands/zone/create.json",
+          "short_description": "Create 3D zone-filled primitive shapes ( brick , cylinder , etc",
+          "syntax": "zone create keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "create2d",
+          "file": "commands/zone/create2d.json",
+          "short_description": "Create 2D zones for FLAC2D ",
+          "syntax": "zone create2d keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "creep",
+          "file": "commands/zone/creep.json",
+          "short_description": "Sets parameters for a time-dependent creep material analysis (only available with the creep model...",
+          "syntax": "zone creep keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "delete",
+          "file": "commands/zone/delete.json",
+          "short_description": "Delete zones",
+          "syntax": "zone delete [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "densify",
+          "file": "commands/zone/densify.json",
+          "short_description": "Find all zones in the range and subdivide them into smaller zones that fill the same volume",
+          "syntax": "zone densify keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "dynamic",
+          "file": "commands/zone/dynamic.json",
+          "short_description": "Set parameters for a dynamic model (only available with the dynamic model option – see Dynamic An...",
+          "syntax": "zone dynamic keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "export",
+          "file": "commands/zone/export.json",
+          "short_description": "Export a grid to a file",
+          "syntax": "zone export <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-apply-remove",
+          "file": "commands/zone/face-apply-remove.json",
+          "short_description": "Remove zone face apply conditions, which are described in the documentation for that command",
+          "syntax": "zone face apply-remove [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-apply",
+          "file": "commands/zone/face-apply.json",
+          "short_description": "This command is used to apply boundary conditions at surface faces of the model",
+          "syntax": "zone face apply keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-group",
+          "file": "commands/zone/face-group.json",
+          "short_description": "Adds a group name s to zone faces included in the optional range ",
+          "syntax": "zone face group <s>keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-hide",
+          "file": "commands/zone/face-hide.json",
+          "short_description": "Hide or un-hide zone faces in the range",
+          "syntax": "zone face hide [keyword ...] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-list",
+          "file": "commands/zone/face-list.json",
+          "short_description": "List information about zone faces",
+          "syntax": "zone face list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-select",
+          "file": "commands/zone/face-select.json",
+          "short_description": "Select or deselect zone faces in the range",
+          "syntax": "zone face select [keyword ...] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-skin",
+          "file": "commands/zone/face-skin.json",
+          "short_description": "Skin the model to automatically generate face groups",
+          "syntax": "zone face skin [keyword ... ][range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-westergaard-remove",
+          "file": "commands/zone/face-westergaard-remove.json",
+          "short_description": "Removes any applied westergaard condition on the faces in the range",
+          "syntax": "zone face westergaard-remove [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "face-westergaard",
+          "file": "commands/zone/face-westergaard.json",
+          "short_description": "Applies the Westergaard approximation for the dynamic response of water to the surface faces in t...",
+          "syntax": "zone face westergaard [keyword ...] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "fluid",
+          "file": "commands/zone/fluid.json",
+          "short_description": "Set parameters for a groundwater fluid flow analysis",
+          "syntax": "zone fluid keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "generate",
+          "file": "commands/zone/generate.json",
+          "short_description": "Generate zones based on an algorithm—generally from some other data structure",
+          "syntax": "zone generate keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geometry-test",
+          "file": "commands/zone/geometry-test.json",
+          "short_description": "Evaluate the integrity of model zones",
+          "syntax": "zone geometry-test [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geometry-tolerance",
+          "file": "commands/zone/geometry-tolerance.json",
+          "short_description": "Set the tolerance before an illegal geometry error happens in response to zone deformation",
+          "syntax": "zone geometry-tolerance <f>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "geometry-update",
+          "file": "commands/zone/geometry-update.json",
+          "short_description": "Set a specific interval of steps at which to update zone geometry and property changes in large s...",
+          "syntax": "zone geometry-update <i>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-create",
+          "file": "commands/zone/gridpoint-create.json",
+          "short_description": "Create a single gridpoint",
+          "syntax": "zone gridpoint create <v>[keyword]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-fix",
+          "file": "commands/zone/gridpoint-fix.json",
+          "short_description": "Fix a property at all gridpoints in the range",
+          "syntax": "zone gridpoint fix keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-free",
+          "file": "commands/zone/gridpoint-free.json",
+          "short_description": "Free properties at gridpoints in the range",
+          "syntax": "zone gridpoint free keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-group",
+          "file": "commands/zone/gridpoint-group.json",
+          "short_description": "Assign group name s to zone gridpoints in the range",
+          "syntax": "zone gridpoint group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-import",
+          "file": "commands/zone/gridpoint-import.json",
+          "short_description": "Imports grid point data",
+          "syntax": "zone gridpoint import pore-pressure <sfile>[keyword ...] [range] 3D ONLY",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-initialize",
+          "file": "commands/zone/gridpoint-initialize.json",
+          "short_description": "Assign or initialize values to all gridpoints in the range",
+          "syntax": "zone gridpoint initialize keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-list",
+          "file": "commands/zone/gridpoint-list.json",
+          "short_description": "Display gridpoint information in the console",
+          "syntax": "zone gridpoint list keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-merge",
+          "file": "commands/zone/gridpoint-merge.json",
+          "short_description": "Attempts to merge all gridpoints in the range",
+          "syntax": "zone gridpoint merge [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint-system",
+          "file": "commands/zone/gridpoint-system.json",
+          "short_description": "Set the local coordinate system for gridpoints within the range",
+          "syntax": "zone gridpoint system keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "gridpoint",
+          "file": "commands/zone/gridpoint.json",
+          "short_description": "For each gridpoint in the range, in each of the the specified degree-of-freedoms, checks if the g...",
+          "syntax": "zone gridpoint [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "group",
+          "file": "commands/zone/group.json",
+          "short_description": "Add group name s to the zones in the range",
+          "syntax": "zone group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "hide",
+          "file": "commands/zone/hide.json",
+          "short_description": "Hide or un-hide all zones in the range",
+          "syntax": "zone hide [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "history",
+          "file": "commands/zone/history.json",
+          "short_description": "Add a zone history ",
+          "syntax": "zone history [name <s>] keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "import",
+          "file": "commands/zone/import.json",
+          "short_description": "Import a grid from a file",
+          "syntax": "zone import <s>[<s2>]keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "initialize-stresses",
+          "file": "commands/zone/initialize-stresses.json",
+          "short_description": "Initialize zone stresses based on the density of the zones above them and gravity",
+          "syntax": "zone initialize-stresses keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "initialize",
+          "file": "commands/zone/initialize.json",
+          "short_description": "Initialize a variable on all zones in the range",
+          "syntax": "zone initialize keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-create",
+          "file": "commands/zone/interface-create.json",
+          "short_description": "Create nodes or elements on interface s ",
+          "syntax": "zone interface [<s>] create keyword ...",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-effective",
+          "file": "commands/zone/interface-effective.json",
+          "short_description": "The effective stress will be used in the interface calculation if on ",
+          "syntax": "zone interface [<s>] effective <b>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-element",
+          "file": "commands/zone/interface-element.json",
+          "short_description": "Manage zone interface elements",
+          "syntax": "zone interface [<s>] element keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-group",
+          "file": "commands/zone/interface-group.json",
+          "short_description": "Add group name s to the interfaces in the range",
+          "syntax": "zone interface [<s>] group <s>[keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-list",
+          "file": "commands/zone/interface-list.json",
+          "short_description": "Show summary data on interfaces",
+          "syntax": "zone interface [<s>] list information [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-node",
+          "file": "commands/zone/interface-node.json",
+          "short_description": "Configure interface nodes",
+          "syntax": "zone interface [<s>] node keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-permeability",
+          "file": "commands/zone/interface-permeability.json",
+          "short_description": "Interfaces are permeable by default",
+          "syntax": "zone interface [<s>] permeability <b>[range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "interface-tolerance-contact",
+          "file": "commands/zone/interface-tolerance-contact.json",
+          "short_description": "Sets the maximum depth of penetration (of faces that contact an interface) for which a contact is...",
+          "syntax": "zone interface [<s>] tolerance-contact <f>keyword [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "list",
+          "file": "commands/zone/list.json",
+          "short_description": "List zone data",
+          "syntax": "zone list [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "mechanical",
+          "file": "commands/zone/mechanical.json",
+          "short_description": "Set parameters for a static mechanical analysis that are specific to zones",
+          "syntax": "zone mechanical keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "nodal-mixed-discretization",
+          "file": "commands/zone/nodal-mixed-discretization.json",
+          "short_description": "Activate or deactivate the nodal mixed discretization (nmd) feature",
+          "syntax": "zone nodal-mixed-discretization <b>",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "property-distribution",
+          "file": "commands/zone/property-distribution.json",
+          "short_description": "Modify a zone constitutive model property",
+          "syntax": "zone property-distribution [[property] <fvalue>] keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "property",
+          "file": "commands/zone/property.json",
+          "short_description": "Make a constitutive model(s) property assignment",
+          "syntax": "zone property [density <f>] keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "ratio",
+          "file": "commands/zone/ratio.json",
+          "short_description": "Please see Reaching Equilibrium ",
+          "syntax": "zone ratio keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "reflect",
+          "file": "commands/zone/reflect.json",
+          "short_description": "All zones within the given range are reflected across the plane",
+          "syntax": "zone reflect keyword ... [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "relax",
+          "file": "commands/zone/relax.json",
+          "short_description": "Create and modify a special apply condition on the zones in the range",
+          "syntax": "zone relax keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "results",
+          "file": "commands/zone/results.json",
+          "short_description": "Controls if and what values are saved from zones in an exported results file",
+          "syntax": "zone results keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "select",
+          "file": "commands/zone/select.json",
+          "short_description": "Select or de-select all zones in the range",
+          "syntax": "zone select [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "separate",
+          "file": "commands/zone/separate.json",
+          "short_description": "Separates internal faces, making a new internal surface",
+          "syntax": "zone separate keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "split",
+          "file": "commands/zone/split.json",
+          "short_description": "Split zones in the range into multiple hexahedral or quadrilateral zones",
+          "syntax": "zone split [keyword] [range]",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "thermal",
+          "file": "commands/zone/thermal.json",
+          "short_description": "Set parameters for a thermal analysis (only available if model configure thermal has been specified)",
+          "syntax": "zone thermal keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "trace",
+          "file": "commands/zone/trace.json",
+          "short_description": "Trace zone position and velocity",
+          "syntax": "zone trace keyword",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "validate",
+          "file": "commands/zone/validate.json",
+          "short_description": "Attempt to validate the model by performing checks for common errors or omissions in the model setup",
+          "syntax": "zone validate keyword ...",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "vtk",
+          "file": "commands/zone/vtk.json",
+          "short_description": "Control if and what values are exported from zones to a VTK file",
+          "syntax": "zone vtk",
+          "python_available": false,
+          "python_alternative": ""
+        },
+        {
+          "name": "water",
+          "file": "commands/zone/water.json",
+          "short_description": "This command initializes pore pressures, changing the effective stresses",
+          "syntax": "zone water keyword",
+          "python_available": false,
+          "python_alternative": ""
+        }
+      ]
     }
   },
   "python_sdk_alternatives": {
@@ -3444,6 +6144,10 @@
       "brick",
       "rblock"
     ],
+    "continuum_commands": [
+      "zone",
+      "structure"
+    ],
     "system_commands": [
       "model",
       "contact",
@@ -3459,7 +6163,8 @@
     ],
     "geometry_commands": [
       "geometry",
-      "fracture"
+      "fracture",
+      "body"
     ],
     "data_commands": [
       "table",

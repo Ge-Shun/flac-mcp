@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "geogrid",
+    "apply",
+    "structure"
+  ],
+  "description": "Assign uniform applied pressure f to all geogrid elements in the range. Positive pressure acts in the positive \\(z\\) -direction of the element system and maintains this orientation during large-strain motion.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure geogrid apply",
+      "syntax": "structure geogrid apply <f>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

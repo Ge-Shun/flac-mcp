@@ -1,0 +1,76 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "cable",
+    "list",
+    "structure"
+  ],
+  "description": "Lists properties and responses of cable elements in the range. If no keyword is given, the default output of the command is that associated with the information keyword.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure cable list",
+      "syntax": "structure cable list keyword [range]",
+      "keywords": [
+        {
+          "name": "apply",
+          "syntax": "apply",
+          "description": "axial tension that will be maintained during cycling"
+        },
+        {
+          "name": "force-axial",
+          "syntax": "force-axial",
+          "description": "axial force in the cable (average of the two end forces)"
+        },
+        {
+          "name": "force-node-global",
+          "syntax": "global",
+          "description": "generalized nodal forces (force and moment) acting on the element. These are the generalized forces exerted by the nodes on the element. express the values in the element coordinate system (the default) express the values in the global coordinate system"
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "group assignment(s). If slot is specified, then list the group assignment, if any, in slot s ."
+        },
+        {
+          "name": "grout",
+          "syntax": "grout",
+          "description": "information about the grout that is modeled as coupling springs that connect the cable to the target object (zones in FLAC3D and 3DEC, and particles in PFC3D): confinement, displacement, stress, yield state and average axial direction"
+        },
+        {
+          "name": "information",
+          "syntax": "information",
+          "description": "general element information: nodal connectivity, centroid, surface area, volume, and hide/select status"
+        },
+        {
+          "name": "length",
+          "syntax": "length",
+          "description": "length of the cable"
+        },
+        {
+          "name": "property-young",
+          "syntax": "young <f>",
+          "description": "Scaled properties are returned if the scaled keyword ( FLAC2D ONLY ) is set to true (the default is false). If the property cannot be scaled, an error is emitted. cross-sectional area mass density grout cohesion per unit length name of the table relating grout cohesion to relative shear displacement grout friction angle name of the table relating grout friction angle to relative shear displacement grout exposed perimeter grout stiffness per unit length large-strain sliding flag large-strain sliding tolerance tensile failure strain thermal-expansion coefficient compressive yield strength tensile yield strength Young’s modulus"
+        },
+        {
+          "name": "stress",
+          "syntax": "stress",
+          "description": "axial stress in the cable (not to be confused with stress in the grout)"
+        },
+        {
+          "name": "system-local",
+          "syntax": "system-local",
+          "description": "element local coordinate system"
+        },
+        {
+          "name": "yield",
+          "syntax": "yield",
+          "description": "yield state indicating whether or not the cable has yielded"
+        }
+      ],
+      "examples": []
+    }
+  }
+}

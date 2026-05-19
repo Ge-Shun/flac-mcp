@@ -1,0 +1,31 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "beam",
+    "hide",
+    "structure"
+  ],
+  "description": "Hide or un-hide all beam elements in the range. By default, commands that use a range filter will skip hidden objects. This can be overruled with the use-hidden keyword in the range specification.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure beam hide",
+      "syntax": "structure beam hide [keyword] [range]",
+      "keywords": [
+        {
+          "name": "adummy",
+          "syntax": "<b>",
+          "description": "Set on to hide all elements in the range. Set off to un-hide (show) all elements in the range, and the use-hidden keyword is applied to the range implicitly. on is the default if no keyword is given."
+        },
+        {
+          "name": "undo",
+          "syntax": "undo",
+          "description": "Reverse the operation of the last structure beam hide command. FLAC3D keeps a maximum undo stack of size 12."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

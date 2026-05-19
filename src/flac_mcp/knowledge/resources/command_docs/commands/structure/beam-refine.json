@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "beam",
+    "refine",
+    "structure"
+  ],
+  "description": "Refine any existing element in the range by subdividing it into i equal-size segments. The original structural element is deleted.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure beam refine",
+      "syntax": "structure beam refine <i>[range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

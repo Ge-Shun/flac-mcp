@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "node",
+    "delete",
+    "structure"
+  ],
+  "description": "Delete all nodes in the range. Nodes that are connected to structural elements cannot be deleted.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure node delete",
+      "syntax": "structure node delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

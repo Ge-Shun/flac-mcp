@@ -1,0 +1,20 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "shell",
+    "delete",
+    "structure"
+  ],
+  "description": "Delete all shell elements in the range. Structure nodes and links that become disconnected from any element will automatically be deleted as well.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure shell delete",
+      "syntax": "structure shell delete [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

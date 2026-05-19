@@ -1,0 +1,22 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "face",
+    "westergaard",
+    "remove",
+    "zone",
+    "westergaard-remove"
+  ],
+  "description": "Removes any applied westergaard condition on the faces in the range.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone face westergaard-remove",
+      "syntax": "zone face westergaard-remove [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

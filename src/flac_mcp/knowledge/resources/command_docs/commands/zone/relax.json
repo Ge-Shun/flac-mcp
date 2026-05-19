@@ -1,0 +1,40 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "relax",
+    "zone"
+  ],
+  "description": "Create and modify a special apply condition on the zones in the range. This condition gradually “excavates” the material by reducing the stiffness, stresses, and densities of the zones. This keeps spurious inertial effects in the static solution process from causing unrealistic damage to the region around the excavation.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone relax",
+      "syntax": "zone relax keyword",
+      "keywords": [
+        {
+          "name": "delete",
+          "syntax": "delete <s>",
+          "description": "Find a previously created zone relax apply condition with name s , and delete it. If the reduction factor has reached 0, the material has been nulled and thus its relax condition has been deleted. For this case, no need to delete it once more."
+        },
+        {
+          "name": "excavate-table-dynamic",
+          "syntax": "dynamic",
+          "description": "Create and initialize an excavation condition on all zones in the range. The following keywords are available to customize how the excavation progresses. Specify a FISH function that determines the multiplier to use as the excavation progresses. This should return a value of 1.0 at the start, and 0.0 and the end. If this keyword is used, the default servo is not used. Specify a FISH function that determines the multiplier to use as the excavation progresses. This function is called separately for each individual zone taking part in the apply condition. If this keyword is used, the default servo is not used. The function is assumed to take two arguments. The first argument is a pointer to the zone in question. The second argument is unused. Set the minimum reduction factor that will be allowed. The default value is 0.0 . This should be a number between 0.0 and 1.0 . This value can be used to solve to a specific reduction factor before installing reinforcement or other operation. Then the zone relax modify command can be used to lower the minimum. Note changing the minimum when using the table , fish , or fish-local options to control the reduction factor may result in unexpected behavior, as the time index used for those options will not stop advancing after reaching the minimum value. Assign the apply condition an identifying name s . If a name is not specified one will be created automatically based on the internally assigned ID number. If the current mechanical force ratio (see the zone ratio ) is lower than this value, the reduction factor is reduced by the increment. The default value is 1e-3 . If the current mechanical force ratio is less than servo-bound , then the reduction factor is reduced by subtracting f from it. This number should be less than 1.0 , and greater than 0.0 . The default value is 0.005 . If set to a positive value, then any FISH , table , or servo parameters are ignored and the reduction factor is reduced linearly from 1.0 to 0.0 over the course of i steps. If specified, then the reduction factor is given by table s . A lookup is performed every step. By default the x value used to lookup a table y value will be the accumulated mechanical time, which for a purely static analysis is the same as the number of steps. The time index used can be changed by using the optional time keyword, with the following options. Use the total cycle count. Use the accumulated mechanical time (the default). Use the accumulated fluid flow time. Use the accumulated thermal time. Use the accumulated creep time. Use the accumulated dynamic time."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "List all relax conditions, including their name and settings."
+        },
+        {
+          "name": "modify-table-dynamic",
+          "syntax": "dynamic",
+          "description": "Find the previously created zone relax apply condition with name s and modify its settings. The following keywords are available. Specify a FISH function that determines the multiplier to use as the excavation progresses. This should return a value of 1.0 at the start, and 0.0 and the end. If this keyword is used, the default servo is not used. Specify a FISH function that determines the multiplier to use as the excavation progresses. This function is called separately for each individual zone taking part in the apply condition. If this keyword is used, the default servo is not used. The function is assumed to take two arguments. The first argument is a pointer to the zone in question. The second argument is unused. Assign the apply condition an identifying name s . If a name is not specified one will be created automatically based on the internally assigned ID number. If the current mechanical force ratio (see the zone ratio ) is lower than this value, the reduction factor is reduced by the increment. The default value is 1e-3 If the current mechanical force ratio is less than servo-bound , then the reduction factor is reduced by subtracting f from it. This number should be less than 1.0 , and greater than 0.0 . The default value is 0.005 . If set to a positive value, then any FISH , table , or servo parameters are ignored and the reduction factor is reduced linearly from the current value (which is at start 0.99 ) to minimum (by default 0.0 ) over the course of i steps. If specified, then the reduction factor is given by table s . A lookup is performed every step. By default the x value used to lookup a table y value will be the accumulated mechanical time, which for a purely static analysis is the same as the number of steps. The time index used can be changed by using the optional time keyword, with the following options. Use the total cycle count. Use the accumulated mechanical time (the default) Use the accumulated fluid flow time. Use the accumulated thermal time. Use the accumulated creep time. Use the accumulated dynamic time."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

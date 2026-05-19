@@ -1,0 +1,20 @@
+{
+  "category": "zone",
+  "search_keywords": [
+    "interface",
+    "list",
+    "zone"
+  ],
+  "description": "Show summary data on interfaces.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "zone interface list",
+      "syntax": "zone interface [<s>] list information [range]",
+      "keywords": [],
+      "examples": []
+    }
+  }
+}

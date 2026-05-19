@@ -1,0 +1,36 @@
+{
+  "category": "structure",
+  "search_keywords": [
+    "liner",
+    "select",
+    "structure"
+  ],
+  "description": "Select or de-select all elements in the range. Selected objects can be specified in a range filter by using the selected keyword. Objects that are not selected can be specified in a range filter by using the deselected keyword.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "9.0": {
+      "command": "structure liner select",
+      "syntax": "structure liner select [keyword]",
+      "keywords": [
+        {
+          "name": "adummy",
+          "syntax": "<b>",
+          "description": "If on is specified, all elements in the range are selected. If off , all elements in the range are de-selected. on is the default if no keyword is given."
+        },
+        {
+          "name": "new",
+          "syntax": "new",
+          "description": "Select elements in the range and automatically de-select elements not in the range."
+        },
+        {
+          "name": "undo",
+          "syntax": "undo",
+          "description": "Reverse the operation of the last structure liner select command. The program keeps a maximum undo stack of size 12."
+        }
+      ],
+      "examples": []
+    }
+  }
+}

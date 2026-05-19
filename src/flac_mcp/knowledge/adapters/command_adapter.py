@@ -48,8 +48,15 @@ class CommandDocumentAdapter:
             category = cmd_meta["category"]
             cmd_name = cmd_meta["name"]
 
-            # Load full command documentation
-            cmd_doc = CommandLoader.load_command_doc(category, cmd_name, version)
+            # Load full command documentation. A KeyError means the doc has
+            # no entry for this version (e.g. FLAC 9.0-only docs when the
+            # 7.0 engine is built, or any doc lacking the requested 6.0).
+            # That doc is legitimately absent from this version's index —
+            # skip it rather than crash the whole index build.
+            try:
+                cmd_doc = CommandLoader.load_command_doc(category, cmd_name, version)
+            except KeyError:
+                continue
             if not cmd_doc or cmd_doc.get("available") is False:
                 continue
 
@@ -96,7 +103,10 @@ class CommandDocumentAdapter:
             return None
 
         category, cmd_name = doc_id.split(" ", 1)
-        cmd_doc = CommandLoader.load_command_doc(category, cmd_name, version)
+        try:
+            cmd_doc = CommandLoader.load_command_doc(category, cmd_name, version)
+        except KeyError:
+            return None
 
         if not cmd_doc or cmd_doc.get("available") is False:
             return None
