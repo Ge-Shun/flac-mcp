@@ -1,4 +1,4 @@
-"""PFC Python API Query Tool - Keyword search for SDK documentation."""
+"""FLAC Python API Query Tool - Keyword search for SDK documentation."""
 
 from typing import Any
 
@@ -18,7 +18,7 @@ def register(mcp: FastMCP) -> None:
         query: PythonAPISearchQuery,
         limit: SearchLimit = 10,
     ) -> dict[str, Any]:
-        """Search PFC Python SDK documentation by keywords (like grep).
+        """Search FLAC Python SDK documentation by keywords (like grep).
 
         Returns matching API paths with signatures. Use flac_browse_python_api for full documentation.
 
@@ -28,7 +28,7 @@ def register(mcp: FastMCP) -> None:
 
         Related tools:
         - flac_browse_python_api: Get full documentation for a known API path
-        - flac_query_command: Search PFC commands by keywords
+        - flac_query_command: Search FLAC commands by keywords
         """
         matches = APISearch.search(query, top_k=limit)
         results_payload: list[dict[str, Any]] = []

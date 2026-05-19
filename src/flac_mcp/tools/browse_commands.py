@@ -1,4 +1,4 @@
-"""PFC Command Browse Tool - Navigate and retrieve command documentation."""
+"""FLAC Command Browse Tool - Navigate and retrieve command documentation."""
 
 from typing import Any
 
@@ -18,7 +18,7 @@ def register(mcp: FastMCP) -> None:
         command: str | None = Field(
             None,
             description=(
-                "PFC command to browse (space-separated, matching PFC syntax). Examples:\n"
+                "FLAC command to browse (space-separated, matching FLAC syntax). Examples:\n"
                 "- None or '': List all command categories\n"
                 "- 'ball': List all ball commands\n"
                 "- 'ball create': Get ball create documentation\n"
@@ -28,10 +28,10 @@ def register(mcp: FastMCP) -> None:
         ),
         version: CommandDocVersion = Field(
             CommandDocVersion.V7_0,
-            description="PFC documentation version to browse. Defaults to 7.0.",
+            description="FLAC documentation version to browse. Defaults to 7.0.",
         ),
     ) -> dict[str, Any]:
-        """Browse PFC command documentation by path (like glob + cat).
+        """Browse FLAC command documentation by path (like glob + cat).
 
         Navigation levels:
         - No command: All command categories overview
@@ -153,7 +153,7 @@ def _browse_category(category: str, version: str) -> dict[str, Any]:
 def _browse_command(category: str, command_name: str, version: str) -> dict[str, Any]:
     """Level 2: Return full documentation for a specific command."""
     # JSON filenames use dash as sub-command separator (e.g. edge-create,
-    # cmat-add, scalar-create) while PFC syntax separates them with spaces.
+    # cmat-add, scalar-create) while FLAC syntax separates them with spaces.
     # Accept either form on input.
     cmd_doc = CommandLoader.load_command_doc(category, command_name, version)
     if not cmd_doc and " " in command_name:
@@ -195,7 +195,7 @@ def _browse_command(category: str, command_name: str, version: str) -> dict[str,
             "action": "browse",
             "error": {
                 "code": "command_unavailable_for_version",
-                "message": f"Command '{command_name}' is not available in PFC {version}.",
+                "message": f"Command '{command_name}' is not available in FLAC {version}.",
             },
             "input": {"category": category, "command": command_name, "version": version},
             "available_versions": cmd_doc.get("versions", []),

@@ -26,9 +26,9 @@ def register(mcp: FastMCP) -> None:
         filter: FilterText = None,
         wait_seconds: WaitSeconds = 1,
     ) -> dict[str, Any]:
-        """Check status and paginated output for a submitted PFC task.
+        """Check status and paginated output for a submitted FLAC task.
 
-        Output combines Python prints and PFC console output from
+        Output combines Python prints and FLAC console output from
         itasca.command() calls (table dumps, list output, command
         summaries) interleaved in execution order. Use skip_newest /
         limit to paginate, or filter to keep only matching lines.

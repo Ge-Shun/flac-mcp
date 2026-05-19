@@ -15,7 +15,7 @@ def register(mcp: FastMCP) -> None:
 
     @mcp.tool()
     async def flac_interrupt_task(task_id: TaskId) -> dict[str, Any]:
-        """Request graceful interruption of a running PFC task."""
+        """Request graceful interruption of a running FLAC task."""
         try:
             client = await get_bridge_client()
             response = await client.interrupt_task(task_id)

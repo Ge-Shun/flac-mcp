@@ -1,4 +1,4 @@
-"""PFC Reference Browse Tool - Navigate syntax elements and model properties."""
+"""FLAC Reference Browse Tool - Navigate syntax elements and model properties."""
 
 from typing import Any, cast
 
@@ -36,13 +36,13 @@ def register(mcp: FastMCP) -> None:
         version: CommandDocVersion = Field(
             CommandDocVersion.V7_0,
             description=(
-                "PFC documentation version (6.0/7.0/9.0). Defaults to 7.0. "
+                "FLAC documentation version (6.0/7.0/9.0). Defaults to 7.0. "
                 "Filters contact models by version availability; "
                 "range-elements and plot-items are version-agnostic."
             ),
         ),
     ) -> dict[str, Any]:
-        """Browse PFC reference documentation (syntax elements, model properties).
+        """Browse FLAC reference documentation (syntax elements, model properties).
 
         References are language elements used within commands, not standalone commands.
 
@@ -56,7 +56,7 @@ def register(mcp: FastMCP) -> None:
         - Need range filtering syntax (position, cylinder, group, id)
         - Need plot item configuration (color-by, cut plane, transparency, legend)
         - Setting up "contact cmat add model ... property ..." commands
-        - Using range filters in any PFC command
+        - Using range filters in any FLAC command
         - Configuring "plot item create" commands
 
         Related tools:
@@ -201,7 +201,7 @@ def _browse_item(category: str, item: str, version: str) -> dict[str, Any]:
             "error": {
                 "code": "item_unavailable_for_version",
                 "message": (
-                    f"'{item}' is not available in PFC {version} (available in: {', '.join(supported) or 'none'})."
+                    f"'{item}' is not available in FLAC {version} (available in: {', '.join(supported) or 'none'})."
                 ),
             },
             "input": {"category": category, "item": item, "version": version},

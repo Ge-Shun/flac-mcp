@@ -1,4 +1,4 @@
-# pfc-mcp Bootstrap (Gemini CLI)
+# flac-mcp Bootstrap (Gemini CLI)
 
 Use this profile when the client is Gemini CLI.
 
@@ -14,9 +14,9 @@ Add/merge this MCP entry (command and args must be split):
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "command": "uvx",
-      "args": ["pfc-mcp"]
+      "args": ["flac-mcp"]
     }
   }
 }
@@ -27,9 +27,9 @@ If `uvx` is unavailable, fallback to:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "command": "uv",
-      "args": ["tool", "run", "pfc-mcp"]
+      "args": ["tool", "run", "flac-mcp"]
     }
   }
 }
@@ -39,10 +39,10 @@ If `uvx` is unavailable, fallback to:
 
 Always close and reopen Gemini CLI session before continuing.
 
-Then continue to Step 2 and verify with `pfc_list_tasks` at the end of bootstrap.
+Then continue to Step 2 and verify with `flac_list_tasks` at the end of bootstrap.
 
 ## Continue with common bootstrap
 
 After Step 1, continue from Step 2 in:
 
-- `docs/agentic/pfc-mcp-bootstrap.md`
+- `docs/agentic/flac-mcp-bootstrap.md`

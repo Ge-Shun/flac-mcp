@@ -1,4 +1,4 @@
-# pfc-mcp Bootstrap (Codex)
+# flac-mcp Bootstrap (Codex)
 
 Use this profile when the client is OpenAI Codex CLI/IDE.
 
@@ -12,17 +12,17 @@ Use global `~/.codex/config.toml` only if the user explicitly asks for global sh
 Add/merge this MCP entry:
 
 ```toml
-[mcp_servers.pfc-mcp]
+[mcp_servers.flac-mcp]
 command = "uvx"
-args = ["pfc-mcp"]
+args = ["flac-mcp"]
 ```
 
 If `uvx` is unavailable, fallback to:
 
 ```toml
-[mcp_servers.pfc-mcp]
+[mcp_servers.flac-mcp]
 command = "uv"
-args = ["tool", "run", "pfc-mcp"]
+args = ["tool", "run", "flac-mcp"]
 ```
 
 [USER ACTION REQUIRED]
@@ -38,4 +38,4 @@ Optional verification:
 
 After Step 1, continue from Step 2 in:
 
-- `docs/agentic/pfc-mcp-bootstrap.md`
+- `docs/agentic/flac-mcp-bootstrap.md`

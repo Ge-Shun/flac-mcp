@@ -1,45 +1,45 @@
 # GEMINI.md
 
-Guidance for coding agents working in the `pfc-mcp` repository.
+Guidance for coding agents working in the `flac-mcp` repository.
 
 ## Project Overview
 
-`pfc-mcp` provides an MCP server for ITASCA PFC workflows plus a bridge runtime that runs inside PFC GUI.
+`flac-mcp` provides an MCP server for ITASCA FLAC workflows plus a bridge runtime that runs inside FLAC GUI.
 
 This repository intentionally has two runtime contexts:
 
-- `src/pfc_mcp/` (Python >= 3.10): MCP server package used by clients/tooling
-- `pfc-mcp-bridge/` (PFC embedded Python, often 3.6): WebSocket bridge running inside PFC GUI
+- `src/flac_mcp/` (Python >= 3.10): MCP server package used by clients/tooling
+- `itasca-mcp-bridge/` (FLAC embedded Python, often 3.6): WebSocket bridge running inside FLAC GUI
 
 Treat these as separate deployment targets even though they live in one repository.
 
 ## Core Architecture
 
-### MCP side (`src/pfc_mcp`)
+### MCP side (`src/flac_mcp`)
 
 - Exposes documentation tools and execution tools through FastMCP
-- Communicates with bridge via WebSocket client (`pfc_mcp.bridge.client`)
+- Communicates with bridge via WebSocket client (`flac_mcp.bridge.client`)
 - Returns a unified tool envelope: `ok`, `data`, `error`
-- Uses script-first execution model (`pfc_execute_task` + `pfc_check_task_status`)
+- Uses script-first execution model (`flac_execute_task` + `flac_check_task_status`)
 
-### Bridge side (`pfc-mcp-bridge`)
+### Bridge side (`itasca-mcp-bridge`)
 
-- Runs in PFC GUI process
+- Runs in FLAC GUI process
 - Owns thread-safe interaction with ITASCA SDK
 - Handles long-running tasks and diagnostics
-- Must be started from PFC GUI (for example with `%run .../pfc-mcp-bridge/start_bridge.py`)
+- Must be started from FLAC GUI (for example with `%run .../itasca-mcp-bridge/start_bridge.py`)
 
 ## Repository Layout
 
 ```text
-pfc-mcp/
-├── src/pfc_mcp/
+flac-mcp/
+├── src/flac_mcp/
 │   ├── bridge/          # MCP-side bridge client/task manager
 │   ├── knowledge/       # command/API/reference search system
 │   ├── tools/           # MCP tool implementations
 │   ├── formatting.py    # shared response formatting
 │   └── server.py        # MCP server entrypoint
-├── pfc-mcp-bridge/      # runtime executed inside PFC GUI
+├── itasca-mcp-bridge/      # runtime executed inside FLAC GUI
 └── tests/               # MCP/tool contract tests
 ```
 
@@ -50,7 +50,7 @@ Run from repository root.
 ```bash
 uv sync
 uv sync --group dev
-uv run pfc-mcp
+uv run flac-mcp
 uv run pytest tests/test_phase2_tools.py
 uv run pytest tests/test_tool_contracts.py
 ```
@@ -58,12 +58,12 @@ uv run pytest tests/test_tool_contracts.py
 ## Engineering Rules
 
 1. Keep MCP and bridge concerns separate.
-   - Do not couple MCP logic to PFC GUI internals.
+   - Do not couple MCP logic to FLAC GUI internals.
    - Do not introduce application/session policy into bridge runtime.
 
 2. Preserve script-only execution semantics.
-   - `pfc_execute_task` submits scripts and returns quickly.
-   - Progress/result retrieval goes through `pfc_check_task_status`.
+   - `flac_execute_task` submits scripts and returns quickly.
+   - Progress/result retrieval goes through `flac_check_task_status`.
 
 3. Maintain structured tool contracts.
    - Prefer stable machine-readable keys over ad-hoc text parsing.
@@ -85,7 +85,7 @@ uv run pytest tests/test_tool_contracts.py
 
 5. Respect runtime constraints.
    - MCP package uses modern deps (`websockets>=15`).
-   - Bridge side may require legacy-compatible deps (`websockets==9.1`) in PFC Python.
+   - Bridge side may require legacy-compatible deps (`websockets==9.1`) in FLAC Python.
 
 ## Testing Expectations
 
@@ -96,11 +96,11 @@ Mock bridge based tests are preferred for deterministic CI.
 
 ## Documentation Sources
 
-PFC searchable docs live under:
+FLAC searchable docs live under:
 
-- `src/pfc_mcp/knowledge/resources/command_docs/`
-- `src/pfc_mcp/knowledge/resources/python_sdk_docs/`
-- `src/pfc_mcp/knowledge/resources/references/`
+- `src/flac_mcp/knowledge/resources/command_docs/`
+- `src/flac_mcp/knowledge/resources/python_sdk_docs/`
+- `src/flac_mcp/knowledge/resources/references/`
 
 When changing schema/content shape, verify browse/query tool behavior remains consistent.
 

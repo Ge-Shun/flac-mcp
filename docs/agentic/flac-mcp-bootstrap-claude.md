@@ -1,8 +1,8 @@
-# pfc-mcp Bootstrap (Claude Code)
+# flac-mcp Bootstrap (Claude Code)
 
 Use this profile when the client uses `.mcp.json` style MCP config.
 
-For Codex, use `docs/agentic/pfc-mcp-bootstrap-codex.md` instead.
+For Codex, use `docs/agentic/flac-mcp-bootstrap-codex.md` instead.
 
 ## Step 1 (Claude Code) - Configure MCP
 
@@ -16,10 +16,10 @@ Add/merge this MCP entry:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["pfc-mcp"]
+      "args": ["flac-mcp"]
     }
   }
 }
@@ -30,10 +30,10 @@ If `uvx` is unavailable, fallback to:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["tool", "run", "pfc-mcp"]
+      "args": ["tool", "run", "flac-mcp"]
     }
   }
 }
@@ -43,4 +43,4 @@ If `uvx` is unavailable, fallback to:
 
 After Step 1, continue from Step 2 in:
 
-- `docs/agentic/pfc-mcp-bootstrap.md`
+- `docs/agentic/flac-mcp-bootstrap.md`

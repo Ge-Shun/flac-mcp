@@ -1,4 +1,4 @@
-# pfc-mcp Bootstrap (OpenCode)
+# flac-mcp Bootstrap (OpenCode)
 
 Use this profile when the client is OpenCode.
 
@@ -16,9 +16,9 @@ Add/merge this MCP entry:
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "type": "local",
-      "command": ["uvx", "pfc-mcp"],
+      "command": ["uvx", "flac-mcp"],
       "enabled": true
     }
   }
@@ -31,9 +31,9 @@ If `uvx` is unavailable, fallback to:
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "type": "local",
-      "command": ["uv", "tool", "run", "pfc-mcp"],
+      "command": ["uv", "tool", "run", "flac-mcp"],
       "enabled": true
     }
   }
@@ -46,10 +46,10 @@ Optional verification:
 opencode mcp list
 ```
 
-Confirm `pfc-mcp` is listed and enabled.
+Confirm `flac-mcp` is listed and enabled.
 
 ## Continue with common bootstrap
 
 After Step 1, continue from Step 2 in:
 
-- `docs/agentic/pfc-mcp-bootstrap.md`
+- `docs/agentic/flac-mcp-bootstrap.md`

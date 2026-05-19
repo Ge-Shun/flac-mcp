@@ -1,4 +1,4 @@
-# pfc-mcp Bootstrap (toyoura-nagisa)
+# flac-mcp Bootstrap (toyoura-nagisa)
 
 Use this profile when the client is toyoura-nagisa.
 
@@ -14,12 +14,12 @@ Add/merge this entry under `mcpServers`:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["pfc-mcp"],
+      "args": ["flac-mcp"],
       "enabled": true,
-      "description": "PFC MCP server"
+      "description": "FLAC MCP server"
     }
   }
 }
@@ -30,12 +30,12 @@ If `uvx` is unavailable, fallback to:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["tool", "run", "pfc-mcp"],
+      "args": ["tool", "run", "flac-mcp"],
       "enabled": true,
-      "description": "PFC MCP server"
+      "description": "FLAC MCP server"
     }
   }
 }
@@ -51,4 +51,4 @@ Always close and reopen the toyoura-nagisa session (or restart backend process) 
 
 After Step 1, continue from Step 2 in:
 
-- `docs/agentic/pfc-mcp-bootstrap.md`
+- `docs/agentic/flac-mcp-bootstrap.md`

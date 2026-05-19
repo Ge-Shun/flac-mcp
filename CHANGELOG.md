@@ -14,6 +14,15 @@ The release will fail to publish if no matching entry is found.
 Description of the release.
 -->
 
+## [0.1.0] - 2026-05-20
+
+Initial release of `flac-mcp`. Scaffolded from `pfc-mcp` 0.3.15: the MCP
+server was renamed (`flac_*` tools, `src/flac_mcp` package) and retargeted
+to the ITASCA FLAC product family (FLAC2D/FLAC3D); the in-product bridge
+runtime was extracted to the standalone `itasca-mcp-bridge` package. The
+bundled command/API/reference knowledge base is inherited from `pfc-mcp`
+and currently covers ITASCA command documentation.
+
 ## [0.3.15] - 2026-05-16
 
 Version-aware reference documentation. The `contact-models` reference grows

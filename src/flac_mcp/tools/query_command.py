@@ -1,4 +1,4 @@
-"""PFC Command Query Tool - Keyword search for command documentation."""
+"""FLAC Command Query Tool - Keyword search for command documentation."""
 
 from typing import Any
 
@@ -20,10 +20,10 @@ def register(mcp: FastMCP) -> None:
         limit: SearchLimit = 10,
         version: CommandDocVersion = Field(
             CommandDocVersion.V7_0,
-            description="PFC documentation version to search. Defaults to 7.0.",
+            description="FLAC documentation version to search. Defaults to 7.0.",
         ),
     ) -> dict[str, Any]:
-        """Search PFC command documentation by keywords (like grep).
+        """Search FLAC command documentation by keywords (like grep).
 
         Returns matching command paths. Use flac_browse_commands for full documentation.
 

@@ -1,4 +1,4 @@
-"""PFC MCP tool implementations."""
+"""FLAC MCP tool implementations."""
 
 from . import (
     browse_commands,

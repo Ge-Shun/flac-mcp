@@ -1,4 +1,4 @@
-"""PFC Python API Browse Tool - Navigate and retrieve Python SDK documentation."""
+"""FLAC Python API Browse Tool - Navigate and retrieve Python SDK documentation."""
 
 from typing import Any
 
@@ -17,7 +17,7 @@ def register(mcp: FastMCP) -> None:
         api: str | None = Field(
             None,
             description=(
-                "PFC Python API path to browse (dot-separated, starting from itasca). Examples:\n"
+                "FLAC Python API path to browse (dot-separated, starting from itasca). Examples:\n"
                 "- None or '': Root overview - all modules and objects\n"
                 "- 'itasca': Core module functions (command, cycle, gravity, etc.)\n"
                 "- 'itasca.ball': Ball module functions (create, find, list, etc.)\n"
@@ -29,7 +29,7 @@ def register(mcp: FastMCP) -> None:
             ),
         ),
     ) -> dict[str, Any]:
-        """Browse PFC Python SDK documentation by path (like glob + cat)."""
+        """Browse FLAC Python SDK documentation by path (like glob + cat)."""
         normalized = _normalize_api_path(api)
 
         if not normalized:

@@ -1,4 +1,4 @@
-# pfc-mcp Bootstrap (GitHub Copilot CLI)
+# flac-mcp Bootstrap (GitHub Copilot CLI)
 
 Use this profile when the client is GitHub Copilot CLI.
 
@@ -14,9 +14,9 @@ Add/merge this MCP entry:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "command": "uvx",
-      "args": ["pfc-mcp"]
+      "args": ["flac-mcp"]
     }
   }
 }
@@ -27,9 +27,9 @@ If `uvx` is unavailable, fallback to:
 ```json
 {
   "mcpServers": {
-    "pfc-mcp": {
+    "flac-mcp": {
       "command": "uv",
-      "args": ["tool", "run", "pfc-mcp"]
+      "args": ["tool", "run", "flac-mcp"]
     }
   }
 }
@@ -43,4 +43,4 @@ Always close and restart the Copilot CLI session before continuing. Exit the cur
 
 After Step 1, continue from Step 2 in:
 
-- `docs/agentic/pfc-mcp-bootstrap.md`
+- `docs/agentic/flac-mcp-bootstrap.md`

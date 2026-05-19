@@ -1,4 +1,4 @@
-"""PFC task execution tool backed by itasca-mcp-bridge."""
+"""FLAC task execution tool backed by itasca-mcp-bridge."""
 
 import uuid
 from typing import Any
@@ -19,7 +19,7 @@ def register(mcp: FastMCP) -> None:
         entry_script: ScriptPath,
         description: TaskDescription,
     ) -> dict[str, Any]:
-        """Submit a Python script file for asynchronous execution in PFC.
+        """Submit a Python script file for asynchronous execution in FLAC.
 
         Returns a task_id immediately; the script runs in the background.
         Use the companion tools to manage the task lifecycle:
@@ -32,7 +32,7 @@ def register(mcp: FastMCP) -> None:
         the task depends on. This is the standard way to probe progress,
         tune parameters mid-run, swap callbacks, or trigger early
         termination via a sentinel variable. Both tools share the same
-        __main__ namespace in PFC's main thread.
+        __main__ namespace in FLAC's main thread.
 
         Console output from itasca.command() inside the script —
         table dumps, list output, command summaries — is captured

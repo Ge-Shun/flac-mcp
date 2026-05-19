@@ -18,7 +18,7 @@ def register(mcp: FastMCP) -> None:
         skip_newest: SkipNewestTasks = 0,
         limit: TaskListLimit = 32,
     ) -> dict[str, Any]:
-        """List tracked PFC tasks with pagination."""
+        """List tracked FLAC tasks with pagination."""
         try:
             client = await get_bridge_client()
             response = await client.list_tasks(

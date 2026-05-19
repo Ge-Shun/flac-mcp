@@ -1,4 +1,4 @@
-"""PFC execute_code tool — synchronous code execution in PFC process."""
+"""FLAC execute_code tool — synchronous code execution in FLAC process."""
 
 from typing import Any
 
@@ -18,10 +18,10 @@ def register(mcp: FastMCP) -> None:
         code: ConsoleCode,
         timeout: ConsoleTimeoutSeconds = 10,
     ) -> dict[str, Any]:
-        """Execute Python code synchronously in the running PFC process.
+        """Execute Python code synchronously in the running FLAC process.
 
         Returns stdout and an optional result variable immediately.
-        Code runs in PFC's main thread, sharing the same __main__
+        Code runs in FLAC's main thread, sharing the same __main__
         namespace as any running task — side effects persist and are
         immediately visible to the task on its next cycle.
 
@@ -33,14 +33,14 @@ def register(mcp: FastMCP) -> None:
         sweeps or sentinel-based control don't have to be baked into
         the task script up front.
 
-        Environment: PFC's embedded Python interpreter. The version
-        is bundled with PFC (PFC 6/7 → Python 3.6, PFC 9 → 3.10);
-        the PFC version is encoded in sys.executable (e.g. PFC700,
-        PFC900). When unsure, write code compatible with Python 3.6+.
+        Environment: FLAC's embedded Python interpreter. The version
+        is bundled with FLAC (FLAC 6/7 → Python 3.6, FLAC 9 → 3.10);
+        the FLAC version is encoded in sys.executable (e.g. FLAC700,
+        FLAC900). When unsure, write code compatible with Python 3.6+.
 
         Typical uses:
         - Query model state: ball/wall/contact counts, current cycle
-        - Issue PFC commands and read their console output:
+        - Issue FLAC commands and read their console output:
           itasca.command('ball list'), itasca.command('model list
           information'). Table dumps, list output, and command
           summaries are captured and interleaved with Python prints
@@ -87,12 +87,12 @@ def register(mcp: FastMCP) -> None:
 
         if status == "terminated":
             # Bridge aborted the snippet at the timeout deadline and the
-            # worker thread settled. PFC state may be partially modified.
+            # worker thread settled. FLAC state may be partially modified.
             return build_operation_error(
                 "terminated",
                 "Execution aborted by bridge timeout",
                 reason=message,
-                action="PFC state may be partially modified; verify with flac_execute_code before retrying",
+                action="FLAC state may be partially modified; verify with flac_execute_code before retrying",
                 output=partial_output,
             )
 
@@ -101,7 +101,7 @@ def register(mcp: FastMCP) -> None:
                 action = (
                     "Bridge could not terminate the code (likely stuck "
                     "in a C extension). It may recover when the C call "
-                    "returns; otherwise restart PFC bridge."
+                    "returns; otherwise restart FLAC bridge."
                 )
             else:
                 action = "Reduce code complexity or increase timeout"
