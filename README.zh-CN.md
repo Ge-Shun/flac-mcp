@@ -91,10 +91,6 @@ https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-
 
 详见 [开发者指南：从源码安装与运行](docs/development/source-install.zh-CN.md)。
 
-<a href="https://glama.ai/mcp/servers/yusong652/flac-mcp">
-  <img width="200" height="105" src="https://glama.ai/mcp/servers/yusong652/flac-mcp/badge" alt="flac-mcp MCP server" />
-</a>
-
 ## 贡献
 
 欢迎提交 PR 和 Issue！参见[开发者指南](docs/development/source-install.zh-CN.md)了解如何开始。

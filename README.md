@@ -91,10 +91,6 @@ See [Troubleshooting](docs/agentic/flac-mcp-bootstrap.md#troubleshooting) in the
 
 See [Developer Guide: Install and Run from Source](docs/development/source-install.md).
 
-<a href="https://glama.ai/mcp/servers/yusong652/flac-mcp">
-  <img width="200" height="105" src="https://glama.ai/mcp/servers/yusong652/flac-mcp/badge" alt="flac-mcp MCP server" />
-</a>
-
 ## Contributing
 
 PRs and issues are welcome! See the [Developer Guide](docs/development/source-install.md) to get started.
