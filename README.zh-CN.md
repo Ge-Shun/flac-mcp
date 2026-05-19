@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/yusong652/flac-mcp/assets/header.gif" alt="flac-mcp" width="70%">
-</p>
-
 # flac-mcp
 
 [English](https://github.com/yusong652/flac-mcp/blob/main/README.md) | [简体中文](https://github.com/yusong652/flac-mcp/blob/main/README.zh-CN.md)
@@ -17,8 +13,6 @@
 **flac-mcp** 通过 [Model Context Protocol](https://modelcontextprotocol.io/) 将 AI 智能体连接到 [ITASCA FLAC](https://www.itascacg.com/software/flac3d) — 浏览文档、运行仿真、执行代码，一切通过自然语言对话完成。
 
 `flac3d>model solve ;LLM solves.`
-
-![flac-mcp demo](https://raw.githubusercontent.com/yusong652/flac-mcp/assets/flac-mcp.gif)
 
 ## 工具（10）
 
@@ -63,8 +57,6 @@ https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-
 
 - 把这个文件的内容复制到 FLAC 的 IPython 控制台里运行
 - 或者先把这个文件下载到本地，再在 FLAC GUI 里执行它
-
-<img src="https://raw.githubusercontent.com/yusong652/flac-mcp/assets/addon.gif" alt="addon.py 演示" width="60%">
 
 ### 验证
 

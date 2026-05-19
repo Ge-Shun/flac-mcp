@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/yusong652/flac-mcp/assets/header.gif" alt="flac-mcp" width="70%">
-</p>
-
 # flac-mcp
 
 [English](https://github.com/yusong652/flac-mcp/blob/main/README.md) | [简体中文](https://github.com/yusong652/flac-mcp/blob/main/README.zh-CN.md)
@@ -17,8 +13,6 @@
 **flac-mcp** connects AI agents to [ITASCA FLAC](https://www.itascacg.com/software/flac3d) through the [Model Context Protocol](https://modelcontextprotocol.io/) — browse documentation, run simulations, and execute code, all through natural conversation.
 
 `flac3d>model solve ;LLM solves.`
-
-![flac-mcp demo](https://raw.githubusercontent.com/yusong652/flac-mcp/assets/flac-mcp.gif)
 
 ## Tools (10)
 
@@ -63,8 +57,6 @@ Download [`addon.py`](addon.py), then use either of these two flows inside FLAC:
 
 - Copy the file contents into the FLAC IPython console and run them
 - Or download the file and execute it in FLAC GUI
-
-<img src="https://raw.githubusercontent.com/yusong652/flac-mcp/assets/addon.gif" alt="addon.py demo" width="60%">
 
 ### Verify
 
