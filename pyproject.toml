@@ -3,13 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pfc-mcp"
+name = "flac-mcp"
 dynamic = ["version"]
-description = "MCP server for ITASCA PFC discrete element simulation control and documentation"
+description = "MCP server for ITASCA FLAC3D simulation control and documentation"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name= "Yusong Han", email = "yusong.han.652@gmail.com" }, { name = "Nagisa Toyoura", email = "nagisa.toyoura@gmail.com" }]
-keywords = ["pfc", "itasca", "itasca-software", "flac", "3dec", "mcp", "simulation", "discrete-element", "dem"]
+keywords = ["flac", "flac3d", "itasca", "itasca-software", "mcp", "simulation", "geotechnical"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Topic :: Scientific/Engineering",
@@ -27,7 +27,7 @@ dependencies = [
 readme = "README.md"
 
 [project.scripts]
-pfc-mcp = "pfc_mcp.server:main"
+flac-mcp = "flac_mcp.server:main"
 
 [dependency-groups]
 dev = [
@@ -64,11 +64,11 @@ strict = true
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = ["pfc_mcp.knowledge.resources.command_docs.*"]
+module = ["flac_mcp.knowledge.resources.command_docs.*"]
 ignore_errors = true
 
 [tool.hatch.version]
-path = "src/pfc_mcp/__init__.py"
+path = "src/flac_mcp/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/pfc_mcp"]
+packages = ["src/flac_mcp"]

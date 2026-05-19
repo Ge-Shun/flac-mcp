@@ -4,7 +4,7 @@ import json
 
 import pytest
 
-from pfc_mcp.server import mcp
+from flac_mcp.server import mcp
 
 
 def _parse_tool_payload(result) -> dict:
@@ -17,7 +17,7 @@ def _parse_tool_payload(result) -> dict:
 
 @pytest.mark.asyncio
 async def test_browse_commands_root_contract() -> None:
-    result = await mcp._tool_manager.call_tool("pfc_browse_commands", {})
+    result = await mcp._tool_manager.call_tool("flac_browse_commands", {})
     payload = _parse_tool_payload(result)
     data = payload["data"]
 
@@ -34,7 +34,7 @@ async def test_browse_commands_root_contract() -> None:
 @pytest.mark.asyncio
 async def test_browse_commands_not_found_contract() -> None:
     result = await mcp._tool_manager.call_tool(
-        "pfc_browse_commands",
+        "flac_browse_commands",
         {"command": "ball not_a_real_command"},
     )
     payload = _parse_tool_payload(result)
@@ -51,7 +51,7 @@ async def test_browse_commands_not_found_contract() -> None:
 @pytest.mark.asyncio
 async def test_query_command_contract() -> None:
     result = await mcp._tool_manager.call_tool(
-        "pfc_query_command",
+        "flac_query_command",
         {"query": "ball create", "limit": 5},
     )
     payload = _parse_tool_payload(result)
@@ -69,7 +69,7 @@ async def test_query_command_contract() -> None:
 @pytest.mark.asyncio
 async def test_browse_commands_versioned_contract() -> None:
     result = await mcp._tool_manager.call_tool(
-        "pfc_browse_commands",
+        "flac_browse_commands",
         {"command": "brick assemble", "version": "6.0"},
     )
     payload = _parse_tool_payload(result)
@@ -84,7 +84,7 @@ async def test_browse_commands_versioned_contract() -> None:
 @pytest.mark.asyncio
 async def test_browse_category_filters_unavailable_commands_by_version() -> None:
     result = await mcp._tool_manager.call_tool(
-        "pfc_browse_commands",
+        "flac_browse_commands",
         {"command": "ball", "version": "6.0"},
     )
     payload = _parse_tool_payload(result)
@@ -99,7 +99,7 @@ async def test_browse_category_filters_unavailable_commands_by_version() -> None
 @pytest.mark.asyncio
 async def test_query_command_versioned_contract() -> None:
     result = await mcp._tool_manager.call_tool(
-        "pfc_query_command",
+        "flac_query_command",
         {"query": "brick assemble", "limit": 5, "version": "6.0"},
     )
     payload = _parse_tool_payload(result)
@@ -113,7 +113,7 @@ async def test_query_command_versioned_contract() -> None:
 
 @pytest.mark.asyncio
 async def test_browse_python_api_root_contract() -> None:
-    result = await mcp._tool_manager.call_tool("pfc_browse_python_api", {})
+    result = await mcp._tool_manager.call_tool("flac_browse_python_api", {})
     payload = _parse_tool_payload(result)
     data = payload["data"]
 
@@ -128,7 +128,7 @@ async def test_browse_python_api_root_contract() -> None:
 @pytest.mark.asyncio
 async def test_query_python_api_no_results_contract() -> None:
     result = await mcp._tool_manager.call_tool(
-        "pfc_query_python_api",
+        "flac_query_python_api",
         {"query": "definitelynonexistentkeyword", "limit": 5},
     )
     payload = _parse_tool_payload(result)
@@ -143,7 +143,7 @@ async def test_query_python_api_no_results_contract() -> None:
 
 @pytest.mark.asyncio
 async def test_browse_reference_root_contract() -> None:
-    result = await mcp._tool_manager.call_tool("pfc_browse_reference", {})
+    result = await mcp._tool_manager.call_tool("flac_browse_reference", {})
     payload = _parse_tool_payload(result)
     data = payload["data"]
 

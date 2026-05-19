@@ -1,21 +1,21 @@
 import asyncio
 
-from pfc_mcp.formatting import build_bridge_error
-from pfc_mcp.server import mcp
-from pfc_mcp.tools.task_formatting import paginate_output
-from pfc_mcp.utils import validate_script_path
+from flac_mcp.formatting import build_bridge_error
+from flac_mcp.server import mcp
+from flac_mcp.tools.task_formatting import paginate_output
+from flac_mcp.utils import validate_script_path
 
 
 def test_phase2_tools_registered() -> None:
     tools = asyncio.run(mcp._tool_manager.get_tools())
     expected = {
-        "pfc_execute_task",
-        "pfc_check_task_status",
-        "pfc_list_tasks",
-        "pfc_interrupt_task",
+        "flac_execute_task",
+        "flac_check_task_status",
+        "flac_list_tasks",
+        "flac_interrupt_task",
     }
     assert expected.issubset(set(tools.keys()))
-    assert "pfc_execute_code" in tools
+    assert "flac_execute_code" in tools
 
 
 def test_pagination() -> None:
@@ -50,6 +50,6 @@ def test_bridge_error_message_is_friendly() -> None:
     assert envelope["ok"] is False
     error = envelope["error"]
     assert error["code"] == "bridge_unavailable"
-    assert error["message"] == "PFC bridge unavailable"
+    assert error["message"] == "FLAC3D bridge unavailable"
     assert error["details"]["reason"] == "cannot connect to bridge service"
-    assert error["details"]["action"] == "start pfc-mcp-bridge in PFC GUI, then retry"
+    assert error["details"]["action"] == "start itasca-mcp-bridge in FLAC3D, then retry"
