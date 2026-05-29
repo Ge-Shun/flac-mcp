@@ -1,0 +1,24 @@
+{
+  "category": "table",
+  "search_keywords": [
+    "list"
+  ],
+  "description": "List table information.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "table list",
+      "syntax": "table [<s>] list"
+    },
+    "7.0": {
+      "command": "table list",
+      "syntax": "table [<s>] list"
+    },
+    "9.0": {
+      "command": "table list",
+      "syntax": "table [<s>] list"
+    }
+  }
+}

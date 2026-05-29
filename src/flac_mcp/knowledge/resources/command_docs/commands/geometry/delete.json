@@ -1,0 +1,24 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "delete"
+  ],
+  "description": "Delete geometric sets. All sets are deleted unless a specific set is specified with the set keyword.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry delete",
+      "syntax": "geometry delete [set <s>]"
+    },
+    "7.0": {
+      "command": "geometry delete",
+      "syntax": "geometry delete [set <s>]"
+    },
+    "9.0": {
+      "command": "geometry delete",
+      "syntax": "geometry delete [set <s>]"
+    }
+  }
+}

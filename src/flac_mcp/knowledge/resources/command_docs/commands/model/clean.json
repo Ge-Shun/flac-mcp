@@ -1,0 +1,115 @@
+{
+  "category": "model",
+  "search_keywords": [
+    "clean",
+    "initialize",
+    "contact"
+  ],
+  "description": "Clean the model. During model creation, prior to cycling, a model is not valid in the sense that there are no contacts between pieces, piece properties may not be set, and pieces may not be entered into a data structure for efficient spatial searching. The model clean command is a global command that can be given at any point during the model creation process to create all contacts in the model, initialize all piece properties, ensure that the data structures are present for spatial searching, and update the contact activity status based on the geometry. This command is invoked automatically when the 'model timestep fix' and 'model timestep auto' commands are given.",
+  "notes": [
+    "Creates all contacts between pieces",
+    "Initializes all piece properties",
+    "Ensures spatial searching data structures are present",
+    "Updates contact activity status based on geometry",
+    "Automatically invoked when 'model timestep fix' or 'model timestep auto' commands are given",
+    "IMPORTANT: After model restore, must call 'model clean' before modifying extent tolerances",
+    "DFN WARNING: When using DFNs to insert contacts, if 'fracture model' command is not given BEFORE 'model clean', newly created contacts intersecting fractures will NOT be assigned a fracture ID",
+    "Useful when modifying model geometry after initial setup"
+  ],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": "itasca.command('model clean') or itasca.command('model clean all') - Python SDK does not provide direct clean method"
+  },
+  "versions": {
+    "7.0": {
+      "command": "model clean",
+      "syntax": "model clean [keyword]",
+      "keywords": [
+        {
+          "name": "all",
+          "syntax": "all"
+        }
+      ],
+      "examples": [
+        {
+          "command": "model clean",
+          "description": "Clean model - create contacts, initialize properties, update spatial data structures"
+        },
+        {
+          "command": "model clean all",
+          "description": "Clean model with full cellspace remapping and cell extent updates"
+        },
+        {
+          "command": "fracture model linear\nmodel clean",
+          "description": "Set fracture model BEFORE clean to ensure DFN contacts get fracture IDs"
+        },
+        {
+          "description": "After restore, must clean before modifying extent tolerances"
+        },
+        {
+          "description": "Create geometry, clean to initialize, then solve to equilibrium"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "model clean",
+      "syntax": "model clean [all]",
+      "keywords": [
+        {
+          "name": "all",
+          "syntax": "all"
+        }
+      ],
+      "examples": [
+        {
+          "command": "model clean",
+          "description": "Clean model - create contacts, initialize properties, update spatial data structures"
+        },
+        {
+          "command": "model clean all",
+          "description": "Clean model with full cellspace remapping and cell extent updates"
+        },
+        {
+          "command": "fracture model linear\nmodel clean",
+          "description": "Set fracture model BEFORE clean to ensure DFN contacts get fracture IDs"
+        },
+        {
+          "description": "After restore, must clean before modifying extent tolerances"
+        },
+        {
+          "description": "Create geometry, clean to initialize, then solve to equilibrium"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "model clean",
+      "syntax": "model clean [keyword]",
+      "keywords": [
+        {
+          "name": "all",
+          "syntax": "all"
+        }
+      ],
+      "examples": [
+        {
+          "command": "model clean",
+          "description": "Clean model - create contacts, initialize properties, update spatial data structures"
+        },
+        {
+          "command": "model clean all",
+          "description": "Clean model with full cellspace remapping and cell extent updates"
+        },
+        {
+          "command": "fracture model linear\nmodel clean",
+          "description": "Set fracture model BEFORE clean to ensure DFN contacts get fracture IDs"
+        },
+        {
+          "description": "After restore, must clean before modifying extent tolerances"
+        },
+        {
+          "description": "Create geometry, clean to initialize, then solve to equilibrium"
+        }
+      ]
+    }
+  }
+}

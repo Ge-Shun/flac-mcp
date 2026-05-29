@@ -1,0 +1,176 @@
+{
+  "category": "model",
+  "search_keywords": [
+    "range",
+    "filter",
+    "named"
+  ],
+  "description": "Create/delete a named range. Creating a named range 'pre-defines' a range that, subsequently, can be applied efficiently using the 'named-range' keyword in a command's range phrase (e.g., [command] range named-range s). This can be particularly helpful if the underlying range definition is verbose. Named ranges can include logical operations (and, or, not, union) and can be combined with other range elements.",
+  "notes": [
+    "Named ranges 'pre-define' range specifications for efficient reuse",
+    "Particularly helpful when range definitions are verbose or complex",
+    "Usage: [command] range named-range 's' (where s is the named range name)",
+    "Range elements: same as regular range phrases but without the 'range' keyword",
+    "Supports logical operations:",
+    "  - or: union of ranges (either condition)",
+    "  - and: intersection of ranges (both conditions)",
+    "  - not: exclusion (negate condition)",
+    "  - union: explicit union operator",
+    "Common range elements:",
+    "  - group 'name': objects in group",
+    "  - id i1 i2: objects with IDs from i1 to i2",
+    "  - position (x1,y1,z1)(x2,y2,z2): objects in box",
+    "  - position-x/y/z x1 x2: objects within coordinate range",
+    "Named ranges vs. groups:",
+    "  - Named ranges: geometric/property-based, evaluated when used",
+    "  - Groups: membership-based, persistent object assignment",
+    "Named ranges are dynamic: if objects move, range membership may change",
+    "See documentation: 'Named Ranges' and 'Logical Operations in a Range Phrase'"
+  ],
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "7.0": {
+      "command": "model range",
+      "syntax": "model range keyword",
+      "keywords": [
+        {
+          "name": "create",
+          "syntax": "create <s>",
+          "description": "A named range with the name s is created if one does not exist. This must be followed by one or more range elements , indicated above as [range element] ... (this is, effectively, a range phrase without the word range at the start)."
+        },
+        {
+          "name": "delete",
+          "syntax": "delete <s>",
+          "description": "Delete the range with name s ."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model range create 'sw corner' position-x 0 1 position-y 0 1 position-z 0 10",
+          "description": "Create named range for southwest corner box (x:0-1, y:0-1, z:0-10)"
+        },
+        {
+          "command": "model range create 'nw corner' position (9,0,0)(10,1,10)",
+          "description": "Create named range for northwest corner using position vectors"
+        },
+        {
+          "command": "model range create 'corners' union named-range 'sw corner' named-range 'nw corner'",
+          "description": "Create named range combining two existing named ranges"
+        },
+        {
+          "command": "model range create 'top_layer' position-z 9.0 10.0",
+          "description": "Create named range for objects in top layer (z: 9.0-10.0)"
+        },
+        {
+          "command": "model range create 'active_region' position-x -5 5 and position-y -5 5 and position-z 0 10",
+          "description": "Create named range using 'and' logic for box region"
+        },
+        {
+          "description": "Apply attribute to intersection of two named ranges"
+        },
+        {
+          "description": "Create named range combining group membership and ID range"
+        },
+        {
+          "description": "Full example: create multiple named ranges and use with logical operations"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "model range",
+      "syntax": "model range keyword ...",
+      "keywords": [
+        {
+          "name": "create",
+          "syntax": "create <s>range",
+          "description": "A named range with the name s is created if one does not exist. A list of range elements must follow s . The list of range elements appears in the range keyword reference topic. Once a named range has been created, it can be specified in place of a set of range elements in any command (using the named-range keyword) that uses the range logic."
+        },
+        {
+          "name": "delete",
+          "syntax": "delete <s>",
+          "description": "Delete the range with name s . Note As seen here, the link range (non-optional) or < range > (optional), whenever it appears in a command signature, is a link to the range keyword reference ."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model range create 'sw corner' position-x 0 1 position-y 0 1 position-z 0 10",
+          "description": "Create named range for southwest corner box (x:0-1, y:0-1, z:0-10)"
+        },
+        {
+          "command": "model range create 'nw corner' position (9,0,0)(10,1,10)",
+          "description": "Create named range for northwest corner using position vectors"
+        },
+        {
+          "command": "model range create 'corners' union named-range 'sw corner' named-range 'nw corner'",
+          "description": "Create named range combining two existing named ranges"
+        },
+        {
+          "command": "model range create 'top_layer' position-z 9.0 10.0",
+          "description": "Create named range for objects in top layer (z: 9.0-10.0)"
+        },
+        {
+          "command": "model range create 'active_region' position-x -5 5 and position-y -5 5 and position-z 0 10",
+          "description": "Create named range using 'and' logic for box region"
+        },
+        {
+          "description": "Apply attribute to intersection of two named ranges"
+        },
+        {
+          "description": "Create named range combining group membership and ID range"
+        },
+        {
+          "description": "Full example: create multiple named ranges and use with logical operations"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "model range",
+      "syntax": "model range keyword",
+      "keywords": [
+        {
+          "name": "create",
+          "syntax": "create <s>[rangeelement...]",
+          "description": "A named range with the name s is created if one does not exist. This must be followed by one or more range elements , indicated above as [range element] ... (this is, effectively, a range phrase without the word range at the start)."
+        },
+        {
+          "name": "delete",
+          "syntax": "delete <s>",
+          "description": "Delete the range with name s ."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model range create 'sw corner' position-x 0 1 position-y 0 1 position-z 0 10",
+          "description": "Create named range for southwest corner box (x:0-1, y:0-1, z:0-10)"
+        },
+        {
+          "command": "model range create 'nw corner' position (9,0,0)(10,1,10)",
+          "description": "Create named range for northwest corner using position vectors"
+        },
+        {
+          "command": "model range create 'corners' union named-range 'sw corner' named-range 'nw corner'",
+          "description": "Create named range combining two existing named ranges"
+        },
+        {
+          "command": "model range create 'top_layer' position-z 9.0 10.0",
+          "description": "Create named range for objects in top layer (z: 9.0-10.0)"
+        },
+        {
+          "command": "model range create 'active_region' position-x -5 5 and position-y -5 5 and position-z 0 10",
+          "description": "Create named range using 'and' logic for box region"
+        },
+        {
+          "description": "Apply attribute to intersection of two named ranges"
+        },
+        {
+          "description": "Create named range combining group membership and ID range"
+        },
+        {
+          "description": "Full example: create multiple named ranges and use with logical operations"
+        }
+      ]
+    }
+  }
+}

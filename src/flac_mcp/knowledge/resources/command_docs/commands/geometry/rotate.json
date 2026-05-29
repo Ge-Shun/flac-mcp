@@ -1,0 +1,85 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "rotate"
+  ],
+  "description": "Rotate nodes. The optional range is applied to nodes, and they are rotated via the right-hand rule about a specified axis that passes through a specified point. If the set keyword is not given, then the current set is used.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry rotate",
+      "syntax": "geometry rotate keyword [range]",
+      "keywords": [
+        {
+          "name": "angle",
+          "syntax": "angle <f>",
+          "description": "Angle of rotation in degrees."
+        },
+        {
+          "name": "axis",
+          "syntax": "axis <v>",
+          "description": "Axis of rotation about which to rotate following the right-hand rule."
+        },
+        {
+          "name": "origin",
+          "syntax": "origin <v>",
+          "description": "Point to rotate about."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "geometry rotate",
+      "syntax": "geometry rotate keyword ... [range]",
+      "keywords": [
+        {
+          "name": "angle",
+          "syntax": "angle <f>",
+          "description": "Angle of rotation in degrees."
+        },
+        {
+          "name": "axis",
+          "syntax": "axis <v>",
+          "description": "Axis of rotation about which to rotate following the right-hand rule."
+        },
+        {
+          "name": "origin",
+          "syntax": "origin <v>",
+          "description": "Point to rotate about."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "geometry rotate",
+      "syntax": "geometry rotate keyword ... [range]",
+      "keywords": [
+        {
+          "name": "angle",
+          "syntax": "angle <f>",
+          "description": "Angle of rotation in degrees."
+        },
+        {
+          "name": "axis",
+          "syntax": "axis <v>3D ONLY",
+          "description": "Axis of rotation about which to rotate following the right-hand rule. In FLAC2D , rotation is always done counter-clockwise."
+        },
+        {
+          "name": "origin",
+          "syntax": "origin <v>",
+          "description": "Point to rotate about."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        }
+      ]
+    }
+  }
+}

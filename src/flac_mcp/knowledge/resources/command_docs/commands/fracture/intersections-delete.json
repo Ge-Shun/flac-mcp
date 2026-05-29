@@ -1,0 +1,45 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "intersections-delete"
+  ],
+  "description": "Delete intersections. An intersection set can be specified with intersection-set keyword. If no intersection set is specified then all intersections are deleted. Empty intersection sets are also deleted.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture intersections delete",
+      "syntax": "fracture intersections delete [keyword] [range]",
+      "keywords": [
+        {
+          "name": "intersection-set",
+          "syntax": "intersection-set <s>",
+          "description": "Specify the intersection set to delete."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "fracture intersections delete",
+      "syntax": "fracture intersections delete [keyword] [range]",
+      "keywords": [
+        {
+          "name": "intersection-set",
+          "syntax": "intersection-set <s>",
+          "description": "Specify the intersection set to delete."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "fracture intersections delete",
+      "syntax": "fracture intersections delete [keyword] [range]",
+      "keywords": [
+        {
+          "name": "intersection-set",
+          "syntax": "intersection-set <s>",
+          "description": "Specify the intersection set to delete."
+        }
+      ]
+    }
+  }
+}

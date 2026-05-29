@@ -1,0 +1,27 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "label-results"
+  ],
+  "description": "Include label data in results files. The default value is off .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "data label results",
+      "syntax": "data label results active <b>",
+      "keywords": []
+    },
+    "7.0": {
+      "command": "data label results",
+      "syntax": "data label results active <b>",
+      "keywords": []
+    },
+    "9.0": {
+      "command": "data label results",
+      "syntax": "data label results active <b>",
+      "keywords": []
+    }
+  }
+}

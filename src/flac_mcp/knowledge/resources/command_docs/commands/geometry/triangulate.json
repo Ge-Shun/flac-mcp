@@ -1,0 +1,70 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "triangulate"
+  ],
+  "description": "Triangulate planar polygons. The planar polygons in the current geometry set are triangulated. This may be useful for plotting polygons that have concavities. Polygons, that are triangles, are created in the current set by default. See the to-set keyword to output the polygons to different geometry sets.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry triangulate",
+      "syntax": "geometry triangulate keyword [range]",
+      "keywords": [
+        {
+          "name": "clean",
+          "syntax": "clean",
+          "description": "Delete the polygons that have been triangulated."
+        },
+        {
+          "name": "to-set",
+          "syntax": "to-set <s>",
+          "description": "Place the resulting polygons in the set with name s . This set is created if it does not exist."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "geometry triangulate",
+      "syntax": "geometry triangulate keyword ... [range]",
+      "keywords": [
+        {
+          "name": "clean",
+          "syntax": "clean",
+          "description": "Delete the polygons that have been triangulated."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        },
+        {
+          "name": "to-set",
+          "syntax": "to-set <s>",
+          "description": "Place the resulting polygons in the set with name s . This set is created if it does not exist."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "geometry triangulate",
+      "syntax": "geometry triangulate keyword ... [range]",
+      "keywords": [
+        {
+          "name": "clean",
+          "syntax": "clean",
+          "description": "Delete the polygons that have been triangulated."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Specify the geometry set."
+        },
+        {
+          "name": "to-set",
+          "syntax": "to-set <s>",
+          "description": "Place the resulting polygons in the set with name s . This set is created if it does not exist."
+        }
+      ]
+    }
+  }
+}

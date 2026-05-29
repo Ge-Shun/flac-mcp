@@ -1,0 +1,24 @@
+{
+  "category": "table",
+  "search_keywords": [
+    "import"
+  ],
+  "description": "Read file sfile into table s .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "table import",
+      "syntax": "table <s>import <sfile>"
+    },
+    "7.0": {
+      "command": "table import",
+      "syntax": "table <s>import <sfile>"
+    },
+    "9.0": {
+      "command": "table import",
+      "syntax": "table <s>import <sfile>"
+    }
+  }
+}

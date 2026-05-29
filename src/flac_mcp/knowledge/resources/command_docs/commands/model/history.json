@@ -1,0 +1,315 @@
+{
+  "category": "model",
+  "search_keywords": [
+    "history",
+    "track",
+    "monitor"
+  ],
+  "description": "Create a history of a model quantity. These quantities are mostly associated with a process. The keyword 'name' may be used to give the history a unique identifier for later reference. If name is not specified the history will be given a name automatically based on the internally assigned ID number. Histories allow monitoring and recording of model values during cycling for analysis and post-processing.",
+  "notes": [
+    "Histories record model quantities during cycling for monitoring and post-processing",
+    "Optional 'name' parameter provides unique identifier for later reference",
+    "Without 'name', history gets automatic ID-based name",
+    "Histories are commonly used to:",
+    "  - Monitor convergence during solve (ratio, unbalanced-maximum)",
+    "  - Track time and cycle counts",
+    "  - Record energy partitions",
+    "  - Analyze equilibrium state evolution",
+    "Most history quantities are process-specific (mechanical, thermal, creep, dynamic, fluid)",
+    "DEPRECATED: mechanical cycle keyword - use cycles-total instead",
+    "Energy quantities (use 'model history energy <name>'): block-kinetic, block-potential, block-strain, joint-friction, joint-strain, etc.",
+    "Common usage: track ratio-average to monitor equilibrium convergence",
+    "Histories can be exported, plotted, or queried via FISH",
+    "See 'history' commands for managing existing histories (export, delete, list, etc.)"
+  ],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": "itasca.command('model history mechanical ratio-average') - Python SDK does not provide direct history creation. For monitoring in Python, manually compute and store values in loops:\n\n# Example: track metrics over cycles\nhistory_data = []\nfor _ in range(100):\n    itasca.cycle(100)\n    # itasca.cycle() returns current cycle number\n    history_data.append({'cycle': itasca.cycle(), 'time': itasca.mech_age(), ...})"
+  },
+  "versions": {
+    "7.0": {
+      "command": "model history",
+      "syntax": "model history [name <s>] keyword",
+      "keywords": [
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the creep process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "damping",
+          "syntax": "damping",
+          "description": "Value of the global damping parameter."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the dynamic process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "energy",
+          "syntax": "energy <kw>",
+          "description": "Track an energy quantity. Valid <kw> in FLAC3D 9.0: block-kinetic, block-potential, block-strain, block-strain-excavated, block-volume-excavated, boundary-load, joint-friction, joint-strain, joint-strain-excavated, joint-strain-shear, joint-strain-tensile, total-stored (combined block + joint strain energy)."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the fluid process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "unbalanced-maximum",
+          "syntax": "unbalanced-maximum",
+          "description": "Values associated with the mechanical process. The current mechanical value of convergence (see model solve mechanical convergence ). The total number of mechanical cycles. (Deprecated; use cycles-total .) The number of cycles this process has taken in this model solve command. The total number of cycles accumulated while this process is active. Adhesive energy stored contacts. Body based work energy. Local damping energy of bodies. Viscous dashpot energy stored in contacts. Kinetic energy of bodies. Parallel bond strain energy stored in contacts. Rolling resistance slip energy stored in contacts. Rolling resistance strain energy stored in contacts. Slip energy stored in contacts. Strain energy stored in contacts. The value of the ratio currently being used. See the definition of ratios in ref-equilibrium-. this and and next three need to be checked with DR closer to release!!!! The value of the average force ratio. See the definition of ratios in ref-equilibrium-. The value of the local force ratio. See the definition of ratios in ref-equilibrium-. The value of the maximum force ratio. See the definition of ratios in ref-equilibrium-. The accumulated time this process has done in this model solve command. The total accumulated time while this process is active. The maximum unbalanced force in any object."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the thermal process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "timestep",
+          "syntax": "timestep",
+          "description": "The active timestep."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model history mechanical ratio-average",
+          "description": "Create history of average force ratio (commonly used for equilibrium monitoring)"
+        },
+        {
+          "command": "model history name 'force_ratio' mechanical ratio-average",
+          "description": "Create named history for average force ratio"
+        },
+        {
+          "command": "model history mechanical unbalanced-maximum",
+          "description": "Track maximum unbalanced force over time"
+        },
+        {
+          "command": "model history mechanical cycles-total",
+          "description": "Record total mechanical cycles"
+        },
+        {
+          "command": "model history timestep",
+          "description": "Monitor active timestep during cycling"
+        },
+        {
+          "command": "model history mechanical energy energy-kinetic"
+        },
+        {
+          "command": "model history mechanical energy energy-strain"
+        },
+        {
+          "command": "model history name 'mech_time' mechanical time-total",
+          "description": "Create named history for total mechanical time"
+        },
+        {
+          "command": "model history thermal cycles-total\nmodel history thermal time-total",
+          "description": "Create histories for thermal process monitoring"
+        },
+        {
+          "command": "model history name 'ratio' mechanical ratio-average\nmodel solve ratio 1e-5\nhistory export 1 table 'ratio_vs_time'",
+          "description": "Create history, solve to equilibrium, export to table"
+        },
+        {
+          "command": "model history mechanical ratio-average\nmodel history mechanical ratio-maximum\nmodel history mechanical unbalanced-maximum\nmodel solve",
+          "description": "Track multiple convergence metrics during solve"
+        },
+        {
+          "command": "model history energy block-kinetic",
+          "description": "Monitor block kinetic energy"
+        },
+        {
+          "command": "model history damping",
+          "description": "Track global damping parameter"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "model history",
+      "syntax": "model history [name <s>] keyword",
+      "keywords": [
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the creep process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the dynamic process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the fluid process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "unbalanced-average",
+          "syntax": "unbalanced-average",
+          "description": "Values associated with the fluid process. The total number of cycles accumulated while this process is active. Adhesive energy stored contacts. Body based work energy. Local damping energy of bodies. Viscous dashpot energy stored in contacts. Kinetic energy of bodies. Parallel bond strain energy stored in contacts. Rolling resistance slip energy stored in contacts. Rolling resistance strain energy stored in contacts. Slip energy stored in contacts. Strain energy stored in contacts. The value of the ratio currently being used. See the definition of ratios in ref-equilibrium-. this and and next three need to be checked with DR closer to release!!!! The value of the average force ratio. See the definition of ratios in ref-equilibrium-. The value of the local force ratio. See the definition of ratios in ref-equilibrium-. The value of the maximum force ratio. See the definition of ratios in ref-equilibrium-. The total accumulated time while this process is active. The maximum unbalanced force in any object. The average unbalanced force over all objects."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the thermal process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "timestep",
+          "syntax": "timestep",
+          "description": "The active timestep."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model history mechanical ratio-average",
+          "description": "Create history of average force ratio (commonly used for equilibrium monitoring)"
+        },
+        {
+          "command": "model history name 'force_ratio' mechanical ratio-average",
+          "description": "Create named history for average force ratio"
+        },
+        {
+          "command": "model history mechanical unbalanced-maximum",
+          "description": "Track maximum unbalanced force over time"
+        },
+        {
+          "command": "model history mechanical cycles-total",
+          "description": "Record total mechanical cycles"
+        },
+        {
+          "command": "model history timestep",
+          "description": "Monitor active timestep during cycling"
+        },
+        {
+          "command": "model history mechanical energy energy-kinetic"
+        },
+        {
+          "command": "model history mechanical energy energy-strain"
+        },
+        {
+          "command": "model history name 'mech_time' mechanical time-total",
+          "description": "Create named history for total mechanical time"
+        },
+        {
+          "command": "model history thermal cycles-total\nmodel history thermal time-total",
+          "description": "Create histories for thermal process monitoring"
+        },
+        {
+          "command": "model history name 'ratio' mechanical ratio-average\nmodel solve ratio 1e-5\nhistory export 1 table 'ratio_vs_time'",
+          "description": "Create history, solve to equilibrium, export to table"
+        },
+        {
+          "command": "model history mechanical ratio-average\nmodel history mechanical ratio-maximum\nmodel history mechanical unbalanced-maximum\nmodel solve",
+          "description": "Track multiple convergence metrics during solve"
+        },
+        {
+          "command": "model history energy block-kinetic",
+          "description": "Monitor block kinetic energy"
+        },
+        {
+          "command": "model history damping",
+          "description": "Track global damping parameter"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "model history",
+      "syntax": "model history [name <s>] keyword",
+      "keywords": [
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the creep process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "damping",
+          "syntax": "damping",
+          "description": "Value of the global damping parameter."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the dynamic process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "energy",
+          "syntax": "energy <kw>",
+          "description": "Track an energy quantity. Valid <kw> in FLAC3D 9.0: block-kinetic, block-potential, block-strain, block-strain-excavated, block-volume-excavated, boundary-load, joint-friction, joint-strain, joint-strain-excavated, joint-strain-shear, joint-strain-tensile, total-stored (combined block + joint strain energy)."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the fluid process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "unbalanced-maximum",
+          "syntax": "unbalanced-maximum",
+          "description": "Values associated with the mechanical process. The current mechanical value of convergence (see model solve mechanical convergence ). The total number of mechanical cycles. (Deprecated; use cycles-total .) The number of cycles this process has taken in this model solve command. The total number of cycles accumulated while this process is active. Adhesive energy stored contacts. Body based work energy. Local damping energy of bodies. Viscous dashpot energy stored in contacts. Kinetic energy of bodies. Parallel bond strain energy stored in contacts. Rolling resistance slip energy stored in contacts. Rolling resistance strain energy stored in contacts. Slip energy stored in contacts. Strain energy stored in contacts. The value of the ratio currently being used. See the definition of ratios in ref-equilibrium-. this and and next three need to be checked with DR closer to release!!!! The value of the average force ratio. See the definition of ratios in ref-equilibrium-. The value of the local force ratio. See the definition of ratios in ref-equilibrium-. The value of the maximum force ratio. See the definition of ratios in ref-equilibrium-. The accumulated time this process has done in this model solve command. The total accumulated time while this process is active. The maximum unbalanced force in any object."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total",
+          "description": "Values associated with the thermal process. The total number of cycles accumulated while this process is active. The total accumulated time while this process is active."
+        },
+        {
+          "name": "timestep",
+          "syntax": "timestep",
+          "description": "The active timestep."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model history mechanical ratio-average",
+          "description": "Create history of average force ratio (commonly used for equilibrium monitoring)"
+        },
+        {
+          "command": "model history name 'force_ratio' mechanical ratio-average",
+          "description": "Create named history for average force ratio"
+        },
+        {
+          "command": "model history mechanical unbalanced-maximum",
+          "description": "Track maximum unbalanced force over time"
+        },
+        {
+          "command": "model history mechanical cycles-total",
+          "description": "Record total mechanical cycles"
+        },
+        {
+          "command": "model history timestep",
+          "description": "Monitor active timestep during cycling"
+        },
+        {
+          "command": "model history mechanical energy energy-kinetic"
+        },
+        {
+          "command": "model history mechanical energy energy-strain"
+        },
+        {
+          "command": "model history name 'mech_time' mechanical time-total",
+          "description": "Create named history for total mechanical time"
+        },
+        {
+          "command": "model history thermal cycles-total\nmodel history thermal time-total",
+          "description": "Create histories for thermal process monitoring"
+        },
+        {
+          "command": "model history name 'ratio' mechanical ratio-average\nmodel solve ratio 1e-5\nhistory export 1 table 'ratio_vs_time'",
+          "description": "Create history, solve to equilibrium, export to table"
+        },
+        {
+          "command": "model history mechanical ratio-average\nmodel history mechanical ratio-maximum\nmodel history mechanical unbalanced-maximum\nmodel solve",
+          "description": "Track multiple convergence metrics during solve"
+        },
+        {
+          "command": "model history energy block-kinetic",
+          "description": "Monitor block kinetic energy"
+        },
+        {
+          "command": "model history damping",
+          "description": "Track global damping parameter"
+        }
+      ]
+    }
+  }
+}

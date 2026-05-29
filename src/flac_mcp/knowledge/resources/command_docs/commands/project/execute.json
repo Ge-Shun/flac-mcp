@@ -1,0 +1,24 @@
+{
+  "category": "project",
+  "search_keywords": [
+    "execute"
+  ],
+  "description": "Execute the current project. This command is specific to the Itasca user interface, as described below.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "project execute",
+      "syntax": "project execute [suppress]"
+    },
+    "7.0": {
+      "command": "project execute",
+      "syntax": "project execute [suppress]"
+    },
+    "9.0": {
+      "command": "project execute",
+      "syntax": "project execute [suppress]"
+    }
+  }
+}

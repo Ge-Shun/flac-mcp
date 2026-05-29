@@ -1,0 +1,24 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "dfn-extra"
+  ],
+  "description": "Set DFN extra variables. The extra variable a can be of any type, and is associated with the index i as if stored in an array.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture dfn-extra",
+      "syntax": "fracture dfn-extra <i>a[range]"
+    },
+    "7.0": {
+      "command": "fracture dfn-extra",
+      "syntax": "fracture dfn-extra <i><a>[range]"
+    },
+    "9.0": {
+      "command": "fracture dfn-extra",
+      "syntax": "fracture dfn-extra <i><a>[range]"
+    }
+  }
+}

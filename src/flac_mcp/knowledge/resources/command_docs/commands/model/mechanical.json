@@ -1,0 +1,301 @@
+{
+  "category": "model",
+  "search_keywords": [
+    "mechanical",
+    "timestep"
+  ],
+  "description": "Set parameters for a mechanical analysis. The mechanical process is on by default. This command controls mechanical calculation activity, timestep settings, and slave/master coupling for multi-physics simulations.",
+  "notes": [
+    "Mechanical process is ON by default",
+    "timestep automatic: default mode - calculates stable timestep from stiffnesses and masses",
+    "timestep fix: fixed timestep - skips calculations for performance, may scale masses in FLAC3D",
+    "timestep increment: controls maximum timestep increase rate (default 1.05), can decrease freely",
+    "timestep maximum: sets upper bound on timestep (default: unbounded)",
+    "slave mode: mechanical analysis runs to equilibrium after each master step",
+    "substep: max steps for slave mode",
+    "time-total: can be reset to any value, accumulates during cycling",
+    "FLAC3D static analysis: timestep is arbitrary, default 1.0, masses scaled for stability",
+    "See documentation: 'Mechanical Timestep Determination for Numerical Stability' for mass scaling details"
+  ],
+  "python_sdk_alternative": {
+    "available": "partial",
+    "python_code": "# Get timestep\ndt = itasca.timestep()\n\n# Set fixed timestep\nitasca.set_timestep(1e-6)\n\n# Get accumulated mechanical time\ntime = itasca.mech_age()\n\n# For other settings use command:\nitasca.command('model mechanical timestep safety-factor 0.9')",
+    "notes": "Python SDK provides itasca.timestep() to get timestep, itasca.set_timestep() to set fixed timestep, and itasca.mech_age() to get accumulated mechanical time. For advanced settings, use itasca.command()"
+  },
+  "versions": {
+    "7.0": {
+      "command": "model mechanical",
+      "syntax": "model mechanical [<b>] keyword",
+      "keywords": [
+        {
+          "name": "active",
+          "syntax": "active <b>",
+          "description": "The mechanical process is on by default. Specify active off to suppress mechanical calculations."
+        },
+        {
+          "name": "dynamic",
+          "syntax": "dynamic <b>",
+          "description": "Specify the state of the dynamic process (requires `model configure dynamic`)."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "Display mechanical calculation-mode information."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total <f>",
+          "description": "f is the accumulated mechanical time for the model. This can be reset to any value, and will continue to be accumulated during cycling after that."
+        },
+        {
+          "name": "slave",
+          "syntax": "slave <b>",
+          "description": "Specifies that mechanical mode is to be considered a slave, and cycled to equilibrium after each master step has been taken."
+        },
+        {
+          "name": "substep",
+          "syntax": "substep <i>",
+          "description": "Specifies the maximum number of steps the mechanical process will take when solving with slave on ."
+        },
+        {
+          "name": "timestep",
+          "syntax": "timestep <kw>",
+          "description": "Configure timestep behavior for the mechanical process. Sub-keywords: automatic (default; calculate stable timestep from current stiffnesses and masses), fix <f> (use fixed timestep <f>; calculation skipped), increment <f> (maximum per-cycle increase factor in automatic mode; default 1.05; timestep may decrease freely), maximum <f> (upper bound on timestep; unbounded by default), safety-factor <f> (multiplier on the calculated stable timestep in automatic mode; default 1.0), scale <f|on|off> (density-scaling mode for fast convergence to a static configuration; masses are scaled so the stable timestep equals f, or 1.0 if omitted; meaningful timescale is lost), update <i> (recompute timestep every <i> cycles; default 1). See `Mechanical Timestep Determination for Numerical Stability` for mass-scaling discussion."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model mechanical active off",
+          "description": "Suppress mechanical calculations (e.g., for thermal-only analysis)"
+        },
+        {
+          "command": "model mechanical active on",
+          "description": "Enable mechanical calculations (default)"
+        },
+        {
+          "command": "model mechanical list",
+          "description": "Display mechanical calculation-mode information"
+        },
+        {
+          "command": "model mechanical time-total 0.0",
+          "description": "Reset accumulated mechanical time to zero"
+        },
+        {
+          "command": "model mechanical timestep automatic",
+          "description": "Use automatic timestep calculation (default)"
+        },
+        {
+          "command": "model mechanical timestep fix 1e-6",
+          "description": "Set fixed timestep to 1e-6 for performance enhancement"
+        },
+        {
+          "command": "model mechanical timestep increment 1.1",
+          "description": "Allow timestep to increase by 10% per cycle"
+        },
+        {
+          "command": "model mechanical timestep maximum 1e-5",
+          "description": "Set maximum timestep to 1e-5"
+        },
+        {
+          "command": "model mechanical timestep safety-factor 0.9",
+          "description": "Use 90% of calculated stable timestep"
+        },
+        {
+          "command": "model mechanical timestep scale 1.0"
+        },
+        {
+          "command": "model mechanical timestep update 10"
+        },
+        {
+          "command": "model mechanical slave on\nmodel mechanical substep 1000",
+          "description": "Set mechanical mode as slave with max 1000 substeps"
+        },
+        {
+          "command": "model mechanical timestep automatic\nmodel mechanical timestep safety-factor 0.8\nmodel mechanical timestep maximum 1e-4",
+          "description": "Configure automatic timestep with safety factor and maximum limit"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "model mechanical",
+      "syntax": "model mechanical keyword",
+      "keywords": [
+        {
+          "name": "active",
+          "syntax": "active <b>",
+          "description": "The mechanical process is on by default. Specify active off to suppress mechanical calculations."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "Display mechanical calculation-mode information."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total <f>",
+          "description": "f is the accumulated mechanical time for the model. This can be reset to any value, and will continue to be accumulated during cycling after that."
+        },
+        {
+          "name": "slave",
+          "syntax": "slave <b>",
+          "description": "Specifies that mechanical mode is to be considered a slave, and cycled to equilibrium after each master step has been taken."
+        },
+        {
+          "name": "substep",
+          "syntax": "substep <i>",
+          "description": "Specifies the maximum number of steps the mechanical process will take when solving with slave on ."
+        },
+        {
+          "name": "timestep",
+          "syntax": "timestep <kw>",
+          "description": "Configure timestep behavior for the mechanical process. Sub-keywords: automatic (default; calculate stable timestep from current stiffnesses and masses), fix <f> (use fixed timestep <f>; calculation skipped), increment <f> (maximum per-cycle increase factor in automatic mode; default 1.05; timestep may decrease freely), maximum <f> (upper bound on timestep; unbounded by default), safety-factor <f> (multiplier on the calculated stable timestep in automatic mode; default 1.0), scale <f|on|off> (density-scaling mode for fast convergence to a static configuration; masses are scaled so the stable timestep equals f, or 1.0 if omitted; meaningful timescale is lost), update <i> (recompute timestep every <i> cycles; default 1). See `Mechanical Timestep Determination for Numerical Stability` for mass-scaling discussion."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model mechanical active off",
+          "description": "Suppress mechanical calculations (e.g., for thermal-only analysis)"
+        },
+        {
+          "command": "model mechanical active on",
+          "description": "Enable mechanical calculations (default)"
+        },
+        {
+          "command": "model mechanical list",
+          "description": "Display mechanical calculation-mode information"
+        },
+        {
+          "command": "model mechanical time-total 0.0",
+          "description": "Reset accumulated mechanical time to zero"
+        },
+        {
+          "command": "model mechanical timestep automatic",
+          "description": "Use automatic timestep calculation (default)"
+        },
+        {
+          "command": "model mechanical timestep fix 1e-6",
+          "description": "Set fixed timestep to 1e-6 for performance enhancement"
+        },
+        {
+          "command": "model mechanical timestep increment 1.1",
+          "description": "Allow timestep to increase by 10% per cycle"
+        },
+        {
+          "command": "model mechanical timestep maximum 1e-5",
+          "description": "Set maximum timestep to 1e-5"
+        },
+        {
+          "command": "model mechanical timestep safety-factor 0.9",
+          "description": "Use 90% of calculated stable timestep"
+        },
+        {
+          "command": "model mechanical timestep scale 1.0"
+        },
+        {
+          "command": "model mechanical timestep update 10"
+        },
+        {
+          "command": "model mechanical slave on\nmodel mechanical substep 1000",
+          "description": "Set mechanical mode as slave with max 1000 substeps"
+        },
+        {
+          "command": "model mechanical timestep automatic\nmodel mechanical timestep safety-factor 0.8\nmodel mechanical timestep maximum 1e-4",
+          "description": "Configure automatic timestep with safety factor and maximum limit"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "model mechanical",
+      "syntax": "model mechanical [<b>] keyword",
+      "keywords": [
+        {
+          "name": "active",
+          "syntax": "active <b>",
+          "description": "The mechanical process is on by default. Specify active off to suppress mechanical calculations."
+        },
+        {
+          "name": "dynamic",
+          "syntax": "dynamic <b>",
+          "description": "Specify the state of the dynamic process (requires `model configure dynamic`)."
+        },
+        {
+          "name": "list",
+          "syntax": "list",
+          "description": "Display mechanical calculation-mode information."
+        },
+        {
+          "name": "time-total",
+          "syntax": "time-total <f>",
+          "description": "f is the accumulated mechanical time for the model. This can be reset to any value, and will continue to be accumulated during cycling after that."
+        },
+        {
+          "name": "follower",
+          "syntax": "follower <b>",
+          "description": "Specifies that mechanical mode is to be considered a follower, and cycled to equilibrium after each leader step has been taken."
+        },
+        {
+          "name": "substep",
+          "syntax": "substep <i>",
+          "description": "Specifies the maximum number of steps the mechanical process will take when solving with follower on ."
+        },
+        {
+          "name": "timestep",
+          "syntax": "timestep <kw>",
+          "description": "Configure timestep behavior for the mechanical process. Sub-keywords: automatic (default; calculate stable timestep from current stiffnesses and masses), fix <f> (use fixed timestep <f>; calculation skipped), increment <f> (maximum per-cycle increase factor in automatic mode; default 1.05; timestep may decrease freely), maximum <f> (upper bound on timestep; unbounded by default), safety-factor <f> (multiplier on the calculated stable timestep in automatic mode; default 1.0), scale <f|on|off> (density-scaling mode for fast convergence to a static configuration; masses are scaled so the stable timestep equals f, or 1.0 if omitted; meaningful timescale is lost), update <i> (recompute timestep every <i> cycles; default 1). See `Mechanical Timestep Determination for Numerical Stability` for mass-scaling discussion."
+        }
+      ],
+      "examples": [
+        {
+          "command": "model mechanical active off",
+          "description": "Suppress mechanical calculations (e.g., for thermal-only analysis)"
+        },
+        {
+          "command": "model mechanical active on",
+          "description": "Enable mechanical calculations (default)"
+        },
+        {
+          "command": "model mechanical list",
+          "description": "Display mechanical calculation-mode information"
+        },
+        {
+          "command": "model mechanical time-total 0.0",
+          "description": "Reset accumulated mechanical time to zero"
+        },
+        {
+          "command": "model mechanical timestep automatic",
+          "description": "Use automatic timestep calculation (default)"
+        },
+        {
+          "command": "model mechanical timestep fix 1e-6",
+          "description": "Set fixed timestep to 1e-6 for performance enhancement"
+        },
+        {
+          "command": "model mechanical timestep increment 1.1",
+          "description": "Allow timestep to increase by 10% per cycle"
+        },
+        {
+          "command": "model mechanical timestep maximum 1e-5",
+          "description": "Set maximum timestep to 1e-5"
+        },
+        {
+          "command": "model mechanical timestep safety-factor 0.9",
+          "description": "Use 90% of calculated stable timestep"
+        },
+        {
+          "command": "model mechanical timestep scale 1.0"
+        },
+        {
+          "command": "model mechanical timestep update 10"
+        },
+        {
+          "command": "model mechanical follower on\nmodel mechanical substep 1000",
+          "description": "Set mechanical mode as follower with max 1000 substeps"
+        },
+        {
+          "command": "model mechanical timestep automatic\nmodel mechanical timestep safety-factor 0.8\nmodel mechanical timestep maximum 1e-4",
+          "description": "Configure automatic timestep with safety factor and maximum limit"
+        }
+      ]
+    }
+  }
+}

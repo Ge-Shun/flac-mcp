@@ -1,0 +1,60 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "scalar-group"
+  ],
+  "description": "Specify scalar group names. Use of the group logic is described in the topic Groups . If a slot assignment is not provided, the group s is assigned, by default, to the slot named Default . The value of s may take two forms. The first is a simple string, in which case slot assignment may be made using the slot keyword. The second is the exact form \"slotname = groupname\" — quotation marks required, spaces at equals sign ignored — where slotname is the slot assignment and groupname is the group name.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "data scalar group",
+      "syntax": "data scalar group <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots, or from a specific one if the slot keyword is also specified."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <s>",
+          "description": "Assign the group name to slot s ."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "data scalar group",
+      "syntax": "data scalar group <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots, or from a specific one if the slot keyword is also specified."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <s>",
+          "description": "Assign the group name to slot s ."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "data scalar group",
+      "syntax": "data scalar group <s>[keyword] [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots, or from a specific one if the slot keyword is also specified."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <s>",
+          "description": "Assign the group name to slot s ."
+        }
+      ]
+    }
+  }
+}

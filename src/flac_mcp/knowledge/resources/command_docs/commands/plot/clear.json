@@ -1,0 +1,85 @@
+{
+  "category": "plot",
+  "search_keywords": [
+    "clear",
+    "remove",
+    "empty",
+    "items"
+  ],
+  "description": "Removes all plot items from the plot. The plot settings are not changed. If a plot name is not specified, the current view is assumed.",
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": "itasca.command('plot <name> clear') - no direct Python SDK method"
+  },
+  "versions": {
+    "7.0": {
+      "command": "plot clear",
+      "syntax": "plot [<s>] clear",
+      "keywords": [
+        {
+          "name": "s",
+          "syntax": "<s>",
+          "description": "Plot name. If not specified, the current view is assumed.",
+          "optional": true
+        }
+      ],
+      "examples": [
+        {
+          "command": "plot clear",
+          "description": "Remove all items from the current plot"
+        },
+        {
+          "command": "plot 'myplot' clear",
+          "description": "Remove all items from plot 'myplot'"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "plot clear",
+      "syntax": "plot [<s>] clear",
+      "keywords": [
+        {
+          "name": "s",
+          "syntax": "<s>",
+          "description": "Plot name. If not specified, the current view is assumed.",
+          "optional": true
+        }
+      ],
+      "examples": [
+        {
+          "command": "plot clear",
+          "description": "Remove all items from the current plot"
+        },
+        {
+          "command": "plot 'myplot' clear",
+          "description": "Remove all items from plot 'myplot'"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "plot clear",
+      "syntax": "plot [<s>] clear",
+      "keywords": [
+        {
+          "name": "s",
+          "syntax": "<s>",
+          "description": "Plot name. If not specified, the current view is assumed.",
+          "optional": true
+        }
+      ],
+      "examples": [
+        {
+          "command": "plot clear",
+          "description": "Remove all items from the current plot"
+        },
+        {
+          "command": "plot 'myplot' clear",
+          "description": "Remove all items from plot 'myplot'"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "For detailed plot item keywords (color-by, cut, transparency, legend), use flac_browse_reference(\"plot-items\") to list item types and flac_browse_reference(\"plot-items zone\") for full syntax."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "prune"
+  ],
+  "description": "Prune isolated fractures. The intersection set that forms the basis for this operation is specified with the intersection-set keyword. Clusters of fractures with size less than or equal to the number of fractures specified with the critical-number keyword are deleted. The intersection set must exist. If clusters have not been computed, they are computed before pruning isolated fractures.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture prune",
+      "syntax": "fracture prune keyword",
+      "keywords": [
+        {
+          "name": "critical-number",
+          "syntax": "critical-number <i>",
+          "description": "Critical number of fractures in a cluster to mark it for removal ( i = 1 , by default)."
+        },
+        {
+          "name": "intersection-set",
+          "syntax": "intersection-set <s>",
+          "description": "Specify the intersection set name as the basis of the pruning operation."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "fracture prune",
+      "syntax": "fracture prune keyword ...",
+      "keywords": [
+        {
+          "name": "critical-number",
+          "syntax": "critical-number <i>",
+          "description": "Critical number of fractures in a cluster to mark it for removal ( i = 1 , by default)."
+        },
+        {
+          "name": "intersection-set",
+          "syntax": "intersection-set <s>",
+          "description": "Specify the intersection set name as the basis of the pruning operation."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "fracture prune",
+      "syntax": "fracture prune keyword ...",
+      "keywords": [
+        {
+          "name": "critical-number",
+          "syntax": "critical-number <i>",
+          "description": "Critical number of fractures in a cluster to mark it for removal ( i = 1 , by default)."
+        },
+        {
+          "name": "intersection-set",
+          "syntax": "intersection-set <s>",
+          "description": "Specify the intersection set name as the basis of the pruning operation."
+        }
+      ]
+    }
+  }
+}

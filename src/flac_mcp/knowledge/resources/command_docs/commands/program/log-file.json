@@ -1,0 +1,36 @@
+{
+  "category": "program",
+  "search_keywords": [
+    "log-file"
+  ],
+  "description": "Specify the log file by name.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "program log-file",
+      "syntax": "program log-file <s>[keyword]",
+      "keywords": [
+        {
+          "name": "append",
+          "syntax": "append",
+          "description": "Information is added to the end of the log file. This is the default behavior."
+        },
+        {
+          "name": "truncate",
+          "syntax": "truncate",
+          "description": "Any existing log file is cleared before new information is added."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "program log-file",
+      "syntax": "program log-file <s>"
+    },
+    "9.0": {
+      "command": "program log-file",
+      "syntax": "program log-file <s>"
+    }
+  }
+}

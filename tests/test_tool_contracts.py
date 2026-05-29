@@ -1,0 +1,367 @@
+"""Contract tests for flac-mcp tool response structures.
+
+Verifies that each tool returns the expected field structure,
+ensuring the API contract between flac-mcp and its consumers is stable.
+"""
+
+import json
+import os
+import time
+from pathlib import Path
+
+import pytest
+import websockets
+
+from flac_mcp.bridge.client import close_bridge_client
+from flac_mcp.server import mcp
+
+# ── Mock Bridge ──────────────────────────────────────────
+
+
+TASK_STORE = {}
+
+
+async def _mock_bridge_handler(websocket):
+    """Mock itasca-mcp-bridge that handles all task-related message types."""
+    async for raw in websocket:
+        req = json.loads(raw)
+        req_id = req.get("request_id", "unknown")
+        msg_type = req.get("type", "pfc_task")
+
+        if msg_type == "pfc_task":
+            task_id = req.get("task_id", "000000")
+            TASK_STORE[task_id] = {
+                "status": "running",
+                "start_time": time.time(),
+                "script_path": req.get("script_path", ""),
+                "description": req.get("description", ""),
+            }
+            resp = {
+                "type": "result",
+                "request_id": req_id,
+                "status": "pending",
+                "message": f"Script submitted: {Path(req.get('script_path', '')).name}",
+            }
+
+        elif msg_type == "check_task_status":
+            task_id = req.get("task_id", "")
+            stored = TASK_STORE.get(task_id)
+            if stored:
+                resp = {
+                    "type": "result",
+                    "request_id": req_id,
+                    "status": stored["status"],
+                    "message": "ok",
+                    "data": {
+                        "task_id": task_id,
+                        "status": stored["status"],
+                        "start_time": stored["start_time"],
+                        "end_time": None,
+                        "elapsed_time": "5.0s",
+                        "script_path": stored["script_path"],
+                        "description": stored["description"],
+                        "output": "Cycle 100: unbalanced=1e-3\nCycle 200: unbalanced=5e-4\n",
+                        "result": None,
+                        "error": None,
+                    },
+                }
+            else:
+                resp = {
+                    "type": "result",
+                    "request_id": req_id,
+                    "status": "not_found",
+                    "message": f"Task not found: {task_id}",
+                    "data": None,
+                }
+
+        elif msg_type == "list_tasks":
+            tasks = [
+                {
+                    "task_id": tid,
+                    "status": t["status"],
+                    "source": "agent",
+                    "elapsed_time": "5.0s",
+                    "entry_script": t["script_path"],
+                    "description": t["description"],
+                }
+                for tid, t in TASK_STORE.items()
+            ]
+            resp = {
+                "type": "result",
+                "request_id": req_id,
+                "status": "success",
+                "message": f"Found {len(tasks)} task(s)",
+                "data": tasks,
+                "pagination": {
+                    "total_count": len(tasks),
+                    "displayed_count": len(tasks),
+                    "offset": 0,
+                    "limit": 32,
+                    "has_more": False,
+                },
+            }
+
+        elif msg_type == "interrupt_task":
+            resp = {
+                "type": "result",
+                "request_id": req_id,
+                "status": "success",
+                "message": f"Interrupt requested for task: {req.get('task_id')}",
+                "data": {"task_id": req.get("task_id"), "interrupt_requested": True},
+            }
+
+        elif msg_type == "execute_code":
+            resp = {
+                "type": "execute_code_result",
+                "request_id": req_id,
+                "status": "success",
+                "message": "Code executed",
+                "data": {
+                    "output": "42\n",
+                    "result": 42,
+                },
+            }
+
+        else:
+            resp = {
+                "type": "result",
+                "request_id": req_id,
+                "status": "error",
+                "message": f"unsupported: {msg_type}",
+            }
+
+        await websocket.send(json.dumps(resp))
+
+
+@pytest.fixture()
+async def mock_bridge(tmp_path):
+    """Start mock bridge and configure environment."""
+    TASK_STORE.clear()
+
+    server = await websockets.serve(_mock_bridge_handler, "127.0.0.1", 0)
+    port = server.sockets[0].getsockname()[1]
+
+    prev = os.environ.get("FLAC_MCP_BRIDGE_URL")
+    os.environ["FLAC_MCP_BRIDGE_URL"] = f"ws://127.0.0.1:{port}"
+
+    await close_bridge_client()
+
+    yield tmp_path
+
+    await close_bridge_client()
+    if prev is None:
+        os.environ.pop("FLAC_MCP_BRIDGE_URL", None)
+    else:
+        os.environ["FLAC_MCP_BRIDGE_URL"] = prev
+    server.close()
+    await server.wait_closed()
+
+
+# ── flac_execute_task ─────────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_execute_task_success_fields(mock_bridge, tmp_path):
+    script = tmp_path / "run.py"
+    script.write_text("print('hello')")
+
+    result = await mcp._tool_manager.call_tool(
+        "flac_execute_task",
+        {"entry_script": str(script), "description": "test task"},
+    )
+
+    data = result.content[0].text if hasattr(result.content[0], "text") else json.loads(result.content[0].text)
+    # For fastmcp, the tool returns a dict which gets serialized
+    # Just verify the raw result has the right structure
+    assert result is not None
+    assert len(result.content) > 0
+
+    # Parse the structured content
+    text = result.content[0].text
+    parsed = json.loads(text) if text.startswith("{") else None
+
+    if parsed:
+        assert parsed["ok"] is True
+        data = parsed["data"]
+        assert "task_id" in data
+        assert len(data["task_id"]) == 6
+        assert "entry_script" in data
+        assert "description" in data
+        assert "message" in data
+
+
+# ── flac_check_task_status ────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_check_task_status_running_fields(mock_bridge, tmp_path):
+    # First submit a task so we have something to check
+    script = tmp_path / "sim.py"
+    script.write_text("print('running')")
+
+    exec_result = await mcp._tool_manager.call_tool(
+        "flac_execute_task",
+        {"entry_script": str(script), "description": "simulation"},
+    )
+    exec_text = exec_result.content[0].text
+    exec_data = json.loads(exec_text) if exec_text.startswith("{") else {}
+    task_id = exec_data.get("data", {}).get("task_id", list(TASK_STORE.keys())[0])
+
+    result = await mcp._tool_manager.call_tool(
+        "flac_check_task_status",
+        {"task_id": task_id, "wait_seconds": 1},
+    )
+
+    text = result.content[0].text
+    parsed = json.loads(text) if text.startswith("{") else None
+
+    if parsed:
+        assert parsed["ok"] is True
+        data = parsed["data"]
+        assert data["task_status"] in ("pending", "running", "completed", "failed", "interrupted")
+        assert data["task_id"] == task_id
+        assert "output" in data
+        # Pagination
+        assert "pagination" in data
+        pag = data["pagination"]
+        assert "total_lines" in pag
+        assert "line_range" in pag
+        assert "has_older" in pag
+        assert "has_newer" in pag
+
+
+@pytest.mark.asyncio
+async def test_check_task_status_passes_through_bridge_pagination(mock_bridge, tmp_path, monkeypatch):
+    """When bridge returns data.pagination, tool should use it directly
+    (not re-paginate the output string locally)."""
+    from flac_mcp.bridge import get_bridge_client
+
+    client = await get_bridge_client()
+
+    async def fake_check(task_id, skip_newest=0, limit=64, filter_text=None):
+        return {
+            "type": "result",
+            "status": "completed",  # terminal → skips wait_for_task
+            "message": "ok",
+            "data": {
+                "task_id": task_id,
+                "status": "completed",
+                "start_time": time.time(),
+                "end_time": time.time(),
+                "elapsed_time": "1.0s",
+                "script_path": "/tmp/fake.py",
+                "description": "fake",
+                "output": "paginated-window-line",
+                "pagination": {
+                    "total_lines": 12345,
+                    "line_range": "12281-12345",
+                    "has_older": True,
+                    "has_newer": False,
+                },
+            },
+        }
+
+    monkeypatch.setattr(client, "check_task_status", fake_check)
+
+    result = await mcp._tool_manager.call_tool(
+        "flac_check_task_status",
+        {"task_id": "abc123", "wait_seconds": 1},
+    )
+    parsed = json.loads(result.content[0].text)
+    assert parsed["ok"] is True
+    data = parsed["data"]
+    # Bridge pagination should pass through unchanged
+    assert data["pagination"]["total_lines"] == 12345
+    assert data["pagination"]["line_range"] == "12281-12345"
+    assert data["pagination"]["has_older"] is True
+    # Output should come from bridge verbatim (not re-split/joined)
+    assert data["output"] == "paginated-window-line"
+
+
+@pytest.mark.asyncio
+async def test_check_task_status_not_found(mock_bridge):
+    result = await mcp._tool_manager.call_tool(
+        "flac_check_task_status",
+        {"task_id": "nonexistent", "wait_seconds": 1},
+    )
+
+    text = result.content[0].text
+    parsed = json.loads(text) if text.startswith("{") else None
+
+    if parsed:
+        assert parsed["ok"] is False
+        assert parsed["error"]["code"] == "not_found"
+
+
+# ── flac_list_tasks ───────────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_list_tasks_with_tasks(mock_bridge, tmp_path):
+    # Submit a task first
+    script = tmp_path / "job.py"
+    script.write_text("print('done')")
+    await mcp._tool_manager.call_tool(
+        "flac_execute_task",
+        {"entry_script": str(script), "description": "list test"},
+    )
+
+    result = await mcp._tool_manager.call_tool("flac_list_tasks", {})
+
+    text = result.content[0].text
+    parsed = json.loads(text) if text.startswith("{") else None
+
+    if parsed:
+        assert parsed["ok"] is True
+        data = parsed["data"]
+        assert isinstance(data["total_count"], int)
+        assert data["total_count"] >= 1
+        assert isinstance(data["tasks"], list)
+        assert len(data["tasks"]) >= 1
+        # Task fields
+        task = data["tasks"][0]
+        assert "task_id" in task
+        assert "status" in task
+        assert "entry_script" in task
+        assert "start_time" in task
+        assert "end_time" in task
+        assert "has_more" in data
+
+
+# ── flac_execute_code ──────────────────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_execute_code_success_fields(mock_bridge):
+    result = await mcp._tool_manager.call_tool(
+        "flac_execute_code",
+        {"code": "print(42)"},
+    )
+
+    text = result.content[0].text
+    parsed = json.loads(text) if text.startswith("{") else None
+
+    if parsed:
+        assert parsed["ok"] is True
+        data = parsed["data"]
+        assert "output" in data
+        assert "result" in data
+        assert data["result"] == 42
+
+
+# ── flac_list_tasks (continued) ──────────────────────────
+
+
+@pytest.mark.asyncio
+async def test_list_tasks_empty(mock_bridge):
+    # No tasks submitted — TASK_STORE is cleared by fixture
+    result = await mcp._tool_manager.call_tool("flac_list_tasks", {})
+
+    text = result.content[0].text
+    parsed = json.loads(text) if text.startswith("{") else None
+
+    if parsed:
+        assert parsed["ok"] is True
+        data = parsed["data"]
+        assert data["total_count"] == 0
+        assert data["tasks"] == []

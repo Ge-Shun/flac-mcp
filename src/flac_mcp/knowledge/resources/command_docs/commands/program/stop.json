@@ -1,0 +1,24 @@
+{
+  "category": "program",
+  "search_keywords": [
+    "stop"
+  ],
+  "description": "Close the program.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "program stop",
+      "syntax": "program stop"
+    },
+    "7.0": {
+      "command": "program stop",
+      "syntax": "program stop"
+    },
+    "9.0": {
+      "command": "program stop",
+      "syntax": "program stop"
+    }
+  }
+}

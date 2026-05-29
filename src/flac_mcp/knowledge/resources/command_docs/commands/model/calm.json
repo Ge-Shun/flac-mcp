@@ -1,0 +1,84 @@
+{
+  "category": "model",
+  "search_keywords": [
+    "calm",
+    "velocity",
+    "zero"
+  ],
+  "description": "Calm the model. For mechanical processes, all linear and rotational velocities are set to 0. This is useful for removing kinetic energy from the system and preparing for a new loading stage or when transitioning between different simulation phases.",
+  "notes": [
+    "Sets all linear velocities to 0",
+    "Sets all rotational velocities (angular velocities/spin) to 0",
+    "Does not affect positions or forces",
+    "Useful for removing kinetic energy from system",
+    "Often used when transitioning between loading stages",
+    "Commonly used before changing boundary conditions or applying new loads",
+    "Does not reset stress or strain history"
+  ],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": "itasca.command('model calm') - Python SDK does not provide direct calm method"
+  },
+  "versions": {
+    "7.0": {
+      "command": "model calm",
+      "syntax": "model calm",
+      "examples": [
+        {
+          "command": "model calm",
+          "description": "Set all velocities (linear and rotational) to zero"
+        },
+        {
+          "command": "model cycle 1000\nmodel calm\nmodel cycle 2000",
+          "description": "Run cycles, calm velocities, then continue cycling"
+        },
+        {
+          "description": "Solve to equilibrium, calm system, then apply new boundary velocity"
+        },
+        {
+          "description": "Calm followed by explicit velocity assignment (calm is simpler for zeroing)"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "model calm",
+      "syntax": "model calm",
+      "examples": [
+        {
+          "command": "model calm",
+          "description": "Set all velocities (linear and rotational) to zero"
+        },
+        {
+          "command": "model cycle 1000\nmodel calm\nmodel cycle 2000",
+          "description": "Run cycles, calm velocities, then continue cycling"
+        },
+        {
+          "description": "Solve to equilibrium, calm system, then apply new boundary velocity"
+        },
+        {
+          "description": "Calm followed by explicit velocity assignment (calm is simpler for zeroing)"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "model calm",
+      "syntax": "model calm",
+      "examples": [
+        {
+          "command": "model calm",
+          "description": "Set all velocities (linear and rotational) to zero"
+        },
+        {
+          "command": "model cycle 1000\nmodel calm\nmodel cycle 2000",
+          "description": "Run cycles, calm velocities, then continue cycling"
+        },
+        {
+          "description": "Solve to equilibrium, calm system, then apply new boundary velocity"
+        },
+        {
+          "description": "Calm followed by explicit velocity assignment (calm is simpler for zeroing)"
+        }
+      ]
+    }
+  }
+}

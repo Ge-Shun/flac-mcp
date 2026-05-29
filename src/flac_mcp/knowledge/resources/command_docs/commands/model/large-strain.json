@@ -1,0 +1,91 @@
+{
+  "category": "model",
+  "search_keywords": [
+    "large-strain",
+    "deformation"
+  ],
+  "description": "Sets the program to use the numerical formulation for large-strain deformation. The default is off. See the section 'Large- and Small-Strain Modes' for discussion of the additional calculations done in this formulation.",
+  "notes": [
+    "Default mode: off (small-strain formulation)",
+    "Large-strain mode performs additional calculations for large deformations",
+    "Should be enabled when expecting significant deformations or rotations",
+    "May affect computational performance due to additional calculations",
+    "Must be set before cycling if large strains are anticipated",
+    "Small-strain mode is sufficient for most problems with limited deformation",
+    "Large-strain mode is essential for:",
+    "  - Problems with significant particle rearrangement",
+    "  - Large rotations",
+    "  - Flowing materials",
+    "  - Granular flow simulations",
+    "See documentation section 'Large- and Small-Strain Modes' for detailed discussion"
+  ],
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": "itasca.command('model large-strain on') or itasca.command('model large-strain off') - Python SDK does not provide direct large-strain control"
+  },
+  "versions": {
+    "7.0": {
+      "command": "model large-strain",
+      "syntax": "model large-strain <b>",
+      "examples": [
+        {
+          "command": "model large-strain on",
+          "description": "Enable large-strain mode for problems with significant deformation"
+        },
+        {
+          "command": "model large-strain off",
+          "description": "Disable large-strain mode (use small-strain formulation - default)"
+        },
+        {
+          "description": "Enable large-strain before setup for granular flow simulation"
+        },
+        {
+          "command": "model large-strain on\n; ... setup model ...\nmodel solve",
+          "description": "Enable large-strain mode before solving"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "model largestrain",
+      "syntax": "model largestrain <b>",
+      "examples": [
+        {
+          "command": "model large-strain on",
+          "description": "Enable large-strain mode for problems with significant deformation"
+        },
+        {
+          "command": "model large-strain off",
+          "description": "Disable large-strain mode (use small-strain formulation - default)"
+        },
+        {
+          "description": "Enable large-strain before setup for granular flow simulation"
+        },
+        {
+          "command": "model large-strain on\n; ... setup model ...\nmodel solve",
+          "description": "Enable large-strain mode before solving"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "model large-strain",
+      "syntax": "model large-strain <b>",
+      "examples": [
+        {
+          "command": "model large-strain on",
+          "description": "Enable large-strain mode for problems with significant deformation"
+        },
+        {
+          "command": "model large-strain off",
+          "description": "Disable large-strain mode (use small-strain formulation - default)"
+        },
+        {
+          "description": "Enable large-strain before setup for granular flow simulation"
+        },
+        {
+          "command": "model large-strain on\n; ... setup model ...\nmodel solve",
+          "description": "Enable large-strain mode before solving"
+        }
+      ]
+    }
+  }
+}

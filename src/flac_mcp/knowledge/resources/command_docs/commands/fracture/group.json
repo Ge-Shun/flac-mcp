@@ -1,0 +1,60 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "group"
+  ],
+  "description": "Specify fracture group names. Use of the group logic is described in Groups . By default, s is assigned to the default slot Default . Use the remove keyword to remove s from all slots.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture group",
+      "syntax": "fracture group <s>keyword [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Assign group s to the slot named slot . By default, slot Default is used."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "fracture group",
+      "syntax": "fracture group <s>keyword [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Assign group s to the slot named slot . By default, slot Default is used."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "fracture group",
+      "syntax": "fracture group <s>keyword [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Assign group s to the slot named slot . By default, slot Default is used."
+        }
+      ]
+    }
+  }
+}

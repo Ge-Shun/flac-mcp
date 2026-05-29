@@ -1,0 +1,24 @@
+{
+  "category": "program",
+  "search_keywords": [
+    "playback"
+  ],
+  "description": "Play back a record file.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "program playback",
+      "syntax": "program playback <s>"
+    },
+    "7.0": {
+      "command": "program playback",
+      "syntax": "program playback <s>"
+    },
+    "9.0": {
+      "command": "program playback",
+      "syntax": "program playback <s>"
+    }
+  }
+}

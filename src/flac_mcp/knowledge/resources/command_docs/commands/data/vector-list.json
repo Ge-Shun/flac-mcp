@@ -1,0 +1,105 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "vector-list"
+  ],
+  "description": "List vector information.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "data vector list",
+      "syntax": "data vector list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "direction",
+          "syntax": "direction",
+          "description": "List the vector directions."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List vector extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List vector groups."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude",
+          "description": "List the vector magnitudes."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the vector values."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "data vector list",
+      "syntax": "data vector list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "direction",
+          "syntax": "direction",
+          "description": "List the vector directions."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List vector extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List vector groups."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude",
+          "description": "List the vector magnitudes."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the vector values."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "data vector list",
+      "syntax": "data vector list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "direction",
+          "syntax": "direction",
+          "description": "List the vector directions."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List vector extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List vector groups."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude",
+          "description": "List the vector magnitudes."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the vector values."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "dfn-group"
+  ],
+  "description": "Specify DFN group names. Use of the group logic is described in the Groups topic. By default, s is assigned to the default slot Default . Use the remove keyword to remove s from all slots.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture dfn-group",
+      "syntax": "fracture dfn-group <s>keyword [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Set group slot slot to s . By default, slot Default is used."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "fracture dfn-group",
+      "syntax": "fracture dfn-group <s>keyword [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Set group slot slot to s . By default, slot Default is used."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "fracture dfn-group",
+      "syntax": "fracture dfn-group <s>keyword [range]",
+      "keywords": [
+        {
+          "name": "remove",
+          "syntax": "remove",
+          "description": "Remove s from all slots."
+        },
+        {
+          "name": "slot",
+          "syntax": "slot <slot>",
+          "description": "Set group slot slot to s . By default, slot Default is used."
+        }
+      ]
+    }
+  }
+}

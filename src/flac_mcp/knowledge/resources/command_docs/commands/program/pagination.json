@@ -1,0 +1,24 @@
+{
+  "category": "program",
+  "search_keywords": [
+    "pagination"
+  ],
+  "description": "Set the pagination state.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "program pagination",
+      "syntax": "program pagination <b>"
+    },
+    "7.0": {
+      "command": "program pagination",
+      "syntax": "program pagination <b>"
+    },
+    "9.0": {
+      "command": "program pagination",
+      "syntax": "program pagination <b>"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "category": "geometry",
+  "search_keywords": [
+    "node-create"
+  ],
+  "description": "Create a node at the position v in the current geometry set. If the set keyword is given then the node is created in that set.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "geometry node create",
+      "syntax": "geometry node create <v>[keyword]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>a",
+          "description": "Optionally assign the extra variable a to index i ."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s1>[slot <s2>]",
+          "description": "Optionally assign the group name s1 to slot s2 ."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "geometry node create",
+      "syntax": "geometry node create <v>[keyword ...]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i><a>",
+          "description": "Optionally assign the extra variable a to index i ."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s1>[slot <s2>]",
+          "description": "Optionally assign the group name s1 to slot s2 ."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Create the node in the set s ."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "geometry node create",
+      "syntax": "geometry node create <v>[keyword ...]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i><a>",
+          "description": "Optionally assign the extra variable a to index i ."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s1>[slot <s2>]",
+          "description": "Optionally assign the group name s1 to slot s2 ."
+        },
+        {
+          "name": "set",
+          "syntax": "set <s>",
+          "description": "Create the node in the set s ."
+        }
+      ]
+    }
+  }
+}

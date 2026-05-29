@@ -1,0 +1,90 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "tensor-list"
+  ],
+  "description": "List tensor information on data in the range specified.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "data tensor list",
+      "syntax": "data tensor list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List tensor extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List tensor groups."
+        },
+        {
+          "name": "principal",
+          "syntax": "principal",
+          "description": "List the tensor principal components."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the tensor values."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "data tensor list",
+      "syntax": "data tensor list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List tensor extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List tensor groups."
+        },
+        {
+          "name": "principal",
+          "syntax": "principal",
+          "description": "List the tensor principal components."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the tensor values."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "data tensor list",
+      "syntax": "data tensor list [keyword] [range]",
+      "keywords": [
+        {
+          "name": "extra",
+          "syntax": "extra <i>",
+          "description": "List tensor extra variables for the specified index."
+        },
+        {
+          "name": "group",
+          "syntax": "group [slot <s>]",
+          "description": "List tensor groups."
+        },
+        {
+          "name": "principal",
+          "syntax": "principal",
+          "description": "List the tensor principal components."
+        },
+        {
+          "name": "value",
+          "syntax": "value",
+          "description": "List the tensor values."
+        }
+      ]
+    }
+  }
+}

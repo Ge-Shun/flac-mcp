@@ -1,0 +1,24 @@
+{
+  "category": "project",
+  "search_keywords": [
+    "list"
+  ],
+  "description": "List project information. This information includes: the project file name and location, the log status, and echo status.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "project list",
+      "syntax": "project list information"
+    },
+    "7.0": {
+      "command": "project list",
+      "syntax": "project list information"
+    },
+    "9.0": {
+      "command": "project list",
+      "syntax": "project list information"
+    }
+  }
+}

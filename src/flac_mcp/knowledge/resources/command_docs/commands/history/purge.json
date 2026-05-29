@@ -1,0 +1,27 @@
+{
+  "category": "history",
+  "search_keywords": [
+    "purge"
+  ],
+  "description": "The contents of all history traces are erased, but the traces themselves remain.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "history purge",
+      "syntax": "history purge",
+      "keywords": []
+    },
+    "7.0": {
+      "command": "history purge",
+      "syntax": "history purge",
+      "keywords": []
+    },
+    "9.0": {
+      "command": "history purge",
+      "syntax": "history purge",
+      "keywords": []
+    }
+  }
+}

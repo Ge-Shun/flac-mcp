@@ -1,0 +1,140 @@
+{
+  "category": "data",
+  "search_keywords": [
+    "vector-create"
+  ],
+  "description": "Create a vector. Vectors are an internal list of user-defined objects that have the position v and a vector value, assigned via either the value keyword or the dip , dip-direction and magnitude keyword combination, associated with them. Vectors may also have groups and extra variables assigned to them upon creation.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "data vector create",
+      "syntax": "data vector create <v>[keyword]",
+      "keywords": [
+        {
+          "name": "dip",
+          "syntax": "dip <f>",
+          "description": "Specify the dip of the vector in degrees. Not to be used with the value keyword."
+        },
+        {
+          "name": "dip-direction",
+          "syntax": "dip-direction <f>",
+          "description": "Specify the dip direction of the vector in degrees. Not to be used with the value keyword."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra <i>a",
+          "description": "Optionally assign the extra variable a to index i ."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s>[slot <s2>]",
+          "description": "Optionally assign the group name s to slot s2 . By default, s2 = Default . Use of the group logic is described in Group ."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude <f>",
+          "description": "Specify the magnitude of the vector. Not to be used with the value keyword."
+        },
+        {
+          "name": "value",
+          "syntax": "value <v>[magnitude <f>]",
+          "description": "Assign v to be the value associated with the vector. One can optionally specify the magnitude separately with the magnitude keyword immediately following, in which case v is used only to provide the direction."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "data vector create",
+      "syntax": "data vector create <v>[keyword ...]",
+      "keywords": [
+        {
+          "name": "azimuth",
+          "syntax": "azimuth <f>",
+          "description": "Specify the azimuth of the vector in degrees. Not to be used with the value , dip , or dip-direction keywords."
+        },
+        {
+          "name": "dip",
+          "syntax": "dip <f>",
+          "description": "Specify the dip of the vector in degrees. Not to be used with the value , azimuth , or plunge keywords."
+        },
+        {
+          "name": "dip-direction",
+          "syntax": "dip-direction <f>",
+          "description": "Specify the dip direction of the vector in degrees. Not to be used with the value , azimuth , or plunge keywords."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra <i><a>",
+          "description": "Optionally assign the extra variable a to index i ."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s>[slot <s2>]",
+          "description": "Optionally assign the group name s to slot s2 . By default, s2 = Default . Use of the group logic is described in Groups ."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude <f>",
+          "description": "Specify the magnitude of the vector. Not to be used with the value keyword."
+        },
+        {
+          "name": "plunge",
+          "syntax": "plunge <f>",
+          "description": "Specify the plunge of the vector. Not to be used with the value , dip , or dip-direction keywords."
+        },
+        {
+          "name": "value",
+          "syntax": "value <v>[magnitude <f>]",
+          "description": "Assign v to be the value associated with the vector. One can optionally specify the magnitude separately with the magnitude keyword immediately following, in which case v is used only to provide the direction."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "data vector create",
+      "syntax": "data vector create <v>[keyword ...]",
+      "keywords": [
+        {
+          "name": "azimuth",
+          "syntax": "azimuth <f>",
+          "description": "Specify the azimuth of the vector in degrees. Not to be used with the value , dip , or dip-direction keywords."
+        },
+        {
+          "name": "dip",
+          "syntax": "dip <f>",
+          "description": "Specify the dip of the vector in degrees. Not to be used with the value , azimuth , or plunge keywords."
+        },
+        {
+          "name": "dip-direction",
+          "syntax": "dip-direction <f>",
+          "description": "Specify the dip direction of the vector in degrees. Not to be used with the value , azimuth , or plunge keywords."
+        },
+        {
+          "name": "extra",
+          "syntax": "extra <i><a>",
+          "description": "Optionally assign the extra variable a to index i ."
+        },
+        {
+          "name": "group",
+          "syntax": "group <s>[slot <s2>]",
+          "description": "Optionally assign the group name s to slot s2 . By default, s2 = Default . Use of the group logic is described in Groups ."
+        },
+        {
+          "name": "magnitude",
+          "syntax": "magnitude <f>",
+          "description": "Specify the magnitude of the vector. Not to be used with the value keyword."
+        },
+        {
+          "name": "plunge",
+          "syntax": "plunge <f>",
+          "description": "Specify the plunge of the vector. Not to be used with the value , dip , or dip-direction keywords."
+        },
+        {
+          "name": "value",
+          "syntax": "value <v>[magnitude <f>]",
+          "description": "Assign v to be the value associated with the vector. One can optionally specify the magnitude separately with the magnitude keyword immediately following, in which case v is used only to provide the direction."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "copy"
+  ],
+  "description": "Copy fractures. Fractures falling in the specified range are copied from the DFN specified with the from-dfn keyword to the DFN specified with the to-dfn keyword. If the later DFN does not exist it is created.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture copy",
+      "syntax": "fracture copy keyword [range]",
+      "keywords": [
+        {
+          "name": "from-dfn",
+          "syntax": "from-dfn <s>",
+          "description": "Specify the DFN name from which to copy fractures. If no DFN is specified then fractures from all DFNs may be copied if they fall within the specified range."
+        },
+        {
+          "name": "to-dfn",
+          "syntax": "to-dfn <s>",
+          "description": "Specify the DFN name to which fractures will be copied. If no DFN is specified then a new DFN is created name copyOfDfnXX , where XX is the ID of the DFN from which the fractures have been copied."
+        }
+      ]
+    },
+    "7.0": {
+      "command": "fracture copy",
+      "syntax": "fracture copy keyword [range]",
+      "keywords": [
+        {
+          "name": "from-dfn",
+          "syntax": "from-dfn <s>",
+          "description": "Specify the DFN name from which to copy fractures. If no DFN is specified then fractures from all DFNs may be copied if they fall within the specified range."
+        },
+        {
+          "name": "to-dfn",
+          "syntax": "to-dfn <s>",
+          "description": "Specify the DFN name to which fractures will be copied. If no DFN is specified then a new DFN is created name copyOfDfnXX , where XX is the ID of the DFN from which the fractures have been copied."
+        }
+      ]
+    },
+    "9.0": {
+      "command": "fracture copy",
+      "syntax": "fracture copy keyword [range]",
+      "keywords": [
+        {
+          "name": "from-dfn",
+          "syntax": "from-dfn <s>",
+          "description": "Specify the DFN name from which to copy fractures. If no DFN is specified then fractures from all DFNs may be copied if they fall within the specified range."
+        },
+        {
+          "name": "to-dfn",
+          "syntax": "to-dfn <s>",
+          "description": "Specify the DFN name to which fractures will be copied. If no DFN is specified then a new DFN is created name copyOfDfnXX , where XX is the ID of the DFN from which the fractures have been copied."
+        }
+      ]
+    }
+  }
+}

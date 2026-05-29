@@ -1,0 +1,24 @@
+{
+  "category": "program",
+  "search_keywords": [
+    "continue"
+  ],
+  "description": "Resume processing after a program pause.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "program continue",
+      "syntax": "program continue"
+    },
+    "7.0": {
+      "command": "program continue",
+      "syntax": "program continue"
+    },
+    "9.0": {
+      "command": "program continue",
+      "syntax": "program continue"
+    }
+  }
+}

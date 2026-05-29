@@ -1,0 +1,137 @@
+{
+  "category": "plot",
+  "search_keywords": [
+    "copy",
+    "duplicate",
+    "clone",
+    "settings",
+    "items"
+  ],
+  "description": "Copy a plot to another plot. If the source plot name is not specified, the current plot is assumed. If the destination does not exist, a new plot will be created. Otherwise the existing plot will be overwritten. If a new plot is created, it is made the active plot. Plot settings include the current camera view settings.",
+  "python_sdk_alternative": {
+    "available": false,
+    "workaround": "itasca.command('plot <name> copy <dest> <keyword>') - no direct Python SDK method"
+  },
+  "versions": {
+    "7.0": {
+      "command": "plot copy",
+      "syntax": "plot [<s>] copy [<sDest>] [keyword]",
+      "keywords": [
+        {
+          "name": "both",
+          "syntax": "both",
+          "description": "Both the plot items in the plot, and the plot settings, are copied to the destination. This is the default option."
+        },
+        {
+          "name": "items",
+          "syntax": "items",
+          "description": "Only the list of plotitems is copied to the destination."
+        },
+        {
+          "name": "settings",
+          "syntax": "settings",
+          "description": "Only the current plot settings are copied to the destination."
+        }
+      ],
+      "examples": [
+        {
+          "command": "plot copy 'newplot'",
+          "description": "Copy current plot to a new plot named 'newplot'"
+        },
+        {
+          "command": "plot 'source' copy 'dest'",
+          "description": "Copy plot 'source' to plot 'dest'"
+        },
+        {
+          "command": "plot copy 'newplot' items",
+          "description": "Copy only plot items from current plot to 'newplot'"
+        },
+        {
+          "command": "plot copy 'newplot' settings",
+          "description": "Copy only plot settings from current plot to 'newplot'"
+        }
+      ]
+    },
+    "6.0": {
+      "command": "plot copy",
+      "syntax": "plot [<s>] copy [<sDest>] [keyword]",
+      "keywords": [
+        {
+          "name": "both",
+          "syntax": "both",
+          "description": "Both the plot items in the plot, and the plot settings, are copied to the destination. This is the default option."
+        },
+        {
+          "name": "items",
+          "syntax": "items",
+          "description": "Only the list of plotitems is copied to the destination."
+        },
+        {
+          "name": "settings",
+          "syntax": "settings",
+          "description": "Only the current plot settings are copied to the destination."
+        }
+      ],
+      "examples": [
+        {
+          "command": "plot copy 'newplot'",
+          "description": "Copy current plot to a new plot named 'newplot'"
+        },
+        {
+          "command": "plot 'source' copy 'dest'",
+          "description": "Copy plot 'source' to plot 'dest'"
+        },
+        {
+          "command": "plot copy 'newplot' items",
+          "description": "Copy only plot items from current plot to 'newplot'"
+        },
+        {
+          "command": "plot copy 'newplot' settings",
+          "description": "Copy only plot settings from current plot to 'newplot'"
+        }
+      ]
+    },
+    "9.0": {
+      "command": "plot copy",
+      "syntax": "plot [<s>] copy [<sDest>] [keyword]",
+      "keywords": [
+        {
+          "name": "both",
+          "syntax": "both",
+          "description": "Both the plot items in the plot, and the plot settings, are copied to the destination. This is the default option."
+        },
+        {
+          "name": "items",
+          "syntax": "items",
+          "description": "Only the list of plotitems is copied to the destination."
+        },
+        {
+          "name": "settings",
+          "syntax": "settings",
+          "description": "Only the current plot settings are copied to the destination."
+        }
+      ],
+      "examples": [
+        {
+          "command": "plot copy 'newplot'",
+          "description": "Copy current plot to a new plot named 'newplot'"
+        },
+        {
+          "command": "plot 'source' copy 'dest'",
+          "description": "Copy plot 'source' to plot 'dest'"
+        },
+        {
+          "command": "plot copy 'newplot' items",
+          "description": "Copy only plot items from current plot to 'newplot'"
+        },
+        {
+          "command": "plot copy 'newplot' settings",
+          "description": "Copy only plot settings from current plot to 'newplot'"
+        }
+      ]
+    }
+  },
+  "notes": [
+    "For detailed plot item keywords (color-by, cut, transparency, legend), use flac_browse_reference(\"plot-items\") to list item types and flac_browse_reference(\"plot-items zone\") for full syntax."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "category": "table",
+  "search_keywords": [
+    "label"
+  ],
+  "description": "Set a label for table s .",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "table label",
+      "syntax": "table <s>label <slabel>"
+    },
+    "7.0": {
+      "command": "table label",
+      "syntax": "table <s>label <slabel>"
+    },
+    "9.0": {
+      "command": "table label",
+      "syntax": "table <s>label <slabel>"
+    }
+  }
+}

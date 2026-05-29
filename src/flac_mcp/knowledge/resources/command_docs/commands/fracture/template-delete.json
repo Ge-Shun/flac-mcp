@@ -1,0 +1,24 @@
+{
+  "category": "fracture",
+  "search_keywords": [
+    "template-delete"
+  ],
+  "description": "Delete fracture generation templates. A fracture generation template is a set of statistical parameters used to generate fractures with the fracture generate command. These parameters are the size distribution, the position distribution and the orientation distribution. Once fractures have been generated, an association may exist between the fracture generation template and the generated fractures.",
+  "python_sdk_alternative": {
+    "available": false
+  },
+  "versions": {
+    "6.0": {
+      "command": "fracture template delete",
+      "syntax": "fracture template delete [range]"
+    },
+    "7.0": {
+      "command": "fracture template delete",
+      "syntax": "fracture template delete [range]"
+    },
+    "9.0": {
+      "command": "fracture template delete",
+      "syntax": "fracture template delete [range]"
+    }
+  }
+}
