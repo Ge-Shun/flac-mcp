@@ -14,6 +14,25 @@ The release will fail to publish if no matching entry is found.
 Description of the release.
 -->
 
+## [0.1.1] - 2026-06-03
+
+### Fixed
+- Bumped `itasca-mcp-bridge` to `0.1.3` (submodule pin `25668d7`), picking up
+  the command-log and task-log abspath-vs-CWD fixes. `itasca.command()` output
+  and `flac_check_task_status` no longer come back empty when the engine's
+  working directory diverges from Python's (headless consoles, or after a task
+  `os.chdir()`): the task log and `tasks.json` are now read from a bridge root
+  frozen at startup rather than the live working directory.
+
+### Changed
+- Task `elapsed_time` is now rounded to 2 decimals in `flac_check_task_status`
+  and `flac_list_tasks` (e.g. `0.01` instead of `0.010000944137573242`). The
+  field stays numeric; the bridge still reports full precision, with rounding
+  applied at the MCP presentation layer alongside `start_time` / `end_time`.
+
+### Documentation
+- Added a README header image (#51).
+
 ## [0.1.0] - 2026-05-20
 
 Initial release of `flac-mcp`. Scaffolded from `pfc-mcp` 0.3.15: the MCP
