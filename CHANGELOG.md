@@ -14,7 +14,7 @@ The release will fail to publish if no matching entry is found.
 Description of the release.
 -->
 
-## [0.2.0] - 2026-06-04
+## [0.5.0] - 2026-06-04
 
 ### Added
 - `--bridge-port` CLI argument to override the bridge connection port —
