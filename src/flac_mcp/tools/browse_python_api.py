@@ -20,12 +20,12 @@ def register(mcp: FastMCP) -> None:
                 "FLAC Python API path to browse (dot-separated, starting from itasca). Examples:\n"
                 "- None or '': Root overview - all modules and objects\n"
                 "- 'itasca': Core module functions (command, cycle, gravity, etc.)\n"
-                "- 'itasca.ball': Ball module functions (create, find, list, etc.)\n"
-                "- 'itasca.ball.create': Specific function documentation\n"
-                "- 'itasca.ball.Ball': Ball object method groups\n"
-                "- 'itasca.ball.Ball.pos': Specific method documentation\n"
-                "- 'itasca.wall.facet': Nested submodule\n"
-                "- 'itasca.wall.facet.Facet': Facet object in wall.facet module"
+                "- 'itasca.zone': Zone module functions (find, create_ratio, list, etc.)\n"
+                "- 'itasca.zone.find': Specific function documentation\n"
+                "- 'itasca.zone.Zone': Zone object method groups\n"
+                "- 'itasca.zone.Zone.stress': Specific method documentation\n"
+                "- 'itasca.interface.node': Nested submodule\n"
+                "- 'itasca.interface.node.Node': Node object in interface.node module"
             ),
         ),
     ) -> dict[str, Any]:
