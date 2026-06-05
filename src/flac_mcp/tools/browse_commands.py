@@ -39,8 +39,8 @@ def register(mcp: FastMCP) -> None:
 
         Navigation levels:
         - No command: All command categories overview
-        - Category only (e.g., "ball"): List commands in category
-        - Full command (e.g., "ball create"): Full documentation
+        - Category only (e.g., "zone"): List commands in category
+        - Full command (e.g., "zone create"): Full documentation
 
         When to use:
         - You know the command category or exact command
