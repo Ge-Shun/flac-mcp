@@ -55,6 +55,22 @@ def register(mcp: FastMCP) -> None:
         - Create and export plots: itasca.command('plot ...')
         - Development and REPL-style testing
 
+        `program call '<file>.f3dat'` (or .f2dat / .dat) through this
+        tool is FLAC-version-gated. On FLAC 6/7 the command-script
+        interpreter blocks the bridge for the script's entire
+        duration with no cycle-gap interleaving — any long
+        `model solve` inside the file leaves the bridge unreachable
+        until FLAC is stopped manually. Never emit it there, and
+        treat unknown or unverified versions (including FLAC
+        9.0-9.6) the same way. On FLAC 9.7+ the bridge stays fully
+        responsive during a `program call` (verified on the Itasca
+        9.7 unified kernel: status polling, cycle-gap interleaving,
+        and interrupt all work mid-call). Even where it is safe,
+        prefer reading the file and translating its commands into a
+        sequence of `itasca.command(...)` calls in Python — that
+        keeps per-command output, error locality, and mid-script
+        control that a single opaque `program call` cannot give.
+
         This is a synchronous tool: the request blocks until the code
         finishes or hits the timeout (default 10s, max 600s). Output
         is returned in full; the call is NOT tracked by flac_list_tasks

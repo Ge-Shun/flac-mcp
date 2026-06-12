@@ -39,6 +39,22 @@ def register(mcp: FastMCP) -> None:
         and interleaved with Python prints in the task log, visible
         through flac_check_task_status.
 
+        Having the script invoke `program call '<file>.f3dat'` (or
+        .f2dat / .dat) is FLAC-version-gated. On FLAC 6/7 the
+        command-script interpreter blocks the bridge for the
+        script's entire duration with no cycle-gap interleaving,
+        leaving the bridge unreachable until FLAC is stopped
+        manually. Never emit it there, and treat unknown or
+        unverified versions (including FLAC 9.0-9.6) the same way.
+        On FLAC 9.7+ the bridge stays fully responsive during a
+        `program call` (verified on the Itasca 9.7 unified kernel:
+        status polling, cycle-gap interleaving, and interrupt all
+        work mid-call). Even where it is safe, prefer reading the
+        file and translating its commands into a sequence of
+        `itasca.command(...)` calls in the Python script — that
+        keeps per-command output, error locality, and mid-script
+        control that a single opaque `program call` cannot give.
+
         This is the async / background execution path: pollable via
         flac_check_task_status, cancellable via flac_interrupt_task.
         Submission does not lock parameters — start with reasonable
