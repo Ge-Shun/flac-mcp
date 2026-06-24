@@ -26,6 +26,22 @@ def format_unix_timestamp(value: Any) -> str:
         return str(value)
 
 
+def format_elapsed_seconds(value: Any) -> float | None:
+    """Round a bridge-supplied elapsed-time float to 2 decimals for display.
+
+    The bridge reports elapsed wall-clock at full float precision (e.g.
+    0.010000944137573242); sub-millisecond digits are noise for a task
+    duration. Kept numeric (not stringified) so the field stays
+    machine-readable. None and unparseable values pass through as None.
+    """
+    if value is None:
+        return None
+    try:
+        return round(float(value), 2)
+    except (TypeError, ValueError):
+        return None
+
+
 def paginate_output(
     output: str,
     skip_newest: int,
@@ -44,8 +60,6 @@ def paginate_output(
     pagination = {
         "total_lines": total_lines,
         "line_range": f"{start_idx + 1}-{end_idx}" if selected else "0-0",
-        "has_older": start_idx > 0,
-        "has_newer": skip_newest > 0,
     }
 
     return "\n".join(selected) if selected else "(no output)", pagination

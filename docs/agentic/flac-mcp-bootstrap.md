@@ -6,7 +6,7 @@ Use this guide when an agent needs to set up `flac-mcp` execution end-to-end on 
 
 1. MCP client is configured to run `flac-mcp`.
 2. `itasca-mcp-bridge` is installed in the correct FLAC embedded Python environment.
-3. Bridge is started in FLAC GUI (via `addon.py` or `itasca_mcp_bridge.start()`).
+3. Bridge is started in FLAC GUI via `itasca_mcp_bridge.start()`.
 4. MCP execution tools are verified with `flac_execute_code`.
 
 ## Agent Execution Rules
@@ -26,12 +26,12 @@ Use this guide when an agent needs to set up `flac-mcp` execution end-to-end on 
 
 Use the client-specific Step 1 profile:
 
-- OpenCode: https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-opencode.md
-- Claude Code: https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-claude.md
-- Codex: https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-codex.md
-- Gemini CLI: https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-gemini.md
-- GitHub Copilot CLI: https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-copilot.md
-- toyoura-nagisa: https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-toyoura-nagisa.md
+- OpenCode: <https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-opencode.md>
+- Claude Code: <https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-claude.md>
+- Codex: <https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-codex.md>
+- Gemini CLI: <https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-gemini.md>
+- GitHub Copilot CLI: <https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-copilot.md>
+- toyoura-nagisa: <https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap-toyoura-nagisa.md>
 
 If raw URL fetch is unavailable, use repository-relative paths:
 
@@ -48,7 +48,9 @@ Apply this MCP launch contract in your client's native config format:
 - primary launch command: `uvx flac-mcp`
 - fallback launch command: `uv tool run flac-mcp`
 - enable server in client config
-- prefer workspace-level config by default; use global config only if user explicitly requests it
+- prefer user/global-level config by default; fall back to workspace-level config only if the global config is unavailable or write-blocked
+
+> Rationale: `flac-mcp` bridges a machine-local FLAC GUI over a localhost bridge, so the capability is machine-scoped, not project-scoped. A FLAC working directory is a simulation workspace and is rarely a shared repo, so workspace-scoped config mainly creates a "switch working directory → tool disappears, must re-run bootstrap" footgun. Keep the config global so it survives directory changes; the per-client profile names the exact user-scope target and the preferred CLI where one exists.
 
 When editing MCP config, use this order:
 
@@ -148,6 +150,14 @@ Install/upgrade:
 & "{flac_python}" -m pip install --user --upgrade itasca-mcp-bridge
 ```
 
+If that index is unreachable (PyPI blocked behind a regional network or
+corporate proxy), retry via the Tsinghua mirror -- the same fallback the
+bridge's own self-upgrade performs automatically:
+
+```powershell
+& "{flac_python}" -m pip install --user --upgrade --index-url https://pypi.tuna.tsinghua.edu.cn/simple/ --trusted-host pypi.tuna.tsinghua.edu.cn itasca-mcp-bridge
+```
+
 Verify import and version:
 
 ```powershell
@@ -165,6 +175,9 @@ If websocket dependency errors appear, install the version that matches the embe
 # FLAC 9.0
 & "{flac_python}" -m pip install --user websockets==16.0
 ```
+
+If PyPI is unreachable here too, add the same `--index-url` /
+`--trusted-host` Tsinghua-mirror flags shown above.
 
 ## Step 4 - Start Bridge in FLAC GUI
 
@@ -184,38 +197,26 @@ powershell -NoProfile -Command "$procs=Get-CimInstance Win32_Process | Where-Obj
 
 If multiple `flac*_gui.exe` processes are running and the user did not specify, ask which one to target.
 
-Download `addon.py` to a local path the user can easily find (e.g. Desktop or working directory):
-
-```bash
-curl -o addon.py https://raw.githubusercontent.com/yusong652/flac-mcp/main/addon.py
-```
-
-PowerShell form (recommended on Windows shells):
-
-```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yusong652/flac-mcp/main/addon.py" -OutFile "addon.py"
-```
-
-Tell the user where the file was saved.
-
 [USER ACTION REQUIRED]
 
-Use one of these two options to start the bridge, then restart the client session before Step 5.
-
-**Option A (recommended):** Open the downloaded `addon.py` in FLAC GUI and execute it, or copy its contents into the FLAC IPython console and run them. The script handles install, upgrade, and startup automatically.
-
-**Option B (manual):** In FLAC GUI Python console:
+Ask the user to run this in the FLAC GUI IPython console (the package was
+already installed in Step 3), then restart the client session before Step 5:
 
 ```python
 import itasca_mcp_bridge
 itasca_mcp_bridge.start()
 ```
 
+On every start the bridge checks PyPI for a newer release and self-upgrades
+before starting, so this same two-liner keeps the install current in later
+sessions. The check is best-effort: offline machines just start the
+installed version.
+
 Expected output includes:
 
-- `FLAC Bridge Server`
+- `Itasca MCP Bridge Server`
 - `ws://localhost:9001`
-- `Bridge started in non-blocking mode`
+- `Task loop running via Qt timer`
 
 ## Step 5 - Verify from MCP Client
 
@@ -246,7 +247,12 @@ Success example (shape may vary by client):
 - `Connection refused`:
   - Bridge not running in FLAC GUI, or port `9001` not available.
 - `No module named itasca_mcp_bridge`:
-  - Bridge package not installed in FLAC embedded Python.
+  - Bridge package not installed in FLAC embedded Python (or installed into the
+    wrong interpreter). Re-run Step 3 against the resolved `flac_python`.
+  - One-shot fallback: paste the contents of
+    <https://raw.githubusercontent.com/yusong652/flac-mcp/main/addon.py> into the
+    FLAC IPython console -- it installs (with mirror fallback) and starts the
+    bridge in one go.
 - `No module named websockets`:
   - Install `websockets==9.1` for FLAC 6/7 or `websockets==16.0` for FLAC 9 in the embedded Python environment.
 - `status remains pending / plot diagnostic timeout during solve`:

@@ -1,5 +1,9 @@
 # flac-mcp
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/yusong652/flac-mcp/assets/header.png" width="70%" alt="flac-mcp — MCP Server for ITASCA FLAC">
+</p>
+
 [English](https://github.com/yusong652/flac-mcp/blob/main/README.md) | [简体中文](https://github.com/yusong652/flac-mcp/blob/main/README.zh-CN.md)
 
 [![PyPI](https://img.shields.io/pypi/v/flac-mcp)](https://pypi.org/project/flac-mcp/)
@@ -32,7 +36,7 @@
 将以下文本复制给你的 AI 智能体，让它自动完成配置：
 
 ```text
-Fetch and follow this bootstrap guide end-to-end:
+请全程用中文与我交流。然后获取并完整按照这份引导指南执行（指南为英文，照其步骤操作即可）：
 https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-bootstrap.md
 ```
 
@@ -64,7 +68,14 @@ https://raw.githubusercontent.com/yusong652/flac-mcp/main/docs/agentic/flac-mcp-
 
 ## 日常启动
 
-完成首次配置之后，每次启动 FLAC 只需要把 [`addon.py`](addon.py) 粘进 IPython 控制台运行，bridge 起来后就可以继续用了。MCP 客户端配置会一直保留。
+完成首次配置之后，每次启动 FLAC 只需要在 IPython 控制台里运行下面两行，bridge 起来后就可以继续用了：
+
+```python
+import itasca_mcp_bridge
+itasca_mcp_bridge.start()
+```
+
+`start()` 会先检查 PyPI 上是否有新版 bridge，有则自动升级再启动。MCP 客户端配置会一直保留。
 
 ## 功能亮点
 
